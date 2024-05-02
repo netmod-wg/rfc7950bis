@@ -23,11 +23,11 @@ Discussion of this work occurs on the [Network Modeling
 Working Group mailing list](mailto:netmod@ietf.org)
 ([archive](https://mailarchive.ietf.org/arch/browse/netmod/),
 [subscribe](https://www.ietf.org/mailman/listinfo/netmod)).
-In addition to contributions in GitHub, you are encouraged to participate in
-discussions there.
+In addition to contributions in GitHub, you are encouraged
+to participate in discussions there.
 
-**Note**: Some working groups adopt a policy whereby substantive discussion of
-technical issues needs to occur on the mailing list.
+**Note**: Some working groups adopt a policy whereby substantive
+discussion of technical issues needs to occur on the mailing list.
 
 You might also like to familiarize yourself with other
 [Working Group documents](https://datatracker.ietf.org/wg/netmod/documents/).
