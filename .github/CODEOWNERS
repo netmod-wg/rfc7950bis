@@ -1,0 +1,6 @@
+# admins can approve reviews on all files.
+@netmod-wg/rfc7950bis-admin
+
+# owners can approve reviews on all draft-source files.
+draft-yn-netmod-rfc7950bis-00.xml @netmod-wg/rfc7950bis-owners
+designs/ @netmod-wg/rfc7950bis-owners

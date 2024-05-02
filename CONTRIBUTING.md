@@ -17,17 +17,65 @@ BCP 78, 79, the TLP, and the TLP rules regarding code components (e.g. being
 subject to a Simplified BSD License) in Contributions.
 
 
-## Working Group Information
+# Production Process
 
-Discussion of this work occurs on the [Network Modeling
-Working Group mailing list](mailto:netmod@ietf.org)
-([archive](https://mailarchive.ietf.org/arch/browse/netmod/),
-[subscribe](https://www.ietf.org/mailman/listinfo/netmod)).
-In addition to contributions in GitHub, you are encouraged
-to participate in discussions there.
+All updates to this document are made via pull requests (PRs)
+submitted via the GitHub user interface.  Anyone may submit a
+PR.  See below for more information about how PRs are reviewed
+and merged/closed.
 
-**Note**: Some working groups adopt a policy whereby substantive
-discussion of technical issues needs to occur on the mailing list.
+As this document is currently an individual draft (I-D), in
+the IETF sense, it is not yet necessary to get consensus for
+changes made.
 
-You might also like to familiarize yourself with other
-[Working Group documents](https://datatracker.ietf.org/wg/netmod/documents/).
+Ultimately, this document will be submitted to the NETMOD WG
+for consideration for adoption.  At that time, WG consensus
+will be held for the updates made up to that point.
+
+However, until then, given the complexity of this effort,
+all updates (PRs) are subject to a GitHub-enabled review
+process.  Only the designated experts (i.e., the
+`rfc7950bis-owners` team) participate in the review process.
+
+A PR will be automaticaly-merged as soon as all of the
+following are true:
+  - The PR is up-to-date with the current `main` branch.
+  - All automated GitHub Workflow Actions pass (xml2rfc, idnits, etc.).
+  - There are at least three "approvals".
+  - There are no "request changes".
+  - There are no unresolved "conversations".
+
+In order to facilitate the process, PRs SHOULD be as small as possible,
+focusing on a single item.  It is unnecessary for a PR to be tracked by
+the [YANG-Next Issue Tracker](https://github.com/netmod-wg/yang-next/issues),
+though that is certainly an excellent place to find something to work on.
+
+Please be aware that PRs MUST be "complete", in that they completely
+update the document including, when needed, the following sections:
+Summary of Changes from RFC 7950, IANA Considerations, Security
+Considerations, Normative References, Informative References, etc.
+A checklist for such things will be automatically added to PRs in
+order to ensure these updates occur.
+
+For complex issues, aspiring PR authors are encouraged to request
+a "kickoff" discussion with the designated experts by creating a
+"design" files (in the `/designs` directory) and submitting a PR
+to add just that file to the repository.  Doing so triggers the
+exact same merge-requirements listed above so, once the "design PR"
+is merged, it is pretty safe to proceed with the settled-upon
+approach.
+
+Please note that, once this document is adopted as a NETMOD WG document,
+the same PR-process discussed above will continue with one modification:
+upon a PR being merged to `main` (FIXME: before or after being pushed
+to Datatracker?), an email will be sent to the NETMOD WG list seeking
+consensus (at least, no objections) from the list.  Note that this
+is a necessary but largely perfunctorial gesture, as already the
+update was approaved by the designated experts, leaving little room
+for an objection to be raised.
+
+# Build Artifacts
+
+Each PR-update and PR-merge causes a GitHub Workflow to execute that generates and
+publishes build artifacts (the draft compiled in its various formats) to be published
+to the [Build Artifacts for rfc7950bis](https://netmod-wg.github.io/rfc7950bis/) page.
