@@ -51,9 +51,9 @@
             <xref target="RFC6241" />. Since the publication of YANG version 1
             <xref target="RFC6020" />, YANG has been used or proposed to be used for other
             protocols (e.g., RESTCONF
-            <xref target="RESTCONF" />and the Constrained Application Protocol (CoAP) Management
+            <xref target="RFC8040" />and the Constrained Application Protocol (CoAP) Management
             Interface (CoMI)
-            <xref target="CoMI" />). Further, encodings other than XML have been proposed (e.g.,
+            <xref target="I-D.ietf-core-comi" />). Further, encodings other than XML have been proposed (e.g.,
             JSON
             <xref target="RFC7951" />).</t>
             <t>This document describes the syntax and semantics of version 1.1 of the YANG
@@ -62,7 +62,7 @@
             <xref target="XML" />and how NETCONF operations are used to manipulate the data. Other
             protocols and encodings are possible but are out of scope for this specification.</t>
             <t>In terms of developing YANG data models,
-            <xref target="YANG-Guidelines" />provides some guidelines and recommendations.</t>
+            <xref target="RFC8407" />provides some guidelines and recommendations.</t>
             <t>Note that this document does not obsolete RFC 6020
             <xref target="RFC6020" />.</t>
             <section title="Summary of Changes from RFC 6020">
@@ -160,17 +160,18 @@
                     <list style="symbols">
                         <t>A server advertises support for YANG 1.1 modules by using
                         ietf&amp;nbhy;yang-library
-                        <xref target="RFC7895" />instead of listing them as capabilities in the
+                        <xref target="RFC8525" />instead of listing them as capabilities in the
                         &lt;hello&gt; message.</t>
                     </list>
                 </t>
             </section>
         </section>
         <section title="Key Words">
-            <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-            "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document
-            are to be interpreted as described in BCP&#160;14
-            <xref target="RFC2119" />.</t>
+            <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+            "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY",
+            and "OPTIONAL" in this document are to be interpreted as described
+            in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+            when, and only when, they appear in all capitals, as shown here.</t>
         </section>
         <section title="Terminology" anchor="terminology">
             <t></t>
@@ -1193,7 +1194,7 @@
                 <xref target="RFC3986" />. A NETCONF client or server uses the namespace during
                 XML encoding of data.</t>
                 <t>XML namespaces for modules published in RFC streams
-                <xref target="RFC4844" />MUST be assigned by IANA; see Section&#160;14 in
+                <xref target="RFC8729" />MUST be assigned by IANA; see Section&#160;14 in
                 <xref target="RFC6020" />.</t>
                 <t>XML namespaces for private modules are assigned by the organization owning the
                 module without a central registry. Namespace URIs MUST be chosen so they cannot
@@ -1314,7 +1315,7 @@
                     <t>A NETCONF server MUST announce the modules it implements (see
                     <xref target="implementing" />) by implementing the YANG module
                     "ietf‑yang‑library" defined in
-                    <xref target="RFC7895" />and listing all implemented modules in the
+                    <xref target="RFC8525" />and listing all implemented modules in the
                     "/modules‑state/module" list.</t>
                     <t>The server also MUST advertise the following capability in the
                     &lt;hello&gt; message (line breaks and whitespaces are used for formatting
@@ -1349,7 +1350,7 @@
                     specifying the revision date of module C and the server does not implement C
                     (e.g., if C only defines some typedefs), the server MUST list module C in the
                     "/modules‑state/module" list from "ietf‑yang‑library"
-                    <xref target="RFC7895" />, and it MUST set the leaf "conformance‑type" to
+                    <xref target="RFC8525" />, and it MUST set the leaf "conformance‑type" to
                     "import" for this module.</t>
                     <t>If a server lists a module C in the "/modules‑state/module" list from
                     "ietf‑yang‑library" and there are other modules Ms listed that import C
@@ -2017,7 +2018,7 @@
                 information. The module name is an identifier (see
                 <xref target="identifiers" />).</t>
                 <t>Names of modules published in RFC streams
-                <xref target="RFC4844" />MUST be assigned by IANA; see Section&#160;14 in
+                <xref target="RFC8729" />MUST be assigned by IANA; see Section&#160;14 in
                 <xref target="RFC6020" />.</t>
                 <t>Private module names are assigned by the organization owning the module without
                 a central registry. See
@@ -2438,7 +2439,7 @@
                 holds detailed submodule information. The submodule name is an identifier (see
                 <xref target="identifiers" />).</t>
                 <t>Names of submodules published in RFC streams
-                <xref target="RFC4844" />MUST be assigned by IANA; see Section&#160;14 in
+                <xref target="RFC8729" />MUST be assigned by IANA; see Section&#160;14 in
                 <xref target="RFC6020" />.</t>
                 <t>Private submodule names are assigned by the organization owning the submodule
                 without a central registry. See
@@ -10499,23 +10500,23 @@ WSP                 = SP / HTAB
     </middle>
     <back>
         <references title="Normative References">
-            <?rfc include="reference.RFC.2119"?>
-            <?rfc include="reference.RFC.3629"?>
-            <?rfc include="reference.RFC.3986"?>
-            <?rfc include="reference.RFC.4648"?>
-            <?rfc include="reference.RFC.5234"?>
-            <?rfc include="reference.RFC.5277"?>
-            <?rfc include="reference.RFC.6241"?>
-            <?rfc include="reference.RFC.7405"?>
-            <!-- draft-ietf-netconf-yang-library (PUB) -->
-            <?rfc include="reference.RFC.7895"?>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3629.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4648.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5277.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7405.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8525.xml"/>
             <reference anchor="XML" target="https://www.w3.org/TR/2008/REC-xml-20081126/">
                 <front>
                     <title>Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
                     <author fullname="Tim Bray" surname="Bray" initials="T." />
                     <author fullname="Jean Paoli" surname="Paoli" initials="J." />
                     <author fullname="Michael Sperberg-McQueen" surname="Sperberg-McQueen"
-                    initials="C." />
+                            initials="C." />
                     <author fullname="Eve Maler" surname="Maler" initials="E." />
                     <author fullname="Francois Yergeau" surname="Yergeau" initials="F." />
                     <date year="2008" month="November" day="26" />
@@ -10523,7 +10524,7 @@ WSP                 = SP / HTAB
                 <seriesInfo name="W3C Recommendation" value="REC-xml-20081126" />
             </reference>
             <reference anchor="XML-NAMES"
-            target="http://www.w3.org/TR/2009/REC-xml-names-20091208">
+                       target="http://www.w3.org/TR/2009/REC-xml-names-20091208">
                 <front>
                     <title>Namespaces in XML 1.0 (Third Edition)</title>
                     <author initials="T." surname="Bray" fullname="Tim Bray">
@@ -10544,11 +10545,11 @@ WSP                 = SP / HTAB
                     <date month="December" day="8" year="2009" />
                 </front>
                 <seriesInfo name="World Wide Web Consortium Recommendation"
-                value="REC-xml-names-20091208" />
+                            value="REC-xml-names-20091208" />
                 <format type="HTML" target="http://www.w3.org/TR/2009/REC-xml-names-20091208" />
             </reference>
             <reference anchor="XSD-TYPES"
-            target="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028">
+                       target="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028">
                 <front>
                     <title>XML Schema Part 2: Datatypes Second Edition</title>
                     <author initials="P." surname="Biron" fullname="Paul V. Biron">
@@ -10560,7 +10561,7 @@ WSP                 = SP / HTAB
                     <date month="October" day="28" year="2004" />
                 </front>
                 <seriesInfo name="World Wide Web Consortium Recommendation"
-                value="REC-xmlschema-2-20041028" />
+                            value="REC-xmlschema-2-20041028" />
                 <format type="HTML" target="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028" />
             </reference>
             <reference anchor="XPATH" target="http://www.w3.org/TR/1999/REC-xpath-19991116">
@@ -10575,7 +10576,7 @@ WSP                 = SP / HTAB
                     <date month="November" day="16" year="1999" />
                 </front>
                 <seriesInfo name="World Wide Web Consortium Recommendation"
-                value="REC-xpath-19991116" />
+                            value="REC-xpath-19991116" />
                 <format type="HTML" target="http://www.w3.org/TR/1999/REC-xpath-19991116" />
             </reference>
             <reference anchor="ISO.10646">
@@ -10593,7 +10594,7 @@ WSP                 = SP / HTAB
         </references>
         <references title="Informative References">
             <reference anchor="IEEE754-2008"
-            target="http://standards.ieee.org/findstds/standard/754-2008.html">
+                       target="http://standards.ieee.org/findstds/standard/754-2008.html">
                 <front>
                     <title>IEEE Standard for Floating-Point Arithmetic</title>
                     <author>
@@ -10603,68 +10604,18 @@ WSP                 = SP / HTAB
                 </front>
                 <seriesInfo name="IEEE" value="754-2008" />
                 <seriesInfo name="DOI" value="10.1109/IEEESTD.2008.4610935" />
-            </reference><?rfc include="reference.RFC.2578"?>
-            <?rfc include="reference.RFC.2579"?>
-            <?rfc include="reference.RFC.3780"?>
-            <?rfc include="reference.RFC.4844"?>
-            <?rfc include="reference.RFC.6020"?>
-            <?rfc include="reference.RFC.6643"?>
-            <?rfc include="reference.RFC.6991"?>
-            <!-- draft-ietf-netmod-yang-json (RFC 7951) -->
-            <reference anchor="RFC7951" target="http://www.rfc-editor.org/info/rfc7951">
-                <front>
-                    <title>JSON Encoding of Data Modeled with YANG</title>
-                    <author initials="L" surname="Lhotka" fullname="Ladislav Lhotka">
-                        <organization />
-                    </author>
-                    <date month="August" year="2016" />
-                </front>
-                <seriesInfo name='RFC' value='7951' />
-                <seriesInfo name="DOI" value="10.17487/RFC7951" />
             </reference>
-            <!-- draft-ietf-netmod-rfc6087bis (I-D Exists) -->
-            <reference anchor="YANG-Guidelines">
-                <front>
-                    <title>Guidelines for Authors and Reviewers of YANG Data Model
-                    Documents</title>
-                    <author initials="A" surname="Bierman" fullname="Andy Bierman">
-                        <organization />
-                    </author>
-                    <date month="July" year="2016" />
-                </front>
-                <seriesInfo name="Work in Progress," value="draft-ietf-netmod-rfc6087bis-07" />
-            </reference>
-            <!-- draft-ietf-netconf-restconf (Waiting for Writeup) -->
-            <reference anchor="RESTCONF">
-                <front>
-                    <title>RESTCONF Protocol</title>
-                    <author initials="A" surname="Bierman" fullname="Andy Bierman">
-                        <organization />
-                    </author>
-                    <author initials="M" surname="Bjorklund" fullname="Martin Bjorklund">
-                        <organization />
-                    </author>
-                    <author initials="K" surname="Watsen" fullname="Kent Watsen">
-                        <organization />
-                    </author>
-                    <date month="August" year="2016" />
-                </front>
-                <seriesInfo name="Work in Progress," value="draft-ietf-netconf-restconf-16" />
-            </reference>
-            <!-- draft-vanderstok-core-comi (-D Exists) -->
-            <reference anchor="CoMI">
-                <front>
-                    <title>CoAP Management Interface</title>
-                    <author initials="P" surname="van der Stok" fullname="Peter van der Stok">
-                        <organization />
-                    </author>
-                    <author initials="A" surname="Bierman" fullname="Andy Bierman">
-                        <organization />
-                    </author>
-                    <date month="March" year="2016" />
-                </front>
-                <seriesInfo name="Work in Progress," value="draft-vanderstok-core-comi-09" />
-            </reference>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2578.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2579.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3780.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6643.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6991.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7951.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8040.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8407.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8729.xml"/>
+            <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-comi.xml"/>
             <reference anchor="XSLT" target="http://www.w3.org/TR/1999/REC-xslt-19991116">
                 <front>
                     <title>XSL Transformations (XSLT) Version 1.0</title>
@@ -10674,7 +10625,7 @@ WSP                 = SP / HTAB
                     <date month="November" day="16" year="1999" />
                 </front>
                 <seriesInfo name="World Wide Web Consortium Recommendation"
-                value="REC-xslt-19991116" />
+                            value="REC-xslt-19991116" />
                 <format type="HTML" target="http://www.w3.org/TR/1999/REC-xslt-19991116" />
             </reference>
             <reference anchor="XPATH2.0" target="http://www.w3.org/TR/2010/REC-xpath20-20101214">
@@ -10704,7 +10655,7 @@ WSP                 = SP / HTAB
                     <date month="December" day="14" year="2010" />
                 </front>
                 <seriesInfo name="World Wide Web Consortium Recommendation"
-                value="REC-xpath20-20101214" />
+                            value="REC-xpath20-20101214" />
                 <format type="HTML" target="http://www.w3.org/TR/2010/REC-xpath20-20101214" />
             </reference>
         </references>
