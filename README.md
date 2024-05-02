@@ -10,8 +10,7 @@ This is the working area for the IETF NETMOD Internet-Draft, "The YANG 1.1 Data 
 
 ## Contributing
 
-See the
-[guidelines for contributions](https://github.com/netmod-wg/rfc7950bis/blob/main/CONTRIBUTING.md).
+See the [guidelines for contributions](https://github.com/netmod-wg/rfc7950bis/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
