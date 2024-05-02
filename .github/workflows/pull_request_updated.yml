@@ -200,7 +200,7 @@ jobs:
         run: |
           echo "NUMBER: ${{github.event.pull_request.number}}" > mysite/${{github.head_ref}}/metadata.txt
           echo "TITLE: ${{github.event.pull_request.title}}" >> mysite/${{github.head_ref}}/metadata.txt
-          echo "DATE: $(date  +%Y-%m-%d)" >> mysite/${{github.head_ref}}/metadata.txt
+          echo "DATE: $(date +%Y-%m-%dT%H:%M:%SZ)" >> mysite/${{github.head_ref}}/metadata.txt
 
       # delete the artifacts
       - uses: geekyeggo/delete-artifact@v5
