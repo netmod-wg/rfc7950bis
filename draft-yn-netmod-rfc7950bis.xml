@@ -51,7 +51,7 @@
             <xref target="RFC6241"/>. Since the publication of YANG version 1
             <xref target="RFC6020"/>, YANG has been used or proposed to be used for other
             protocols (e.g., RESTCONF
-            <xref target="RFC8040"/>and the Constrained Application Protocol (CoAP) Management
+            <xref target="RFC8040"/> and the Constrained Application Protocol (CoAP) Management
             Interface (CoMI)
             <xref target="I-D.ietf-core-comi"/>). Further, encodings other than XML have been proposed (e.g.,
             JSON
@@ -59,10 +59,10 @@
             <t>This document describes the syntax and semantics of version 1.1 of the YANG
             language. It also describes how a data model defined in a YANG module is encoded in
             the Extensible Markup Language (XML)
-            <xref target="XML"/>and how NETCONF operations are used to manipulate the data. Other
+            <xref target="XML"/> and how NETCONF operations are used to manipulate the data. Other
             protocols and encodings are possible but are out of scope for this specification.</t>
             <t>In terms of developing YANG data models,
-            <xref target="RFC8407"/>provides some guidelines and recommendations.</t>
+            <xref target="RFC8407"/> provides some guidelines and recommendations.</t>
             <t>Note that this document does not obsolete RFC 6020
             <xref target="RFC6020"/>.</t>
             <section title="Summary of Changes from RFC 6020">
@@ -78,12 +78,12 @@
                         version 1. When updating a YANG version 1 module to 1.1 and the module
                         uses a character sequence that is now illegal, the string must be changed
                         to match the new rules. See
-                        <xref target="quoting"/>for details.</t>
+                        <xref target="quoting"/> for details.</t>
                         <t>An unquoted string cannot contain any single or double quote
                         characters. This is a backward-incompatible change from YANG version 1.
                         When updating a YANG version 1 module to 1.1 and the module uses such
                         quote characters, the string must be changed to match the new rules. See
-                        <xref target="quoting"/>for details.</t>
+                        <xref target="quoting"/> for details.</t>
                         <t>Made "when" and "if‑feature" illegal on list keys. This is a
                         backward-incompatible change from YANG version 1. When updating a YANG
                         version 1 module to 1.1 and the module uses these constructs, they must be
@@ -91,7 +91,7 @@
                         <t>Defined the legal characters in YANG modules. When updating a YANG
                         version 1 module to 1.1, any characters that are now illegal must be
                         removed. See
-                        <xref target="syntax"/>for details.</t>
+                        <xref target="syntax"/> for details.</t>
                         <t>Made noncharacters illegal in the built-in type "string". This change
                         affects the runtime behavior of YANG-based protocols.</t>
                     </list>
@@ -123,14 +123,14 @@
                         <xref target="identityref"/>).</t>
                         <t>Clarified what unprefixed names mean in leafrefs in typedefs (see
                         Sections&#160;
-                        <xref target="xpath-context" format="counter"/>and
+                        <xref target="xpath-context" format="counter"/> and
                         <xref target="path" format="counter"/>).</t>
                         <t>Allow identities to be derived from multiple base identities (see
                         Sections&#160;
-                        <xref target="identity" format="counter"/>and
+                        <xref target="identity" format="counter"/> and
                         <xref target="identityref" format="counter"/>).</t>
                         <t>Allow enumerations and bits to be subtyped (see Sections&#160;
-                        <xref target="enumeration" format="counter"/>and&#160;
+                        <xref target="enumeration" format="counter"/> and&#160;
                         <xref target="bits" format="counter"/>).</t>
                         <t>Allow leaf-lists to have default values (see
                         <xref target="leaf-list-default-value"/>).</t>
@@ -160,7 +160,7 @@
                     <list style="symbols">
                         <t>A server advertises support for YANG 1.1 modules by using
                         ietf&amp;nbhy;yang-library
-                        <xref target="RFC8525"/>instead of listing them as capabilities in the
+                        <xref target="RFC8525"/> instead of listing them as capabilities in the
                         &lt;hello&gt; message.</t>
                     </list>
                 </t>
@@ -1194,7 +1194,7 @@
                 <xref target="RFC3986"/>. A NETCONF client or server uses the namespace during
                 XML encoding of data.</t>
                 <t>XML namespaces for modules published in RFC streams
-                <xref target="RFC8729"/>MUST be assigned by IANA; see Section&#160;14 in
+                <xref target="RFC8729"/> MUST be assigned by IANA; see Section&#160;14 in
                 <xref target="RFC6020"/>.</t>
                 <t>XML namespaces for private modules are assigned by the organization owning the
                 module without a central registry. Namespace URIs MUST be chosen so they cannot
@@ -1315,7 +1315,7 @@
                     <t>A NETCONF server MUST announce the modules it implements (see
                     <xref target="implementing"/>) by implementing the YANG module
                     "ietf‑yang‑library" defined in
-                    <xref target="RFC8525"/>and listing all implemented modules in the
+                    <xref target="RFC8525"/> and listing all implemented modules in the
                     "/modules‑state/module" list.</t>
                     <t>The server also MUST advertise the following capability in the
                     &lt;hello&gt; message (line breaks and whitespaces are used for formatting
@@ -1507,17 +1507,17 @@
         </section>
         <section title="YANG Syntax" anchor="syntax">
             <t>The YANG syntax is similar to that of SMIng
-            <xref target="RFC3780"/>and programming languages like C and C++. This C-like syntax
+            <xref target="RFC3780"/> and programming languages like C and C++. This C-like syntax
             was chosen specifically for its readability, since YANG values the time and effort of
             the readers of models above those of modules writers and YANG tool-chain developers.
             This section introduces the YANG syntax.</t>
             <t>Legal characters in YANG modules are the Unicode and ISO/IEC 10646
-            <xref target="ISO.10646"/>characters, including tab, carriage return, and line feed
+            <xref target="ISO.10646"/> characters, including tab, carriage return, and line feed
             but excluding the other C0 control characters, the surrogate blocks, and the
             noncharacters. The character syntax is formally defined by the rule "yang‑char" in
             <xref target="grammar"/>.</t>
             <t>YANG modules and submodules are stored in files using the UTF-8
-            <xref target="RFC3629"/>character encoding.</t>
+            <xref target="RFC3629"/> character encoding.</t>
             <t>Lines in a YANG module end with a carriage return-line feed combination or with a
             line feed alone. A carriage return that is not followed by a line feed may only appear
             inside a quoted string (
@@ -1545,7 +1545,7 @@
                     the YANG keywords defined in this document, or a prefix identifier, followed
                     by a colon (":"), followed by a language extension keyword. Keywords are case
                     sensitive. See
-                    <xref target="identifiers"/>for a formal definition of identifiers.</t>
+                    <xref target="identifiers"/> for a formal definition of identifiers.</t>
                 </section>
                 <section title="Quoting" anchor="quoting">
                     <t>An unquoted string is any sequence of characters that does not contain any
@@ -1722,7 +1722,7 @@
             </section>
             <section title="XPath Evaluations" anchor="xpath">
                 <t>YANG relies on XML Path Language (XPath) 1.0
-                <xref target="XPATH"/>as a notation for specifying many inter-node references and
+                <xref target="XPATH"/> as a notation for specifying many inter-node references and
                 dependencies. An implementation is not required to implement an XPath interpreter
                 but MUST ensure that the requirements encoded in the data model are enforced. The
                 manner of enforcement is an implementation decision. The XPath expressions MUST be
@@ -1741,11 +1741,11 @@
                 means that XPath expressions in YANG modules SHOULD NOT rely on any specific
                 document order.</t>
                 <t>Numbers in XPath 1.0 are IEEE 754
-                <xref target="IEEE754-2008"/>double-precision floating-point values; see
+                <xref target="IEEE754-2008"/> double-precision floating-point values; see
                 Section&#160;3.5 in
                 <xref target="XPATH"/>. This means that some values of int64, uint64, and
                 decimal64 types (see Sections&#160;
-                <xref target="integers" format="counter"/>and
+                <xref target="integers" format="counter"/> and
                 <xref target="decimal64" format="counter"/>) cannot be exactly represented in
                 XPath expressions. Therefore, due caution should be exercised when using nodes
                 with 64-bit numeric values in XPath expressions. In particular, numerical
@@ -1783,13 +1783,13 @@
                             grouping is used (see
                             <xref target="uses"/>).</t>
                             <t>The function library is the core function library defined in
-                            <xref target="XPATH"/>and the functions defined in
+                            <xref target="XPATH"/> and the functions defined in
                             <xref target="xpath-functions"/>.</t>
                             <t>The set of variable bindings is empty.</t>
                         </list>
                     </t>
                     <t>The mechanism for handling unprefixed names is adopted from XPath 2.0
-                    <xref target="XPATH2.0"/>and helps simplify XPath expressions in YANG. No
+                    <xref target="XPATH2.0"/> and helps simplify XPath expressions in YANG. No
                     ambiguity may ever arise, because YANG node identifiers are always qualified
                     names with a non-null namespace URI.</t>
                     <t>The accessible tree depends on where the statement with the XPath
@@ -1832,7 +1832,7 @@
                     </t>
                     <t>In the accessible tree, all leafs and leaf-lists with default values in use
                     exist (see Sections&#160;
-                    <xref target="leaf-default-value" format="counter"/>and
+                    <xref target="leaf-default-value" format="counter"/> and
                     <xref target="leaf-list-default-value" format="counter"/>).</t>
                     <t>If a node that exists in the accessible tree has a non-presence container
                     as a child, then the non-presence container also exists in the accessible
@@ -2018,11 +2018,11 @@
                 information. The module name is an identifier (see
                 <xref target="identifiers"/>).</t>
                 <t>Names of modules published in RFC streams
-                <xref target="RFC8729"/>MUST be assigned by IANA; see Section&#160;14 in
+                <xref target="RFC8729"/> MUST be assigned by IANA; see Section&#160;14 in
                 <xref target="RFC6020"/>.</t>
                 <t>Private module names are assigned by the organization owning the module without
                 a central registry. See
-                <xref target="modules"/>for recommendations on how to name modules.</t>
+                <xref target="modules"/> for recommendations on how to name modules.</t>
                 <t>A module typically has the following layout:</t>
                 <figure>
                     <artwork>
@@ -2216,7 +2216,7 @@
                     defined by the module are qualified by in the XML encoding, with the exception
                     of identifiers for data nodes, action nodes, and notification nodes defined
                     inside a grouping (see
-                    <xref target="uses"/>for details). The argument to the "namespace" statement
+                    <xref target="uses"/> for details). The argument to the "namespace" statement
                     is the URI of the namespace.</t>
                     <t>See also
                     <xref target="intro-namespaces"/>.</t>
@@ -2439,11 +2439,11 @@
                 holds detailed submodule information. The submodule name is an identifier (see
                 <xref target="identifiers"/>).</t>
                 <t>Names of submodules published in RFC streams
-                <xref target="RFC8729"/>MUST be assigned by IANA; see Section&#160;14 in
+                <xref target="RFC8729"/> MUST be assigned by IANA; see Section&#160;14 in
                 <xref target="RFC6020"/>.</t>
                 <t>Private submodule names are assigned by the organization owning the submodule
                 without a central registry. See
-                <xref target="modules"/>for recommendations on how to name submodules.</t>
+                <xref target="modules"/> for recommendations on how to name submodules.</t>
                 <t>A submodule typically has the following layout:</t>
                 <figure>
                     <artwork>
@@ -2735,7 +2735,7 @@
                 <section title="The typedef's &quot;type&quot; Statement" anchor="typedef-type">
                     <t>The "type" statement, which MUST be present, defines the base type from
                     which this type is derived. See
-                    <xref target="type"/>for details.</t>
+                    <xref target="type"/> for details.</t>
                 </section>
                 <section title="The &quot;units&quot; Statement" anchor="units">
                     <t>The "units" statement, which is optional, takes as an argument a string
@@ -3091,7 +3091,7 @@
                     the data tree carries some meaning. Otherwise, the container is used to give
                     some structure to the data, and it carries no meaning by itself.</t>
                     <t>See
-                    <xref target="container-presence"/>for additional information.</t>
+                    <xref target="container-presence"/> for additional information.</t>
                 </section>
                 <section title="The container's Child Node Statements">
                     <t>Within a container, the "container", "leaf", "list", "leaf‑list", "uses",
@@ -3302,7 +3302,7 @@
                     <t>The "type" statement, which MUST be present, takes as an argument the name
                     of an existing built-in or derived type. The optional substatements specify
                     restrictions on this type. See
-                    <xref target="type"/>for details.</t>
+                    <xref target="type"/> for details.</t>
                 </section>
                 <section title="The leaf's &quot;default&quot; Statement" anchor="leaf-default">
                     <t>The "default" statement, which is optional, takes as an argument a string
@@ -3355,7 +3355,7 @@
                     <t>The value of the leaf node is encoded to XML according to the type and is
                     sent as character data in the element.</t>
                     <t>See
-                    <xref target="leaf-xml-encoding-example"/>for an example.</t>
+                    <xref target="leaf-xml-encoding-example"/> for an example.</t>
                 </section>
                 <section title="NETCONF &lt;edit-config&gt; Operations" anchor="leaf-edit">
                     <t>When a NETCONF server processes an &lt;edit‑config&gt; request, the
@@ -3617,7 +3617,7 @@
                     <t>This statement is ignored if the list represents state data, RPC output
                     parameters, or notification content.</t>
                     <t>See
-                    <xref target="intro-ordering"/>for additional information.</t>
+                    <xref target="intro-ordering"/> for additional information.</t>
                     <section title="ordered-by system">
                         <t>The entries in the list are ordered according to an order determined by
                         the system. The "description" string for the list may suggest an order to
@@ -3631,7 +3631,7 @@
                         <t>The entries in the list are ordered according to an order defined by
                         the user. In NETCONF, this order is controlled by using special XML
                         attributes in the &lt;edit‑config&gt; request. See
-                        <xref target="leaf-list-edit"/>for details.</t>
+                        <xref target="leaf-list-edit"/> for details.</t>
                     </section>
                 </section>
                 <section title="XML Encoding Rules">
@@ -3647,7 +3647,7 @@
                     entries MAY be interleaved with elements for siblings of the leaf-list, unless
                     the leaf-list defines RPC or action input or output parameters.</t>
                     <t>See
-                    <xref target="leaf-list-xml-encoding-example"/>for an example.</t>
+                    <xref target="leaf-list-xml-encoding-example"/> for an example.</t>
                 </section>
                 <section title="NETCONF &lt;edit-config&gt; Operations" anchor="leaf-list-edit">
                     <t>Leaf-list entries can be created and deleted, but not modified, through
@@ -4910,7 +4910,7 @@
                 <t>Note that if a grouping defines an action or a notification node in its
                 hierarchy, then it cannot be used in all contexts. For example, it cannot be used
                 in an rpc definition. See Sections&#160;
-                <xref target="action" format="counter"/>and
+                <xref target="action" format="counter"/> and
                 <xref target="notification" format="counter"/>.</t>
                 <section title="The grouping's Substatements">
                     <?rfc compact="yes"?>
@@ -5100,7 +5100,7 @@
                             anyxml node may get additional "if‑feature" expressions.</t>
                             <t>Any node can get refined extensions, if the extension allows
                             refinement. See
-                            <xref target="extension"/>for details.</t>
+                            <xref target="extension"/> for details.</t>
                         </list>
                     </t>
                 </section>
@@ -5110,7 +5110,7 @@
                 </section>
                 <section title="Usage Example">
                     <t>To use the "endpoint" grouping defined in
-                    <xref target="grouping-endpt"/>in a definition of an HTTP server in some
+                    <xref target="grouping-endpt"/> in a definition of an HTTP server in some
                     other module, we can do:</t>
                     <figure>
                         <artwork>
@@ -5759,7 +5759,7 @@
                     <xref target="namespace"/>).</t>
                     <t>When a notification node is defined as a child to a data node, the
                     &lt;notification&gt; element defined in
-                    <xref target="RFC5277"/>contains a hierarchy of nodes that identifies the
+                    <xref target="RFC5277"/> contains a hierarchy of nodes that identifies the
                     node in the datastore. It MUST contain all containers and list nodes from the
                     top level down to the list or container containing the notification. For
                     lists, all key leafs MUST also be included. The innermost container or list
@@ -6614,7 +6614,7 @@
                         </texttable><?rfc compact="no"?>
                         <t>If the target node has a property defined by an extension, this
                         property can be deviated if the extension allows deviations. See
-                        <xref target="extension"/>for details.</t>
+                        <xref target="extension"/> for details.</t>
                     </section>
                     <section title="Usage Example">
                         <t>In this example, the server is informing client applications that it
@@ -6783,7 +6783,7 @@
                     <t>If a key leaf is defined in a grouping that is used in a list, the "uses"
                     statement MUST NOT have a "when" statement.</t>
                     <t>See
-                    <xref target="edit-config-processing"/>for additional information.</t>
+                    <xref target="edit-config-processing"/> for additional information.</t>
                     <t>The XPath expression is conceptually evaluated in the following context, in
                     addition to the definition in
                     <xref target="xpath-context"/>:</t>
@@ -6974,7 +6974,7 @@
             <t>The different built-in types and their derived types allow different kinds of
             subtyping, namely length and regular expression restrictions of strings
             (Sections&#160;
-            <xref target="length" format="counter"/>and
+            <xref target="length" format="counter"/> and
             <xref target="pattern" format="counter"/>) and range restrictions of numeric types (
             <xref target="range"/>).</t>
             <t>The lexical representation of a value of a certain type is used in the XML encoding
@@ -7244,7 +7244,7 @@
             <section title="The string Built-In Type">
                 <t>The string built-in type represents human-readable strings in YANG. Legal
                 characters are the Unicode and ISO/IEC 10646
-                <xref target="ISO.10646"/>characters, including tab, carriage return, and line
+                <xref target="ISO.10646"/> characters, including tab, carriage return, and line
                 feed but excluding the other C0 control characters, the surrogate blocks, and the
                 noncharacters. The string syntax is formally defined by the rule "yang‑string" in
                 <xref target="grammar"/>.</t>
@@ -7830,7 +7830,7 @@
                 <t>If the "require‑instance" property (
                 <xref target="require-instance"/>) is "true", there MUST exist a node in the data
                 tree, or a node with a default value in use (see Sections&#160;
-                <xref target="leaf-default-value" format="counter"/>and
+                <xref target="leaf-default-value" format="counter"/> and
                 <xref target="leaf-list-default-value" format="counter"/>), of the referred
                 schema tree leaf or leaf-list node with the same value as the leafref value in a
                 valid data tree.</t>
@@ -8129,7 +8129,7 @@
                 </section>
                 <section title="Usage Example">
                     <t>With the identity definitions in
-                    <xref target="identity-example"/>and the following module:</t>
+                    <xref target="identity-example"/> and the following module:</t>
                     <figure>
                         <artwork>
 <![CDATA[
@@ -8344,7 +8344,7 @@
                 represent configuration. Such a leaf puts a constraint on valid data. All such
                 leaf nodes MUST reference existing nodes or leaf or leaf-list nodes with their
                 default value in use (see Sections&#160;
-                <xref target="leaf-default-value" format="counter"/>and
+                <xref target="leaf-default-value" format="counter"/> and
                 <xref target="leaf-list-default-value" format="counter"/>) for the data to be
                 valid. This constraint is enforced according to the rules in
                 <xref target="constraints"/>.</t>
@@ -8640,7 +8640,7 @@
                     or an included submodule.</t>
                     <section title="Usage Example">
                         <t>The module defined in
-                        <xref target="derived-from-ex"/>might also have:</t>
+                        <xref target="derived-from-ex"/> might also have:</t>
                         <figure>
                             <artwork>
 <![CDATA[
@@ -8763,7 +8763,7 @@
             identify the new revision. Furthermore, any necessary changes MUST be applied to any
             metadata statements, including the "organization" and "contact" statements
             (Sections&#160;
-            <xref target="organization" format="counter"/>and
+            <xref target="organization" format="counter"/> and
             <xref target="contact" format="counter"/>).</t>
             <t>Note that definitions contained in a module are available to be imported by any
             other module and are referenced in "import" statements via the module name. Thus, a
@@ -8883,7 +8883,7 @@
                 <xref target="XML-NAMES"/>, i.e., "xmlns" and "xmlns:xxx" attributes.</t>
                 <t>The argument of a YANG statement is represented in YIN as either an XML
                 attribute or a subelement of the keyword element.
-                <xref target="yymap"/>defines the mapping for the set of YANG keywords. For
+                <xref target="yymap"/> defines the mapping for the set of YANG keywords. For
                 extensions, the argument mapping is specified within the "extension" statement
                 (see
                 <xref target="extension"/>). The following rules hold for arguments:</t>
@@ -9180,7 +9180,7 @@
         <section title="YANG ABNF Grammar" anchor="grammar">
             <t>In YANG, almost all statements are unordered. The ABNF grammar
             <xref target="RFC5234"/>
-            <xref target="RFC7405"/>defines the canonical order. To improve module readability,
+            <xref target="RFC7405"/> defines the canonical order. To improve module readability,
             it is RECOMMENDED that clauses be entered in this order.</t>
             <t>Within the ABNF grammar, unordered statements are marked with comments.</t>
             <t>This grammar assumes that the scanner replaces YANG comments with a single space
