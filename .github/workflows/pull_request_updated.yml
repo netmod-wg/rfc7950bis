@@ -166,9 +166,8 @@ jobs:
         run: |
           cd mysite
           curl -O https://netmod-wg.github.io/rfc7950bis/drafts.tgz
-          tar -xzvf drafts.tgz
+          #tar -xzvf drafts.tgz
           rm drafts.tgz
-          rm -rf test-script-share3
 
       # create the "mysite/<branch>/" directory, in case it's not there already
       - name: Create the mysite/<branch>/ directory
@@ -208,12 +207,6 @@ jobs:
       - uses: geekyeggo/delete-artifact@v5
         with:
           name: draft-yn-netmod-rfc7950bis-00.*
-
-      # DELETE ME
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
 
       # create index.html
       - name: Create mysite/index.html
