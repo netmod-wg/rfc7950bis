@@ -1,6 +1,7 @@
 # The YANG 2.0 Data Modeling Language
 
-This is the working area for the IETF NETMOD Internet-Draft, "The YANG 1.1 Data Modeling Language", also known as "rfc7950bis".
+This is the working area for the IETF NETMOD Internet-Draft, "The YANG 1.1 Data Modeling Language",
+also known as "rfc7950bis".
 
 * [Editor's Copy](https://netmod-wg.github.io/rfc7950bis/#go.draft-yn-netmod-rfc7950bis.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-yn-netmod-rfc7950bis)
