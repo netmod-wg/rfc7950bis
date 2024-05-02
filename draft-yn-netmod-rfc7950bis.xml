@@ -35,10 +35,10 @@ INSERT_TEXT_FROM_FILE(.authors.txt)
           language in both backwards-compatible and backwards-incompatible ways.</t>
         </abstract>
       <note title="Production Process (to be removed by RFC Editor)">
-        <t>This document is developed on GitHub here: <eref target="https://github.com/netmod-wg/rfc7950bis"/>.
+        <t>This document is developed on GitHub (<eref target="https://github.com/netmod-wg/rfc7950bis"/>).
         If you wish to contribute, please consider opening a pull request (PR).  Please see the
         <eref target="https://github.com/netmod-wg/rfc7950bis/blob/main/README.md">README</eref>
-        file there for details.</t>
+        file for details.</t>
       </note>
     </front>
     <middle>
