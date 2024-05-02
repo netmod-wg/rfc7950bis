@@ -66,11 +66,11 @@
             <t>Note that this document does not obsolete RFC 6020
             <xref target="RFC6020"/>.</t>
             <section title="Summary of Changes from RFC 6020">
-                <t>This document defines version 1.1 of the YANG language. YANG version&#160;1.1
+                <t>This document defines version 1.1 of the YANG language. YANG version&nbsp;1.1
                 is a maintenance release of the YANG language, addressing ambiguities and defects
                 in the original specification
                 <xref target="RFC6020"/>.</t>
-                <t>The following changes are not backward compatible with YANG version&#160;1:</t>
+                <t>The following changes are not backward compatible with YANG version&nbsp;1:</t>
                 <t>
                     <list style="symbols">
                         <t>Changed the rules for the interpretation of escaped characters in
@@ -122,15 +122,15 @@
                         <t>Defined the string value of an identityref in XPath expressions (see
                         <xref target="identityref"/>).</t>
                         <t>Clarified what unprefixed names mean in leafrefs in typedefs (see
-                        Sections&#160;
+                        Sections&nbsp;
                         <xref target="xpath-context" format="counter"/> and
                         <xref target="path" format="counter"/>).</t>
                         <t>Allow identities to be derived from multiple base identities (see
-                        Sections&#160;
+                        Sections&nbsp;
                         <xref target="identity" format="counter"/> and
                         <xref target="identityref" format="counter"/>).</t>
-                        <t>Allow enumerations and bits to be subtyped (see Sections&#160;
-                        <xref target="enumeration" format="counter"/> and&#160;
+                        <t>Allow enumerations and bits to be subtyped (see Sections&nbsp;
+                        <xref target="enumeration" format="counter"/> and&nbsp;
                         <xref target="bits" format="counter"/>).</t>
                         <t>Allow leaf-lists to have default values (see
                         <xref target="leaf-list-default-value"/>).</t>
@@ -159,7 +159,7 @@
                 <t>
                     <list style="symbols">
                         <t>A server advertises support for YANG 1.1 modules by using
-                        ietf&amp;nbhy;yang-library
+                        ietf&nbhy;yang-library
                         <xref target="RFC8525"/> instead of listing them as capabilities in the
                         &lt;hello&gt; message.</t>
                     </list>
@@ -195,7 +195,7 @@
                     <t>container: An interior data node that exists in at most one instance in the
                     data tree. A container has no value, but rather a set of child nodes.</t>
                     <t>data definition statement: A statement that defines new data nodes. One of
-                    "container", "leaf", "leaf&amp;nbhy;list", "list", "choice", "case",
+                    "container", "leaf", "leaf&nbhy;list", "list", "choice", "case",
                     "augment", "uses", "anydata", and "anyxml".</t>
                     <t>data model: A data model describes how data is represented and
                     accessed.</t>
@@ -430,7 +430,7 @@
                     <section title="Container Nodes">
                         <t>A container is used to group related nodes in a subtree. A container
                         has only child nodes and no value. A container may contain any number of
-                        child nodes of any type (leafs, lists, containers, leaf&amp;nbhy;lists,
+                        child nodes of any type (leafs, lists, containers, leaf&nbhy;lists,
                         actions, and notifications).</t>
                         <t>YANG Example:</t>
                         <figure>
@@ -825,7 +825,7 @@
                     both the current module (and its submodules) and an external module. This is
                     useful, for example, for vendors to add vendor-specific parameters to standard
                     data models in an interoperable way.</t>
-                    <t>The "augment" statement defines the location in the data&#160;model
+                    <t>The "augment" statement defines the location in the data&nbsp;model
                     hierarchy where new nodes are inserted, and the "when" statement defines the
                     conditions when the new nodes are valid.</t>
                     <t>When a server implements a module containing an "augment" statement, that
@@ -1115,7 +1115,7 @@
                 <section title="Module Hierarchies">
                     <t>YANG allows modeling of data in multiple hierarchies, where data may have
                     more than one top-level node. Each top-level data node in a module defines a
-                    separate hierarchy. Models that have multiple top&amp;nbhy;level nodes are
+                    separate hierarchy. Models that have multiple top&nbhy;level nodes are
                     sometimes convenient and are supported by YANG.</t>
                     <section title="NETCONF XML Encoding">
                         <t>NETCONF is capable of carrying any XML content as the payload in the
@@ -1194,7 +1194,7 @@
                 <xref target="RFC3986"/>. A NETCONF client or server uses the namespace during
                 XML encoding of data.</t>
                 <t>XML namespaces for modules published in RFC streams
-                <xref target="RFC8729"/> MUST be assigned by IANA; see Section&#160;14 in
+                <xref target="RFC8729"/> MUST be assigned by IANA; see Section&nbsp;14 in
                 <xref target="RFC6020"/>.</t>
                 <t>XML namespaces for private modules are assigned by the organization owning the
                 module without a central registry. Namespace URIs MUST be chosen so they cannot
@@ -1223,7 +1223,7 @@
                 <t>Typedefs and groupings may appear nested under many YANG statements, allowing
                 these to be lexically scoped by the statement hierarchy under which they appear.
                 This allows types and groupings to be defined near where they are used, rather
-                than placing them at the top&#160;level of the hierarchy. The close proximity
+                than placing them at the top&nbsp;level of the hierarchy. The close proximity
                 increases readability.</t>
                 <t>Scoping also allows types to be defined without concern for naming conflicts
                 between types in different submodules. Type names can be specified without adding
@@ -1232,9 +1232,9 @@
                 to their module or submodule, preventing their reuse. Since only top-level types
                 and groupings (i.e., those appearing as substatements to a "module" or "submodule"
                 statement) can be used outside the module or submodule, the developer has more
-                control over what pieces of their module are presented to the outside&#160;world,
+                control over what pieces of their module are presented to the outside&nbsp;world,
                 supporting the need to hide internal information and maintaining a boundary
-                between what is shared with the outside&#160;world and what is kept private.</t>
+                between what is shared with the outside&nbsp;world and what is kept private.</t>
                 <t>Scoped definitions MUST NOT shadow definitions at a higher scope. A type or
                 grouping cannot be defined if a higher level in the statement hierarchy has a
                 definition with a matching identifier.</t>
@@ -1357,8 +1357,8 @@
                     without specifying the revision date of module C, the server MUST use the
                     definitions from the most recent revision of C listed for modules Ms.</t>
                     <t>The reason for these rules is that clients need to be able to know the
-                    specific data&#160;model structure and types of all leafs and
-                    leaf&amp;nbhy;lists implemented in a server.</t>
+                    specific data&nbsp;model structure and types of all leafs and
+                    leaf&nbhy;lists implemented in a server.</t>
                     <t>For example, with these modules:</t>
                     <figure>
                         <artwork>
@@ -1461,9 +1461,9 @@
                     same, regardless of which revision of "b" the server implements.</t>
                     <t>A server that implements module "a" but does not support feature "foo" does
                     not have to implement module "b".</t>
-                    <t>A server that implements revision "2015‑01‑01" of module "a" picks&#160;any
+                    <t>A server that implements revision "2015‑01‑01" of module "a" picks&nbsp;any
                     revision of module "c" and lists it in the
-                    "/modules&amp;nbhy;state&amp;wj;/module" list from "ietf‑yang‑library".</t>
+                    "/modules&nbhy;state&wj;/module" list from "ietf‑yang‑library".</t>
                     <t>The following XML encoding example shows valid data for the
                     "/modules‑state/module" list for a server that implements module "a":</t>
                     <figure>
@@ -1564,7 +1564,7 @@
                     succeeding line that must be examined for stripping is first converted into 8
                     space characters.</t>
                     <t>If a double-quoted string contains space or tab characters before a
-                    line&#160;break, this trailing whitespace is stripped from the string.</t>
+                    line&nbsp;break, this trailing whitespace is stripped from the string.</t>
                     <t>A single-quoted string (enclosed within ' ') preserves each character
                     within the quotes. A single quote character cannot occur in a single-quoted
                     string, even when preceded by a backslash.</t>
@@ -1585,7 +1585,7 @@
                     <t>If a quoted string is followed by a plus character ("+"), followed by
                     another quoted string, the two strings are concatenated into one string,
                     allowing multiple concatenations to build one string. Whitespace,
-                    line&#160;breaks, and comments are allowed between the quoted strings and the
+                    line&nbsp;breaks, and comments are allowed between the quoted strings and the
                     plus character.</t>
                     <t>In double-quoted strings, whitespace trimming is done before substitution
                     of backslash-escaped characters. Concatenation is performed as the last
@@ -1733,7 +1733,7 @@
                 <t>The data model used in the XPath expressions is the same as that used in XPath
                 1.0
                 <xref target="XPATH"/>, with the same extension for root node children as used by
-                XSLT 1.0 (see Section&#160;3.1 in
+                XSLT 1.0 (see Section&nbsp;3.1 in
                 <xref target="XSLT"/>). Specifically, it means that the root node may have any
                 number of element nodes as its children.</t>
                 <t>The data tree has no concept of document order. An implementation needs to
@@ -1742,9 +1742,9 @@
                 document order.</t>
                 <t>Numbers in XPath 1.0 are IEEE 754
                 <xref target="IEEE754-2008"/> double-precision floating-point values; see
-                Section&#160;3.5 in
+                Section&nbsp;3.5 in
                 <xref target="XPATH"/>. This means that some values of int64, uint64, and
-                decimal64 types (see Sections&#160;
+                decimal64 types (see Sections&nbsp;
                 <xref target="integers" format="counter"/> and
                 <xref target="decimal64" format="counter"/>) cannot be exactly represented in
                 XPath expressions. Therefore, due caution should be exercised when using nodes
@@ -1831,7 +1831,7 @@
                         </list>
                     </t>
                     <t>In the accessible tree, all leafs and leaf-lists with default values in use
-                    exist (see Sections&#160;
+                    exist (see Sections&nbsp;
                     <xref target="leaf-default-value" format="counter"/> and
                     <xref target="leaf-list-default-value" format="counter"/>).</t>
                     <t>If a node that exists in the accessible tree has a non-presence container
@@ -1920,7 +1920,7 @@
                             </artwork>
                         </figure>
                         <t>The accessible tree for an action invocation of "reset" on
-                        &amp;wj;/a&amp;wj;/b[id="1"] with the "when" parameter set to "10" would
+                        &wj;/a&wj;/b[id="1"] with the "when" parameter set to "10" would
                         be:</t>
                         <figure>
                             <artwork>
@@ -2018,7 +2018,7 @@
                 information. The module name is an identifier (see
                 <xref target="identifiers"/>).</t>
                 <t>Names of modules published in RFC streams
-                <xref target="RFC8729"/> MUST be assigned by IANA; see Section&#160;14 in
+                <xref target="RFC8729"/> MUST be assigned by IANA; see Section&nbsp;14 in
                 <xref target="RFC6020"/>.</t>
                 <t>Private module names are assigned by the organization owning the module without
                 a central registry. See
@@ -2439,7 +2439,7 @@
                 holds detailed submodule information. The submodule name is an identifier (see
                 <xref target="identifiers"/>).</t>
                 <t>Names of submodules published in RFC streams
-                <xref target="RFC8729"/> MUST be assigned by IANA; see Section&#160;14 in
+                <xref target="RFC8729"/> MUST be assigned by IANA; see Section&nbsp;14 in
                 <xref target="RFC6020"/>.</t>
                 <t>Private submodule names are assigned by the organization owning the submodule
                 without a central registry. See
@@ -2865,7 +2865,7 @@
                     "presence" statement, which takes as its argument a text string indicating
                     what the presence of the node means.</t>
                     <t>For example, an "ssh" container may turn on the ability to log into the
-                    server using Secure SHell (SSH) but can also contain any SSH&amp;nbhy;related
+                    server using Secure SHell (SSH) but can also contain any SSH&nbhy;related
                     configuration knobs, such as connection rates or retry limits.</t>
                     <t>The "presence" statement (see
                     <xref target="presence"/>) is used to give semantics to the existence of the
@@ -3116,7 +3116,7 @@
                 </section>
                 <section title="NETCONF &lt;edit-config&gt; Operations">
                     <t>Containers can be created, deleted, replaced, and modified through
-                    &lt;edit‑config&gt; by using the "operation" attribute (see Section&#160;7.2
+                    &lt;edit‑config&gt; by using the "operation" attribute (see Section&nbsp;7.2
                     in
                     <xref target="RFC6241"/>) in the container's XML element.</t>
                     <t>If a container does not have a "presence" statement and the last child node
@@ -3494,7 +3494,7 @@
                     leaf-list is user ordered, the default values are used in the order of the
                     "default" statements. Otherwise, if the leaf-list's type has a default value
                     and the leaf-list does not have a "min‑elements" statement with a value
-                    greater than or equal to one, then the leaf&amp;nbhy;list's default value is
+                    greater than or equal to one, then the leaf&nbhy;list's default value is
                     one instance of the type's default value. In all other cases, the leaf-list
                     does not have any default values.</t>
                 </section>
@@ -3587,7 +3587,7 @@
                     <t>If no "min‑elements" statement is present, it defaults to zero.</t>
                     <t>The behavior of the constraint depends on the type of the leaf-list's or
                     list's closest ancestor node in the schema tree that is not a
-                    non&amp;nbhy;presence container (see
+                    non&nbhy;presence container (see
                     <xref target="container-presence"/>):</t>
                     <t>
                         <list style="symbols">
@@ -3661,7 +3661,7 @@
                     insert a new leaf-list entry or move an existing one.</t>
                     <t>The "insert" attribute can take the values "first", "last", "before", and
                     "after". If the value is "before" or "after", the "value" attribute MUST also
-                    be used to specify an existing entry in the leaf&amp;nbhy;list.</t>
+                    be used to specify an existing entry in the leaf&nbhy;list.</t>
                     <t>If no "insert" attribute is present in the "create" operation, it defaults
                     to "last".</t>
                     <t>If several entries in an "ordered-by user" leaf-list are modified in the
@@ -3680,7 +3680,7 @@
                             does not exist. If the leaf-list entry already exists, a "data‑exists"
                             error is returned.</t>
                             <t>If the operation is "delete", the entry is deleted from the
-                            leaf&amp;nbhy;list if it exists. If the leaf-list entry does not
+                            leaf&nbhy;list if it exists. If the leaf-list entry does not
                             exist, a "data‑missing" error is returned.</t>
                         </list>
                     </t>
@@ -4900,7 +4900,7 @@
                 nor indirectly through a chain of other groupings.</t>
                 <t>If the grouping is defined at the top level of a YANG module or submodule, the
                 grouping's identifier MUST be unique within the module.</t>
-                <t>A grouping is more than just a mechanism for textual substitution; it&#160;also
+                <t>A grouping is more than just a mechanism for textual substitution; it&nbsp;also
                 defines a collection of nodes. Identifiers appearing inside the grouping are
                 resolved relative to the scope in which the grouping is defined, not where it is
                 used. Prefix mappings, type names, grouping names, and extension usage are
@@ -4909,7 +4909,7 @@
                 are applied to the grouping itself.</t>
                 <t>Note that if a grouping defines an action or a notification node in its
                 hierarchy, then it cannot be used in all contexts. For example, it cannot be used
-                in an rpc definition. See Sections&#160;
+                in an rpc definition. See Sections&nbsp;
                 <xref target="action" format="counter"/> and
                 <xref target="notification" format="counter"/>.</t>
                 <section title="The grouping's Substatements">
@@ -5451,7 +5451,7 @@
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example of the complete rpc and
-                    rpc&amp;nbhy;reply:</t>
+                    rpc&nbhy;reply:</t>
                     <figure>
                         <artwork>
 <![CDATA[
@@ -5609,7 +5609,7 @@
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example of the complete rpc and
-                    rpc&amp;nbhy;reply:</t>
+                    rpc&nbhy;reply:</t>
                     <figure>
                         <artwork>
 <![CDATA[
@@ -6715,7 +6715,7 @@
                         <list style="symbols">
                             <t>"current" means that the definition is current and valid.</t>
                             <t>"deprecated" indicates an obsolete definition, but it permits
-                            new&amp;wj;/continued implementation in order to foster
+                            new&wj;/continued implementation in order to foster
                             interoperability with older/existing implementations.</t>
                             <t>"obsolete" means that the definition is obsolete and SHOULD NOT be
                             implemented and/or can be removed from implementations.</t>
@@ -6973,7 +6973,7 @@
             possible values.</t>
             <t>The different built-in types and their derived types allow different kinds of
             subtyping, namely length and regular expression restrictions of strings
-            (Sections&#160;
+            (Sections&nbsp;
             <xref target="length" format="counter"/> and
             <xref target="pattern" format="counter"/>) and range restrictions of numeric types (
             <xref target="range"/>).</t>
@@ -7054,7 +7054,7 @@
                 </section>
                 <section title="Canonical Form">
                     <t>The canonical form of a positive integer does not include the sign "+".
-                    Leading zeros are prohibited. The value zero is represented as&#160;"0".</t>
+                    Leading zeros are prohibited. The value zero is represented as&nbsp;"0".</t>
                 </section>
                 <section title="Restrictions">
                     <t>All integer types can be restricted with the "range" statement (
@@ -7138,7 +7138,7 @@
                 <t>The decimal64 built-in type represents a subset of the real numbers, which can
                 be represented by decimal numerals. The value space of decimal64 is the set of
                 numbers that can be obtained by multiplying a 64-bit signed integer by a negative
-                power of ten, i.e., expressible as "i&#160;x&#160;10^-n" where i is an integer64
+                power of ten, i.e., expressible as "i&nbsp;x&nbsp;10^-n" where i is an integer64
                 and n is an integer between 1 and 18, inclusively.</t>
                 <section title="Lexical Representation">
                     <t>A decimal64 value is lexically represented as an optional sign ("+" or
@@ -7162,7 +7162,7 @@
                     statement, MUST be present if the type is "decimal64". It takes as an argument
                     an integer between 1 and 18, inclusively. It controls the size of the minimum
                     difference between values of a decimal64 type by restricting the value space
-                    to numbers that are expressible as "i&#160;x&#160;10^-n" where n is the
+                    to numbers that are expressible as "i&nbsp;x&nbsp;10^-n" where n is the
                     fraction-digits argument.</t>
                     <t>The following table lists the minimum and maximum values for each
                     fraction-digit value:</t><?rfc compact="yes"?>
@@ -7276,7 +7276,7 @@
                     length-restricted, the new restriction MUST be equally limiting or more
                     limiting, i.e., raising the lower bounds, reducing the upper bounds, removing
                     explicit length values or ranges, or splitting ranges into multiple ranges
-                    with intermediate gaps. A length value is a non&amp;nbhy;negative integer or
+                    with intermediate gaps. A length value is a non&nbhy;negative integer or
                     one of the special values "min" or "max". "min" and "max" mean the minimum and
                     maximum lengths accepted for the type being restricted, respectively. An
                     implementation is not required to support a length value larger than
@@ -7574,7 +7574,7 @@
                         </artwork>
                     </figure>
                     <t>The lexical representation of the leaf "myenum" with
-                    value&#160;"seven"&#160;is:</t>
+                    value&nbsp;"seven"&nbsp;is:</t>
                     <figure>
                         <artwork>
 <![CDATA[
@@ -7811,7 +7811,7 @@
                 </section>
                 <section title="Lexical Representation">
                     <t>Binary values are encoded with the base64 encoding scheme (see
-                    Section&#160;4 in
+                    Section&nbsp;4 in
                     <xref target="RFC4648"/>).</t>
                 </section>
                 <section title="Canonical Form">
@@ -7829,7 +7829,7 @@
                 referred node.</t>
                 <t>If the "require‑instance" property (
                 <xref target="require-instance"/>) is "true", there MUST exist a node in the data
-                tree, or a node with a default value in use (see Sections&#160;
+                tree, or a node with a default value in use (see Sections&nbsp;
                 <xref target="leaf-default-value" format="counter"/> and
                 <xref target="leaf-list-default-value" format="counter"/>), of the referred
                 schema tree leaf or leaf-list node with the same value as the leafref value in a
@@ -8107,7 +8107,7 @@
                     <t>An identityref is lexically represented as the referred identity's
                     qualified name as defined in
                     <xref target="XML-NAMES"/>. If the prefix is not present, the namespace of
-                    the identityref is the default namespace in&#160;effect on the element that
+                    the identityref is the default namespace in&nbsp;effect on the element that
                     contains the identityref value.</t>
                     <t>When an identityref is given a default value using the "default" statement,
                     the identity name in the default value MAY have a prefix. If a prefix is
@@ -8336,14 +8336,14 @@
                 list entries, a value of a leaf-list entry, or a positional index for a list
                 without keys. For identifying list entries with keys, each predicate consists of
                 one equality test per key, and each key MUST have a corresponding predicate. If a
-                key is of type "empty", it is represented as a zero&amp;nbhy;length string
+                key is of type "empty", it is represented as a zero&nbhy;length string
                 ("").</t>
                 <t>If the leaf with the instance-identifier type represents configuration data and
                 the "require‑instance" property (
                 <xref target="require-instance"/>) is "true", the node it refers to MUST also
                 represent configuration. Such a leaf puts a constraint on valid data. All such
                 leaf nodes MUST reference existing nodes or leaf or leaf-list nodes with their
-                default value in use (see Sections&#160;
+                default value in use (see Sections&nbsp;
                 <xref target="leaf-default-value" format="counter"/> and
                 <xref target="leaf-list-default-value" format="counter"/>) for the data to be
                 valid. This constraint is enforced according to the rules in
@@ -8411,7 +8411,7 @@
         </section>
         <section title="XPath Functions" anchor="xpath-functions">
             <t>This document defines two generic XPath functions and five YANG
-            type&amp;nbhy;specific XPath functions. The function signatures are specified with the
+            type&nbhy;specific XPath functions. The function signatures are specified with the
             syntax used in
             <xref target="XPATH"/>.</t>
             <section title="Function for Node Sets">
@@ -8762,7 +8762,7 @@
             statements. If there are no existing "revision" statements, then one MUST be added to
             identify the new revision. Furthermore, any necessary changes MUST be applied to any
             metadata statements, including the "organization" and "contact" statements
-            (Sections&#160;
+            (Sections&nbsp;
             <xref target="organization" format="counter"/> and
             <xref target="contact" format="counter"/>).</t>
             <t>Note that definitions contained in a module are available to be imported by any
@@ -8841,7 +8841,7 @@
         <section title="Coexistence with YANG Version 1" anchor="coexistence">
             <t>A YANG version 1.1 module MUST NOT include a YANG version 1 submodule, and a YANG
             version 1 module MUST NOT include a YANG version 1.1 submodule.</t>
-            <t>A YANG version 1 module or submodule MUST NOT import a YANG version&#160;1.1 module
+            <t>A YANG version 1 module or submodule MUST NOT import a YANG version&nbsp;1.1 module
             by revision.</t>
             <t>A YANG version 1.1 module or submodule MAY import a YANG version 1 module by
             revision.</t>
@@ -10342,7 +10342,7 @@ WSP                 = SP / HTAB
         </section>
         <section title="NETCONF Error Responses for YANG-Related Errors" anchor="yang-errors">
             <t>A number of NETCONF error responses are defined for error cases related to the
-            data&#160;model handling. If the relevant YANG statement has an "error‑app‑tag"
+            data&nbsp;model handling. If the relevant YANG statement has an "error‑app‑tag"
             substatement, that overrides the default value specified below.</t>
             <section title="Error Message for Data That Violates a &quot;unique&quot; Statement">
                 <t>If a NETCONF operation would result in configuration data where a "unique"
@@ -10410,7 +10410,7 @@ WSP                 = SP / HTAB
             <section title="Error Message for Data That Violates a &quot;require-instance&quot; Statement">
 
                 <t>If a NETCONF operation would result in configuration data where a leaf of type
-                "instance‑identifier" or "leafref" marked with require&amp;nbhy;instance "true"
+                "instance‑identifier" or "leafref" marked with require&nbhy;instance "true"
                 refers to an instance that does not exist, the following error MUST be
                 returned:</t>
                 <figure>
@@ -10474,7 +10474,7 @@ WSP                 = SP / HTAB
             management information. The language itself has no security impact on the
             Internet.</t>
             <t>The same considerations are relevant as those for the base NETCONF protocol (see
-            Section&#160;9 in
+            Section&nbsp;9 in
             <xref target="RFC6241"/>).</t>
             <t>Data modeled in YANG might contain sensitive information. RPCs or notifications
             defined in YANG might transfer sensitive information.</t>
