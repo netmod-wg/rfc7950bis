@@ -76,9 +76,8 @@ jobs:
 #          cd rfclint
 #          git checkout tjw-fix-setup
   idnits_v2:
-    if: false
     name: Test with Idnits v2
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: xml2rfc
     steps:
       - name: Download a single artifact
@@ -143,7 +142,7 @@ jobs:
   update_github_pages:
     name: Update the GitHub Page
     runs-on: macos-latest
-    needs: [xml2rfc] #, idnits_v2]
+    needs: [xml2rfc]
     permissions:
       pages: write
       id-token: write
@@ -168,7 +167,6 @@ jobs:
           curl -O https://netmod-wg.github.io/rfc7950bis/drafts.tgz
           tar -xzvf drafts.tgz
           rm drafts.tgz
-          rm -rf test-script-share3
 
       # create the "mysite/<branch>/" directory, in case it's not there already
       - name: Create the mysite/<branch>/ directory
@@ -208,12 +206,6 @@ jobs:
       - uses: geekyeggo/delete-artifact@v5
         with:
           name: draft-yn-netmod-rfc7950bis-00.*
-
-      # DELETE ME
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
 
       # create index.html
       - name: Create mysite/index.html
