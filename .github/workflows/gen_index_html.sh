@@ -36,7 +36,7 @@ echo "  </tr>" >> index.html
 for d in $SORTED; do
   echo "  <tr>" >> index.html
   NUMBER=`grep NUMBER $d/metadata.txt | awk '{print $2}'`
-  TITLE=`grep TITLE $d/metadata.txt | awk '{print $2}'`
+  TITLE=`grep TITLE $d/metadata.txt | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}'`
   DATE=`grep DATE $d/metadata.txt | awk '{print $2}'`
   echo "    <td>$DATE</td>" >> index.html
   echo "    <td><a href=\"https://github.com/netmod-wg/rfc7950bis/pull/$NUMBER\">$TITLE (#$NUMBER)</a></td>" >> index.html

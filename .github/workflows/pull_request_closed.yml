@@ -46,12 +46,6 @@ jobs:
         run: |
           rm -rf mysite/${{github.head_ref}}
 
-      # DELETE ME
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
       # create index.html
       - name: Create mysite/index.html
         run: |
