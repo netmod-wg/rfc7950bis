@@ -27,7 +27,7 @@ echo "<i>Most recent first</i>" >> index.html
 echo "<br><br>" >> index.html
 echo "<table>" >> index.html
 echo "  <tr>" >> index.html
-echo "    <th><b>Updated On</b></th>" >> index.html
+echo "    <th><b>Updated</b></th>" >> index.html
 echo "    <th><b>Pull Request</b></th>" >> index.html
 echo "    <th><b>Branch Name</b></th>" >> index.html
 echo "    <th><b>Formats</b></th>" >> index.html

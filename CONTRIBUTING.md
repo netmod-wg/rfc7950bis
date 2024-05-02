@@ -75,8 +75,15 @@ is a necessary but largely perfunctorial gesture, as already the
 update was approaved by the designated experts, leaving little room
 for an objection to be raised.
 
+
 # Build Artifacts
 
 Each PR-update and PR-merge causes a GitHub Workflow to execute that generates and
 publishes build artifacts (the draft compiled in its various formats) to be published
 to the [Build Artifacts for rfc7950bis](https://netmod-wg.github.io/rfc7950bis/) page.
+
+
+# Attribution
+
+The "author list" is automatically calculated by sorting all of the GitHub-contributors
+by "total" lines added, removed, and changed.
