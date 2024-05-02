@@ -35,10 +35,17 @@ INSERT_TEXT_FROM_FILE(.authors.txt)
           language in both backwards-compatible and backwards-incompatible ways.</t>
         </abstract>
       <note title="Production Process (to be removed by RFC Editor)">
-        <t>This document is developed on GitHub (<eref target="https://github.com/netmod-wg/rfc7950bis"/>).
-        If you wish to contribute, please consider opening a pull request (PR).  Please see the
-        <eref target="https://github.com/netmod-wg/rfc7950bis/blob/main/README.md">README</eref>
-        file for details.</t>
+          <t>This document is developed on GitHub (<eref target="https://github.com/netmod-wg/rfc7950bis"/>).
+          If you wish to contribute, please consider opening a pull request (PR).  Please see the
+          <eref target="https://github.com/netmod-wg/rfc7950bis/blob/main/README.md">README</eref>
+          file for details.</t>
+      </note>
+      <note title="Special Thanks">
+          <t>The following individuals were entrusted to review all of the design proposals
+          and specification updates made by authors.  This update to the YANG data modeling
+          language could not have happened without them.
+INSERT_TEXT_FROM_FILE(.experts.txt)
+          </t>
       </note>
     </front>
     <middle>
