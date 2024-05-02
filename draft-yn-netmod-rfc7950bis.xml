@@ -20,27 +20,19 @@
 <rfc ipr="pre5378Trust200902" category="std" submissionType="IETF" consensus="true"
     xmlns:xi="http://www.w3.org/2001/XInclude" docName="draft-yn-netmod-rfc7950bis-latest">
     <front>
-        <title abbrev="YANG 1.1">The YANG 1.1 Data Modeling Language</title>
-        <author initials="M" surname="Bjorklund" fullname='Martin Bjorklund' role="editor">
-            <organization>Tail-f Systems</organization>
-            <address>
-                <email>mbj@tail-f.com</email>
-            </address>
-        </author>
+      <title abbrev="YANG 2.0">The YANG 2.0 Data Modeling Language</title>
+INSERT_TEXT_FROM_FILE(.authors.txt)
         <date/>
         <area>Operations</area>
         <workgroup>NETMOD Working Group</workgroup>
-        <keyword>NETCONF</keyword>
-        <keyword>XML</keyword>
         <keyword>data modeling</keyword>
         <abstract>
-            <t>YANG is a data modeling language used to model configuration data, state data,
-            Remote Procedure Calls, and notifications for network management protocols. This
-            document describes the syntax and semantics of version 1.1 of the YANG language. YANG
-            version 1.1 is a maintenance release of the YANG language, addressing ambiguities and
-            defects in the original specification. There are a small number of backward
-            incompatibilities from YANG version 1. This document also specifies the YANG mappings
-            to the Network Configuration Protocol (NETCONF).</t>
+          <t>YANG is a data modeling language used to model configuration, operational
+          state, asynchronous notifications, and remote procedure calls (RPCs) for
+          network management. This document describes the syntax and semantics of
+          version&nbsp;2.0 of the YANG language (YANG&nbsp;2.0). YANG&nbsp;2.0 is a
+          major release of the YANG language, updating version&nbsp;1.1 of the YANG
+          language in both backwards-compatible and backwards-incompatible ways.</t>
         </abstract>
     </front>
     <middle>
