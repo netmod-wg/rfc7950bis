@@ -7,7 +7,7 @@ for d in */; do
   dd=`echo $d | sed 's#/$##'`
   echo "$dd $DATE" >> sort.txt
 done
-SORTED=`sort -k 1 sort.txt | awk '{print $1}'`
+SORTED=`sort -r -k 1 sort.txt | awk '{print $1}'`
 
 # create the index.html file
 echo "<html>" > index.html
