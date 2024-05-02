@@ -26,16 +26,17 @@ and merged/closed.
 
 As this document is currently an individual draft (I-D), in
 the IETF sense, it is not yet necessary to get consensus for
-changes made.
+changes made here.
 
 Ultimately, this document will be submitted to the NETMOD WG
 for consideration for adoption.  At that time, WG consensus
-will be held for the updates made up to that point.
+will be held for all of the updates made up to that point.
 
 However, until then, given the complexity of this effort,
 all updates (PRs) are subject to a GitHub-enabled review
 process.  Only the designated experts (i.e., the
-`rfc7950bis-owners` team) participate in the review process.
+`rfc7950bis-owners` team) and the PR-owner(s) participate
+in the review process.
 
 A PR will be automaticaly-merged as soon as all of the
 following are true:
