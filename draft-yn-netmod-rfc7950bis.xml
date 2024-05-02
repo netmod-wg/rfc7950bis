@@ -34,6 +34,11 @@ INSERT_TEXT_FROM_FILE(.authors.txt)
           major release of the YANG language, updating version&nbsp;1.1 of the YANG
           language in both backwards-compatible and backwards-incompatible ways.</t>
         </abstract>
+      <note title="Production Process (To be removed by RFC Editor)">
+        <t>This document is developed on GitHub here: https://github.com/netmod-wg/rfc7950bis.</t>
+        <t>If you wish to contribute, please consider opening a pull request (PR).  Please
+          see the README file there for details.</t>
+      </note>
     </front>
     <middle>
         <section title="Introduction">
