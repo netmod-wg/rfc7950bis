@@ -54,7 +54,7 @@ endif
 $(next).xml: $(draft).xml
 	sed -e"s/$(basename $<)-latest/$(basename $@)/" -e"s/YYYY-MM-DD/$(shell date +%Y-%m-%d)/" $< > $@
 	#cd refs && ./validate-all.sh && ./gen-trees.sh && cd ..
-	#./.insert-figures.sh $@ > tmp && mv tmp $@
+	./.insert-figures.sh $@ > tmp && mv tmp $@
 	#rm -f refs/*-tree*.txt refs/tree-*.txt
 	xml2rfc --v2v3 $@
 
