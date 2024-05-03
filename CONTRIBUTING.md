@@ -38,13 +38,13 @@ process.  Only the designated experts (i.e., the
 `rfc7950bis-owners` team) and the PR-owner(s) participate
 in the review process.
 
-A PR will be automaticaly-merged as soon as all of the
+A PR will be automatically-merged as soon as all of the
 following are true:
   - The PR is up-to-date with the current `main` branch.
   - All automated GitHub Workflow Actions pass (xml2rfc, idnits, etc.).
   - There are at least three "approvals".
   - There are no "request changes".
-  - There are no unresolved "conversations".
+  - All "conversations" resolved
 
 In order to facilitate the process, PRs SHOULD be as small as possible,
 focusing on a single item.  It is unnecessary for a PR to be tracked by

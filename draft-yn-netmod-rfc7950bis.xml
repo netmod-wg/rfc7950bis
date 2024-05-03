@@ -18,277 +18,215 @@
 <rfc ipr="pre5378Trust200902" category="std" submissionType="IETF" consensus="true"
     xmlns:xi="http://www.w3.org/2001/XInclude" docName="draft-yn-netmod-rfc7950bis-latest">
     <front>
-      <title abbrev="YANG 2.0">The YANG 2.0 Data Modeling Language</title>
+        <title abbrev="YANG 2.0">The YANG 2.0 Data Modeling Language</title>
 INSERT_TEXT_FROM_FILE(.authors.txt)
         <date/>
         <area>Operations</area>
         <workgroup>NETMOD Working Group</workgroup>
         <keyword>data modeling</keyword>
         <abstract>
-          <t>YANG is a data modeling language used to model configuration, operational
-          state, asynchronous notifications, and remote procedure calls (RPCs) for
-          network management. This document describes the syntax and semantics of
-          version&nbsp;2.0 of the YANG language (YANG&nbsp;2.0). YANG&nbsp;2.0 is a
-          major release of the YANG language, updating version&nbsp;1.1 of the YANG
-          language in both backwards-compatible and backwards-incompatible ways.</t>
+            <t>YANG is a data modeling language used to model configuration, operational
+            state, asynchronous notifications, and remote procedure calls (RPCs) for
+            network management. This document describes the syntax and semantics of
+            version&nbsp;2.0 of the YANG language (YANG&nbsp;2.0). YANG&nbsp;2.0 is a
+            major release of the YANG language, updating version&nbsp;1.1 of the YANG
+            language in both backwards-compatible and backwards-incompatible ways.</t>
         </abstract>
-      <note title="Production Process (to be removed by RFC Editor)">
-          <t>This document is developed on GitHub (<eref target="https://github.com/netmod-wg/rfc7950bis"/>).
-          If you wish to contribute, please consider opening a pull request (PR).  Please see the
-          <eref target="https://github.com/netmod-wg/rfc7950bis/blob/main/README.md">README</eref>
-          file for details.</t>
-      </note>
-      <note title="Special Thanks">
-          <t>The following individuals were entrusted to review all of the design proposals
-          and specification updates made by authors.  This update to the YANG data modeling
-          language could not have happened without them.
+        <note title="Production Process (to be removed by RFC Editor)">
+            <t>This document is developed on GitHub (<eref target="https://github.com/netmod-wg/rfc7950bis"/>).
+            If you wish to contribute, please consider opening a pull request (PR).  Please see the
+            <eref target="https://github.com/netmod-wg/rfc7950bis/blob/main/README.md">README</eref>
+            file for details.</t>
+        </note>
+        <note title="Special Thanks">
+            <t>The following individuals were entrusted to review all of the design proposals
+            and specification updates made by authors.
 INSERT_TEXT_FROM_FILE(.experts.txt)
-          </t>
-      </note>
+            </t>
+        </note>
     </front>
     <middle>
         <section title="Introduction">
-            <t>YANG is a data modeling language originally designed to model configuration and
-            state data manipulated by the Network Configuration Protocol (NETCONF), NETCONF Remote
-            Procedure Calls, and NETCONF notifications
-            <xref target="RFC6241"/>. Since the publication of YANG version 1
-            <xref target="RFC6020"/>, YANG has been used or proposed to be used for other
-            protocols (e.g., RESTCONF
-            <xref target="RFC8040"/> and the Constrained Application Protocol (CoAP) Management
-            Interface (CoMI)
-            <xref target="I-D.ietf-core-comi"/>). Further, encodings other than XML have been proposed (e.g.,
-            JSON
-            <xref target="RFC7951"/>).</t>
-            <t>This document describes the syntax and semantics of version 1.1 of the YANG
-            language. It also describes how a data model defined in a YANG module is encoded in
-            the Extensible Markup Language (XML)
-            <xref target="XML"/> and how NETCONF operations are used to manipulate the data. Other
-            protocols and encodings are possible but are out of scope for this specification.</t>
-            <t>In terms of developing YANG data models,
-            <xref target="RFC8407"/> provides some guidelines and recommendations.</t>
-            <t>Note that this document does not obsolete RFC 6020
-            <xref target="RFC6020"/>.</t>
-            <section title="Summary of Changes from RFC 6020">
-                <t>This document defines version 1.1 of the YANG language. YANG version&nbsp;1.1
-                is a maintenance release of the YANG language, addressing ambiguities and defects
-                in the original specification
-                <xref target="RFC6020"/>.</t>
-                <t>The following changes are not backward compatible with YANG version&nbsp;1:</t>
-                <t>
-                    <list style="symbols">
-                        <t>Changed the rules for the interpretation of escaped characters in
-                        double-quoted strings. This is a backward-incompatible change from YANG
-                        version 1. When updating a YANG version 1 module to 1.1 and the module
-                        uses a character sequence that is now illegal, the string must be changed
-                        to match the new rules. See
-                        <xref target="quoting"/> for details.</t>
-                        <t>An unquoted string cannot contain any single or double quote
-                        characters. This is a backward-incompatible change from YANG version 1.
-                        When updating a YANG version 1 module to 1.1 and the module uses such
-                        quote characters, the string must be changed to match the new rules. See
-                        <xref target="quoting"/> for details.</t>
-                        <t>Made "when" and "if‑feature" illegal on list keys. This is a
-                        backward-incompatible change from YANG version 1. When updating a YANG
-                        version 1 module to 1.1 and the module uses these constructs, they must be
-                        removed to match the new rules.</t>
-                        <t>Defined the legal characters in YANG modules. When updating a YANG
-                        version 1 module to 1.1, any characters that are now illegal must be
-                        removed. See
-                        <xref target="syntax"/> for details.</t>
-                        <t>Made noncharacters illegal in the built-in type "string". This change
-                        affects the runtime behavior of YANG-based protocols.</t>
-                    </list>
-                </t>
-                <t>The following additional changes have been done to YANG:</t>
-                <t>
-                    <list style="symbols">
-                        <t>Changed the YANG version from "1" to "1.1".</t>
-                        <t>Made the "yang‑version" statement mandatory in YANG version "1.1".</t>
-                        <t>Extended the "if‑feature" syntax to be a boolean expression over
-                        feature names.</t>
-                        <t>Allow "if‑feature" in "bit", "enum", and "identity".</t>
-                        <t>Allow "if‑feature" in "refine".</t>
-                        <t>Allow "choice" as a shorthand "case" statement (see
-                        <xref target="case"/>).</t>
-                        <t>Added a new substatement "modifier" to the "pattern" statement (see
-                        <xref target="modifier"/>).</t>
-                        <t>Allow "must" in "input", "output", and "notification".</t>
-                        <t>Allow "require‑instance" in leafref.</t>
-                        <t>Allow "description" and "reference" in "import" and "include".</t>
-                        <t>Allow imports of multiple revisions of a module.</t>
-                        <t>Allow "augment" to add conditionally mandatory nodes (see
-                        <xref target="augment"/>).</t>
-                        <t>Added a set of new XML Path Language (XPath) functions in
-                        <xref target="xpath-functions"/>.</t>
-                        <t>Clarified the XPath context's tree in
-                        <xref target="xpath-context"/>.</t>
-                        <t>Defined the string value of an identityref in XPath expressions (see
-                        <xref target="identityref"/>).</t>
-                        <t>Clarified what unprefixed names mean in leafrefs in typedefs (see
-                        Sections&nbsp;
-                        <xref target="xpath-context" format="counter"/> and
-                        <xref target="path" format="counter"/>).</t>
-                        <t>Allow identities to be derived from multiple base identities (see
-                        Sections&nbsp;
-                        <xref target="identity" format="counter"/> and
-                        <xref target="identityref" format="counter"/>).</t>
-                        <t>Allow enumerations and bits to be subtyped (see Sections&nbsp;
-                        <xref target="enumeration" format="counter"/> and&nbsp;
-                        <xref target="bits" format="counter"/>).</t>
-                        <t>Allow leaf-lists to have default values (see
-                        <xref target="leaf-list-default-value"/>).</t>
-                        <t>Allow non-unique values in non-configuration leaf-lists (see
-                        <xref target="leaf-list"/>).</t>
-                        <t>Use syntax for case-sensitive strings (as per
-                        <xref target="RFC7405"/>) in the grammar.</t>
-                        <t>Changed the module advertisement mechanism (see
-                        <xref target="announce"/>).</t>
-                        <t>Changed the scoping rules for definitions in submodules. A submodule
-                        can now reference all definitions in all submodules that belong to the
-                        same module, without using the "include" statement.</t>
-                        <t>Added a new statement "action", which is used to define operations tied
-                        to data nodes.</t>
-                        <t>Allow notifications to be tied to data nodes.</t>
-                        <t>Added a new data definition statement "anydata" (see
-                        <xref target="anydata"/>), which is RECOMMENDED to be used instead of
-                        "anyxml" when the data can be modeled in YANG.</t>
-                        <t>Allow types "empty" and "leafref" in unions.</t>
-                        <t>Allow type "empty" in a key.</t>
-                        <t>Removed the restriction that identifiers could not start with the
-                        characters "xml".</t>
-                    </list>
-                </t>
-                <t>The following changes have been done to the NETCONF mapping:</t>
-                <t>
-                    <list style="symbols">
-                        <t>A server advertises support for YANG 1.1 modules by using
-                        ietf&nbhy;yang-library
-                        <xref target="RFC8525"/> instead of listing them as capabilities in the
-                        &lt;hello&gt; message.</t>
-                    </list>
-                </t>
+
+            <t>YANG <xref target="RFC6020"/> <xref target="RFC7950"/> is a data modeling
+            language used to model configuration, operational state, asynchronous
+            notifications, and remote procedure calls (RPCs) for network management.
+            In this sense, YANG is a domain-specific data modeling language having,
+            e.g., first-class annotations for configuration and operational state,
+            with rules for how they relate.</t>
+
+            <t>Historically, YANG has been used to manage network elements such as
+            routers, switches, and firewalls.  Thus said, it is observed that YANG
+            is suitable to any networked application having a programmatic interface
+            for configuration, operational state, asynchronous notifications, and/or
+            remote procedure calls (RPCs).</t>
+
+            <t>YANG is high-level data modeling language, independent of any specific
+            encoding or any specific protocol.  Encodings (e.g., XML <xref target="RFC7950"/>,
+            JSON <xref target="RFC7951"/>, CBOR <xref target="I-D.ietf-core-yang-cbor"/>, etc.)
+            and protocols (e.g., NETCONF <xref target="RFC6241"/>, RESTCONF
+            <xref target="RFC8040"/>, CORECONF <xref target="I-D.ietf-core-comi"/>,
+            etc.) are out of scope for this specification.</t>
+
+            <t>This document describes the syntax and semantics of version&nbsp;2.0
+            of the YANG language (YANG&nbsp;2.0). YANG&nbsp;2.0 is a major release
+            of the YANG language, updating version&nbsp;1.1 of the YANG language
+            in both backwards-compatible and backwards-incompatible ways.</t>
+
+            <t>This document obsoletes neither YANG&nbsp;1.0 <xref target="RFC6020"/>
+            nor YANG&nbsp;1.1 <xref target="RFC7950"/>.  A mix of YANG module
+            versions may be used to describe a complete data model, as described
+            in Section <xref target="coexistence"/>.</t>
+
+            <t>In terms of developing YANG data models, <xref target="RFC8407"/>
+            provides some guidelines and recommendations.</t>
+
+            <section title="Summary of Changes from RFC 7950">
+                <section title="Backward Incompatible Changes">
+                    <t>
+                        <list style="symbols">
+                            <t>This document no longer defines an XML encoding.  The XML
+                            encoding has been  moved to [RFC ????].</t>
+                            <t>This document no longer defines a NETCONF mapping.
+                            The NETCONF mapping has been moved to [RFC ????].</t>
+                        </list>
+                    </t>
+                </section>
+                <section title="Backward Compatible Changes">
+                    <t>
+                        <list style="symbols">
+                          <t>The "Introduction" section has been rewritten.</t>
+                        </list>
+                    </t>
+                </section>
             </section>
-        </section>
-        <section title="Key Words">
-            <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-            "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY",
-            and "OPTIONAL" in this document are to be interpreted as described
-            in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/>
-            when, and only when, they appear in all capitals, as shown here.</t>
-        </section>
-        <section title="Terminology" anchor="terminology">
-            <t></t>
-            <t>The following terms are used within this document:</t>
-            <t>
-                <list style="symbols">
-                    <t>action: An operation defined for a node in the data tree.</t>
-                    <t>anydata: A data node that can contain an unknown set of nodes that can be
-                    modeled by YANG, except anyxml.</t>
-                    <t>anyxml: A data node that can contain an unknown chunk of XML data.</t>
-                    <t>augment: Adds new schema nodes to a previously defined schema node.</t>
-                    <t>base type: The type from which a derived type was derived, which may be
-                    either a built-in type or another derived type.</t>
-                    <t>built-in type: A YANG data type defined in the YANG language, such as
-                    uint32 or string.</t>
-                    <t>choice: A schema node where only one of a number of identified alternatives
-                    is valid.</t>
-                    <t>client: An entity that can access YANG-defined data on a server, over some
-                    network management protocol.</t>
-                    <t>conformance: A measure of how accurately a server follows a data model.</t>
-                    <t>container: An interior data node that exists in at most one instance in the
-                    data tree. A container has no value, but rather a set of child nodes.</t>
-                    <t>data definition statement: A statement that defines new data nodes. One of
-                    "container", "leaf", "leaf&nbhy;list", "list", "choice", "case",
-                    "augment", "uses", "anydata", and "anyxml".</t>
-                    <t>data model: A data model describes how data is represented and
-                    accessed.</t>
-                    <t>data node: A node in the schema tree that can be instantiated in a data
-                    tree. One of container, leaf, leaf-list, list, anydata, and anyxml.</t>
-                    <t>data tree: An instantiated tree of any data modeled with YANG, e.g.,
-                    configuration data, state data, combined configuration and state data, RPC or
-                    action input, RPC or action output, or notification.</t>
-                    <t>derived type: A type that is derived from a built-in type (such as uint32)
-                    or another derived type.</t>
-                    <t>extension: An extension attaches non-YANG semantics to statements. The
-                    "extension" statement defines new statements to express these semantics.</t>
-                    <t>feature: A mechanism for marking a portion of the model as optional.
-                    Definitions can be tagged with a feature name and are only valid on servers
-                    that support that feature.</t>
-                    <t>grouping: A reusable set of schema nodes, which may be used locally in the
-                    module and by other modules that import from it. The "grouping" statement is
-                    not a data definition statement and, as such, does not define any nodes in the
-                    schema tree.</t>
-                    <t>identifier: A string used to identify different kinds of YANG items by
-                    name.</t>
-                    <t>identity: A globally unique, abstract, and untyped name.</t>
-                    <t>instance identifier: A mechanism for identifying a particular node in a
-                    data tree.</t>
-                    <t>interior node: Nodes within a hierarchy that are not leaf nodes.</t>
-                    <t>leaf: A data node that exists in at most one instance in the data tree. A
-                    leaf has a value but no child nodes.</t>
-                    <t>leaf-list: Like the leaf node but defines a set of uniquely identifiable
-                    nodes rather than a single node. Each node has a value but no child nodes.</t>
-                    <t>list: An interior data node that may exist in multiple instances in the
-                    data tree. A list has no value, but rather a set of child nodes.</t>
-                    <t>mandatory node: A mandatory node is one of:
+
+            <section title="Key Words">
+                <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+                "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY",
+                and "OPTIONAL" in this document are to be interpreted as described
+                in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+                when, and only when, they appear in all capitals, as shown here.</t>
+            </section>
+
+            <section title="Terminology" anchor="terminology">
+                <t></t>
+                <t>The following terms are used within this document:</t>
+                <t>
                     <list style="symbols">
-                        <t>A leaf, choice, anydata, or anyxml node with a "mandatory" statement
-                        with the value "true".</t>
-                        <t>A list or leaf-list node with a "min‑elements" statement with a value
-                        greater than zero.</t>
-                        <t>A container node without a "presence" statement and that has at least
-                        one mandatory node as a child.</t>
-                    </list></t>
-                    <t>module: A YANG module defines hierarchies of schema nodes. With its
-                    definitions and the definitions it imports or includes from elsewhere, a
-                    module is self-contained and "compilable".</t>
-                    <t>non-presence container: A container that has no meaning of its own,
-                    existing only to contain child nodes.</t>
-                    <t>presence container: A container where the presence of the container itself
-                    carries some meaning.</t>
-                    <t>RPC: A Remote Procedure Call.</t>
-                    <t>RPC operation: A specific Remote Procedure Call.</t>
-                    <t>schema node: A node in the schema tree. One of action, container, leaf,
-                    leaf-list, list, choice, case, rpc, input, output, notification, anydata, and
-                    anyxml.</t>
-                    <t>schema node identifier: A mechanism for identifying a particular node in
-                    the schema tree.</t>
-                    <t>schema tree: The definition hierarchy specified within a module.</t>
-                    <t>server: An entity that provides access to YANG-defined data to a client,
-                    over some network management protocol.</t>
-                    <t>server deviation: A failure of the server to implement a module
-                    faithfully.</t>
-                    <t>submodule: A partial module definition that contributes derived types,
-                    groupings, data nodes, RPCs, actions, and notifications to a module. A YANG
-                    module can be constructed from a number of submodules.</t>
-                    <t>top-level data node: A data node where there is no other data node between
-                    it and a "module" or "submodule" statement.</t>
-                    <t>uses: The "uses" statement is used to instantiate the set of schema nodes
-                    defined in a "grouping" statement. The instantiated nodes may be refined and
-                    augmented to tailor them to any specific needs.</t>
-                    <t>value space: For a data type; the set of values permitted by the data type.
-                    For a leaf or leaf-list instance; the value space of its data type.</t>
-                </list>
-            </t>
-            <t>The following terms are defined in
-            <xref target="RFC6241"/>:</t>
-            <t>
-                <list style="symbols">
-                    <t>configuration data</t>
-                    <t>configuration datastore</t>
-                    <t>datastore</t>
-                    <t>state data</t>
-                </list>
-            </t>
-            <t>When modeled with YANG, a datastore is realized as an instantiated data tree.</t>
-            <t>When modeled with YANG, a configuration datastore is realized as an instantiated
-            data tree with configuration data.</t>
+                        <t>action: An operation defined for a node in the data tree.</t>
+                        <t>anydata: A data node that can contain an unknown set of nodes that can be
+                        modeled by YANG, except anyxml.</t>
+                        <t>anyxml: A data node that can contain an unknown chunk of XML data.</t>
+                        <t>augment: Adds new schema nodes to a previously defined schema node.</t>
+                        <t>base type: The type from which a derived type was derived, which may be
+                        either a built-in type or another derived type.</t>
+                        <t>built-in type: A YANG data type defined in the YANG language, such as
+                        uint32 or string.</t>
+                        <t>choice: A schema node where only one of a number of identified alternatives
+                        is valid.</t>
+                        <t>client: An entity that can access YANG-defined data on a server, over some
+                        network management protocol.</t>
+                        <t>conformance: A measure of how accurately a server follows a data model.</t>
+                        <t>container: An interior data node that exists in at most one instance in the
+                        data tree. A container has no value, but rather a set of child nodes.</t>
+                        <t>data definition statement: A statement that defines new data nodes. One of
+                        "container", "leaf", "leaf&nbhy;list", "list", "choice", "case",
+                        "augment", "uses", "anydata", and "anyxml".</t>
+                        <t>data model: A data model describes how data is represented and
+                        accessed.</t>
+                        <t>data node: A node in the schema tree that can be instantiated in a data
+                        tree. One of container, leaf, leaf-list, list, anydata, and anyxml.</t>
+                        <t>data tree: An instantiated tree of any data modeled with YANG, e.g.,
+                        configuration data, state data, combined configuration and state data, RPC or
+                        action input, RPC or action output, or notification.</t>
+                        <t>derived type: A type that is derived from a built-in type (such as uint32)
+                        or another derived type.</t>
+                        <t>extension: An extension attaches non-YANG semantics to statements. The
+                        "extension" statement defines new statements to express these semantics.</t>
+                        <t>feature: A mechanism for marking a portion of the model as optional.
+                        Definitions can be tagged with a feature name and are only valid on servers
+                        that support that feature.</t>
+                        <t>grouping: A reusable set of schema nodes, which may be used locally in the
+                        module and by other modules that import from it. The "grouping" statement is
+                        not a data definition statement and, as such, does not define any nodes in the
+                        schema tree.</t>
+                        <t>identifier: A string used to identify different kinds of YANG items by
+                        name.</t>
+                        <t>identity: A globally unique, abstract, and untyped name.</t>
+                        <t>instance identifier: A mechanism for identifying a particular node in a
+                        data tree.</t>
+                        <t>interior node: Nodes within a hierarchy that are not leaf nodes.</t>
+                        <t>leaf: A data node that exists in at most one instance in the data tree. A
+                        leaf has a value but no child nodes.</t>
+                        <t>leaf-list: Like the leaf node but defines a set of uniquely identifiable
+                        nodes rather than a single node. Each node has a value but no child nodes.</t>
+                        <t>list: An interior data node that may exist in multiple instances in the
+                        data tree. A list has no value, but rather a set of child nodes.</t>
+                        <t>mandatory node: A mandatory node is one of:
+                        <list style="symbols">
+                            <t>A leaf, choice, anydata, or anyxml node with a "mandatory" statement
+                            with the value "true".</t>
+                            <t>A list or leaf-list node with a "min‑elements" statement with a value
+                            greater than zero.</t>
+                            <t>A container node without a "presence" statement and that has at least
+                            one mandatory node as a child.</t>
+                        </list></t>
+                        <t>module: A YANG module defines hierarchies of schema nodes. With its
+                        definitions and the definitions it imports or includes from elsewhere, a
+                        module is self-contained and "compilable".</t>
+                        <t>non-presence container: A container that has no meaning of its own,
+                        existing only to contain child nodes.</t>
+                        <t>presence container: A container where the presence of the container itself
+                        carries some meaning.</t>
+                        <t>RPC: A Remote Procedure Call.</t>
+                        <t>RPC operation: A specific Remote Procedure Call.</t>
+                        <t>schema node: A node in the schema tree. One of action, container, leaf,
+                        leaf-list, list, choice, case, rpc, input, output, notification, anydata, and
+                        anyxml.</t>
+                        <t>schema node identifier: A mechanism for identifying a particular node in
+                        the schema tree.</t>
+                        <t>schema tree: The definition hierarchy specified within a module.</t>
+                        <t>server: An entity that provides access to YANG-defined data to a client,
+                        over some network management protocol.</t>
+                        <t>server deviation: A failure of the server to implement a module
+                        faithfully.</t>
+                        <t>submodule: A partial module definition that contributes derived types,
+                        groupings, data nodes, RPCs, actions, and notifications to a module. A YANG
+                        module can be constructed from a number of submodules.</t>
+                        <t>top-level data node: A data node where there is no other data node between
+                        it and a "module" or "submodule" statement.</t>
+                        <t>uses: The "uses" statement is used to instantiate the set of schema nodes
+                        defined in a "grouping" statement. The instantiated nodes may be refined and
+                        augmented to tailor them to any specific needs.</t>
+                        <t>value space: For a data type; the set of values permitted by the data type.
+                        For a leaf or leaf-list instance; the value space of its data type.</t>
+                    </list>
+                </t>
+                <t>The following terms are defined in
+                <xref target="RFC6241"/>:</t>
+                <t>
+                    <list style="symbols">
+                        <t>configuration data</t>
+                        <t>configuration datastore</t>
+                        <t>datastore</t>
+                        <t>state data</t>
+                    </list>
+                </t>
+                <t>When modeled with YANG, a datastore is realized as an instantiated data tree.</t>
+                <t>When modeled with YANG, a configuration datastore is realized as an instantiated
+                  data tree with configuration data.</t>
+            </section>
+
             <section title="A Note on Examples">
                 <t>Throughout this document, there are many examples of YANG statements. These
                 examples are supposed to illustrate certain features and are not supposed to be
                 complete, valid YANG modules.</t>
             </section>
-        </section>
+
+        </section> <!-- end Introduction -->
+
+
         <section title="YANG Overview">
             <t>This non-normative section is intended to give a high-level overview of YANG to
             first-time readers.</t>
@@ -10509,23 +10447,9 @@ WSP                 = SP / HTAB
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4648.xml"/>
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5234.xml"/>
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5277.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml"/>
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7405.xml"/>
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8525.xml"/>
-            <reference anchor="XML" target="https://www.w3.org/TR/2008/REC-xml-20081126/">
-                <front>
-                    <title>Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
-                    <author fullname="Tim Bray" surname="Bray" initials="T."/>
-                    <author fullname="Jean Paoli" surname="Paoli" initials="J."/>
-                    <author fullname="Michael Sperberg-McQueen" surname="Sperberg-McQueen"
-                            initials="C."/>
-                    <author fullname="Eve Maler" surname="Maler" initials="E."/>
-                    <author fullname="Francois Yergeau" surname="Yergeau" initials="F."/>
-                    <date year="2008" month="November" day="26"/>
-                </front>
-                <seriesInfo name="W3C Recommendation" value="REC-xml-20081126"/>
-            </reference>
             <reference anchor="XML-NAMES"
                        target="http://www.w3.org/TR/2009/REC-xml-names-20091208">
                 <front>
@@ -10596,6 +10520,20 @@ WSP                 = SP / HTAB
             </reference>
         </references>
         <references title="Informative References">
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2578.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2579.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3780.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6643.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6991.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7950.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7951.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8040.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8407.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8729.xml"/>
+            <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-yang-cbor"/>
+            <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-comi.xml"/>
             <reference anchor="IEEE754-2008"
                        target="http://standards.ieee.org/findstds/standard/754-2008.html">
                 <front>
@@ -10608,17 +10546,6 @@ WSP                 = SP / HTAB
                 <seriesInfo name="IEEE" value="754-2008"/>
                 <seriesInfo name="DOI" value="10.1109/IEEESTD.2008.4610935"/>
             </reference>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2578.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2579.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3780.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6643.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6991.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7951.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8040.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8407.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8729.xml"/>
-            <xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.ietf-core-comi.xml"/>
             <reference anchor="XSLT" target="http://www.w3.org/TR/1999/REC-xslt-19991116">
                 <front>
                     <title>XSL Transformations (XSLT) Version 1.0</title>
