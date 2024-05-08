@@ -24,10 +24,6 @@ jobs:
   xml2rfc:
     name: Run xml2rfc
     runs-on: ubuntu-latest
-#    outputs:
-#       url_plain_text_output: ${{ steps.upload-plain-text-artifact-step.outputs.artifact-url }}
-#       url_html_output: ${{ steps.upload-html-artifact-step.outputs.artifact-url }}
-#       url_xml_output: ${{ steps.upload-xml-artifact-step.outputs.artifact-url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,25 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: all-artifacts
-          path: draft-yn-netmod-*-00.*
-#      - name: Upload Plain-Text Artifact
-#        uses: actions/upload-artifact@v4
-#          #id: upload-plain-text-artifact-step
-#        with:
-#          name: draft-yn-netmod-rfc7950bis-00.txt
-#          path: draft-yn-netmod-rfc7950bis-00.txt
-#      - name: Upload HTML Artifact
-#        uses: actions/upload-artifact@v4
-#          #id: upload-html-artifact-step
-#        with:
-#          name: draft-yn-netmod-rfc7950bis-00.html
-#          path: draft-yn-netmod-rfc7950bis-00.html
-#      - name: Upload XML Artifact
-#        uses: actions/upload-artifact@v4
-#          #id: upload-xml-artifact-step
-#        with:
-#          name: draft-yn-netmod-rfc7950bis-00.xml
-#          path: draft-yn-netmod-rfc7950bis-00.xml
+          path: draft-yn-netmod-*-[0-9][0-9].*
 
 # DISABLED because unable to get it to work (rfclint maintained?)
 #  rfclint:
@@ -80,6 +58,7 @@ jobs:
 #          git clone https://github.com/moonshiner/rfclint.git
 #          cd rfclint
 #          git checkout tjw-fix-setup
+
   idnits_v2:
     name: Test with Idnits v2
     runs-on: ubuntu-latest
@@ -96,7 +75,7 @@ jobs:
           git checkout v2
       - name: Run idnits
         run: |
-          ./idnits/idnits --verbose draft-yn-netmod-rfc7950bis-00.txt | tee idnits.out
+          ./idnits/idnits --verbose draft-yn-netmod-rfc7950bis-[0-9][0-9].txt | tee idnits.out
       - name: Extract summary line
         run: echo "SUMMARY_LINE=$(cat idnits.out | tail -n 2 | head -n 1)" >> $GITHUB_ENV
       - name: Test summary line for errors
@@ -111,6 +90,7 @@ jobs:
             echo "::error::Idnits summary line different - examine why (fix workflow if needed)"
             exit 1
           }
+
 # DISABLED because idnits-v3 flags non-issues
 #  idnits_v3:
 #    name: Test with Idnits v3
@@ -120,7 +100,7 @@ jobs:
 #      - name: Download a single artifact
 #        uses: actions/download-artifact@v4
 #        with:
-#          name: draft-yn-netmod-rfc7950bis-00.txt
+#          name: draft-yn-netmod-rfc7950bis-[0-9][0-9].txt
 #      - name: Install node
 #        run: |
 #          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -134,7 +114,7 @@ jobs:
 #          npm install -g @ietf-tools/idnits
 #      - name: Run idnits
 #        run: |
-#          idnits draft-yn-netmod-rfc7950bis-00.txt  | tee idnits.out
+#          idnits draft-yn-netmod-rfc7950bis-[0-9][0-9].txt  | tee idnits.out
 #      - name: Test idnits Output
 #        run: |
 #            grep -q "Summary: 1 error" idnits.out
@@ -177,34 +157,16 @@ jobs:
       - name: Create the mysite/<branch>/ directory
         run: mkdir -p mysite/${{github.head_ref}}
 
-      # download the just-built text artifact
+      # download the just-built artifacts
       - name: Download plain-text
         uses: actions/download-artifact@v4
         with:
           name: all-artifacts
 
-#      # download the just-built text artifact
-#      - name: Download plain-text
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: draft-yn-netmod-rfc7950bis-00.txt
-#
-#      # download the just built html artifact
-#      - name: Download just-built html artifact
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: draft-yn-netmod-rfc7950bis-00.html
-#
-#      # download the just built xml artifact
-#      - name: Download just-built xml artifact
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: draft-yn-netmod-rfc7950bis-00.xml
-
-      # mv both artifacts into the mysite/<branch>/ directory
+      # mv all artifacts into the mysite/<branch>/ directory
       - name: Move drafts into branch dir
         run:
-          mv draft-yn-netmod-*-00.* mysite/${{github.head_ref}}/
+          mv draft-yn-netmod-*-[0-9][0-9].* mysite/${{github.head_ref}}/
 
       # stash some metadata
       - name: Stash some metadata
@@ -217,7 +179,6 @@ jobs:
       - uses: geekyeggo/delete-artifact@v5
         with:
           name: all-artifacts
-            #name: draft-yn-netmod-*-00.*
 
       # create index.html
       - name: Create mysite/index.html
