@@ -11,7 +11,7 @@ idnits ?= idnits
 
 DRAFTS := draft-yn-netmod-rfc7950bis draft-yn-netmod-yang-xml draft-yn-netmod-yang-proto
 
-.PHONY: clean
+SHELL = bash
 
 default:
 	@for draft in $(DRAFTS); do \
@@ -54,6 +54,8 @@ $(draft)-$(next_ver).txt: $(draft)-$(next_ver).xml
 $(draft)-$(next_ver).html: $(draft)-$(next_ver).xml
 	@echo "Making $@ from $<..."
 	$(xml2rfc) --v3 $< -o $@ --html
+
+.PHONY: clean
 
 clean:
 	@for draft in $(DRAFTS); do \

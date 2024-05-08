@@ -1,3 +1,5 @@
+#!/bin/bash
+#
 # enter directory
 cd mysite/
 

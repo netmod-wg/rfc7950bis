@@ -142,7 +142,7 @@ jobs:
   update_github_pages:
     name: Update the GitHub Page
     runs-on: macos-latest
-    needs: [xml2rfc]
+    needs: [xml2rfc, idnits_v2]
     permissions:
       pages: write
       id-token: write
