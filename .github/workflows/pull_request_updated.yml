@@ -43,24 +43,29 @@ jobs:
           chmod +x rfcfold
       - name: Run "make"
         run: make
-      - name: Upload Plain-Text Artifact
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
-        id: upload-plain-text-artifact-step
         with:
-          name: draft-yn-netmod-rfc7950bis-00.txt
-          path: draft-yn-netmod-rfc7950bis-00.txt
-      - name: Upload HTML Artifact
-        uses: actions/upload-artifact@v4
-        id: upload-html-artifact-step
-        with:
-          name: draft-yn-netmod-rfc7950bis-00.html
-          path: draft-yn-netmod-rfc7950bis-00.html
-      - name: Upload XML Artifact
-        uses: actions/upload-artifact@v4
-        id: upload-xml-artifact-step
-        with:
-          name: draft-yn-netmod-rfc7950bis-00.xml
-          path: draft-yn-netmod-rfc7950bis-00.xml
+          name: All Artifacts
+          path: draft-yn-netmod-*-00.*
+#      - name: Upload Plain-Text Artifact
+#        uses: actions/upload-artifact@v4
+#          #id: upload-plain-text-artifact-step
+#        with:
+#          name: draft-yn-netmod-rfc7950bis-00.txt
+#          path: draft-yn-netmod-rfc7950bis-00.txt
+#      - name: Upload HTML Artifact
+#        uses: actions/upload-artifact@v4
+#          #id: upload-html-artifact-step
+#        with:
+#          name: draft-yn-netmod-rfc7950bis-00.html
+#          path: draft-yn-netmod-rfc7950bis-00.html
+#      - name: Upload XML Artifact
+#        uses: actions/upload-artifact@v4
+#          #id: upload-xml-artifact-step
+#        with:
+#          name: draft-yn-netmod-rfc7950bis-00.xml
+#          path: draft-yn-netmod-rfc7950bis-00.xml
 
 # DISABLED because unable to get it to work (rfclint maintained?)
 #  rfclint:
@@ -205,7 +210,7 @@ jobs:
       # delete the artifacts
       - uses: geekyeggo/delete-artifact@v5
         with:
-          name: draft-yn-netmod-rfc7950bis-00.*
+          name: draft-yn-netmod-*-00.*
 
       # create index.html
       - name: Create mysite/index.html
