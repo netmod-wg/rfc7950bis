@@ -28,28 +28,28 @@ echo "<h1>Build Artifacts for rfc7950bis</h1>" >> index.html
 echo "<i>Most recent first</i>" >> index.html
 echo "<br><br>" >> index.html
 echo "<table class=\"bg\">" >> index.html
-echo "  <tr>" >> index.html
-echo "    <th><b>Updated</b></th>" >> index.html
-echo "    <th><b>Pull Request</b></th>" >> index.html
-echo "    <th><b>Branch Name</b></th>" >> index.html
-echo "    <th><b>Formats</b></th>" >> index.html
-echo "    <th><b>Actions</b></th>" >> index.html
+echo "  <tr class=\"bg\">" >> index.html
+echo "    <th class=\"bg\"><b>Updated</b></th>" >> index.html
+echo "    <th class=\"bg\"><b>Pull Request</b></th>" >> index.html
+echo "    <th class=\"bg\"><b>Branch Name</b></th>" >> index.html
+echo "    <th class=\"bg\"><b>Formats</b></th>" >> index.html
+echo "    <th class=\"bg\"><b>Actions</b></th>" >> index.html
 echo "  </tr>" >> index.html
 for d in $SORTED; do
-  echo "  <tr>" >> index.html
+  echo "  <tr class=\"bg\">" >> index.html
   NUMBER=`grep NUMBER $d/metadata.txt | awk '{print $2}'`
   TITLE=`grep TITLE $d/metadata.txt | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}'`
   DATE=`grep DATE $d/metadata.txt | awk '{print $2}'`
-  echo "    <td>$DATE</td>" >> index.html
-  echo "    <td><a href=\"https://github.com/netmod-wg/rfc7950bis/pull/$NUMBER\">$TITLE (#$NUMBER)</a></td>" >> index.html
-  echo "    <td><a href=\"https://github.com/netmod-wg/rfc7950bis/tree/$d\">$d</a></td>" >> index.html
+  echo "    <td class=\"bg\">$DATE</td>" >> index.html
+  echo "    <td class=\"bg\"><a href=\"https://github.com/netmod-wg/rfc7950bis/pull/$NUMBER\">$TITLE (#$NUMBER)</a></td>" >> index.html
+  echo "    <td class=\"bg\"><a href=\"https://github.com/netmod-wg/rfc7950bis/tree/$d\">$d</a></td>" >> index.html
 
-  echo "    <td> <table> <tr> <td>rfc7950bis</td> <td><a href=\"$d/draft-yn-netmod-rfc7950bis-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.xml\">xml</a></td> </tr> <tr> <td>yang-xml</td> <td><a href=\"$d/draft-yn-netmod-yang-xml-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-yang-xml-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-yang-xml-00.xml\">xml</a></td> </tr> <tr> <td>yang-proto</td> <td><a href=\"$d/draft-yn-netmod-yang-proto-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-yang-proto-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-yang-proto-00.proto\">proto</a></td> </tr> </table> </td>" >> index.html
+  echo "    <td class=\"bg\"> <table> <tr> <td>rfc7950bis</td> <td><a href=\"$d/draft-yn-netmod-rfc7950bis-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.xml\">xml</a></td> </tr> <tr> <td>yang-xml</td> <td><a href=\"$d/draft-yn-netmod-yang-xml-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-yang-xml-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-yang-xml-00.xml\">xml</a></td> </tr> <tr> <td>yang-proto</td> <td><a href=\"$d/draft-yn-netmod-yang-proto-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-yang-proto-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-yang-proto-00.proto\">proto</a></td> </tr> </table> </td>" >> index.html
 
   if [ $d = "main" ]; then
-    echo "    <td><table> <tr> <td>rfc7950bis</td> <td><a href=\"https://author-tools.ietf.org/diff?doc_1=rfc7950&url_2=https://netmod-wg.github.io/rfc7950bis/main/draft-yn-netmod-rfc7950bis-00.txt\">Diff with RFC7950</a><br><a href=\"https://author-tools.ietf.org/api/iddiff?doc_1=draft-yn-netmod-rfc7950bis&url_2=https://netmod-wg.github.io/rfc7950bis/main/draft-yn-netmod-rfc7950bis-00.txt\">Diff with Datatracker</a><br>Upload to Datatracker (TBD)</td>  </tr> <tr><td>yang-xml</td><td>???</td></tr> <tr><td>yang-proto</td><td>???</td></tr></table> </td>" >> index.html
+    echo "    <td class=\"bg\"><table> <tr> <td>rfc7950bis</td> <td><a href=\"https://author-tools.ietf.org/diff?doc_1=rfc7950&url_2=https://netmod-wg.github.io/rfc7950bis/main/draft-yn-netmod-rfc7950bis-00.txt\">Diff with RFC7950</a><br><a href=\"https://author-tools.ietf.org/api/iddiff?doc_1=draft-yn-netmod-rfc7950bis&url_2=https://netmod-wg.github.io/rfc7950bis/main/draft-yn-netmod-rfc7950bis-00.txt\">Diff with Datatracker</a><br>Upload to Datatracker (TBD)</td>  </tr> <tr><td>yang-xml</td><td>???</td></tr> <tr><td>yang-proto</td><td>???</td></tr></table> </td>" >> index.html
   else
-    echo "    <td> <table> <tr> <td>rfc7950bis</td> <td><a href=\"https://author-tools.ietf.org/api/iddiff?url_1=https://netmod-wg.github.io/rfc7950bis/main/draft-yn-netmod-rfc7950bis-00.txt&url_2=https://netmod-wg.github.io/rfc7950bis/$d/draft-yn-netmod-rfc7950bis-00.txt\">Diff with Main</a></td> </tr> <tr> <td>yang-xml</td> <td>???</td> </tr> <tr> <td>yang-proto</td> <td>???</td> </tr> </table> </td>" >> index.html
+    echo "    <td class=\"bg\"> <table> <tr> <td>rfc7950bis</td> <td><a href=\"https://author-tools.ietf.org/api/iddiff?url_1=https://netmod-wg.github.io/rfc7950bis/main/draft-yn-netmod-rfc7950bis-00.txt&url_2=https://netmod-wg.github.io/rfc7950bis/$d/draft-yn-netmod-rfc7950bis-00.txt\">Diff with Main</a></td> </tr> <tr> <td>yang-xml</td> <td>???</td> </tr> <tr> <td>yang-proto</td> <td>???</td> </tr> </table> </td>" >> index.html
   fi
   echo "  </tr>" >> index.html
 done
