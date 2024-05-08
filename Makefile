@@ -11,13 +11,11 @@ idnits ?= idnits
 
 DRAFTS := draft-yn-netmod-rfc7950bis draft-yn-netmod-yang-xml draft-yn-netmod-yang-proto
 
-SHELL = bash
-
 default:
 	@for draft in $(DRAFTS); do \
 		export draft _; \
-	  $(MAKE) make_draft; \
-		if [[ $? -ne 0 ]]; then \
+	  make make_draft; \
+		if [ "$?" -ne "0" ]; then \
 	    exit 1; \
   	fi; \
 	done
