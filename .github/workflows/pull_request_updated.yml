@@ -46,7 +46,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: All Artifacts
+          name: all-artifacts
           path: draft-yn-netmod-*-00.*
 #      - name: Upload Plain-Text Artifact
 #        uses: actions/upload-artifact@v4
@@ -88,7 +88,7 @@ jobs:
       - name: Download a single artifact
         uses: actions/download-artifact@v4
         with:
-          name: draft-yn-netmod-rfc7950bis-00.txt
+          name: all-artifacts
       - name: Install idnits
         run: |
           git clone https://github.com/ietf-tools/idnits.git
@@ -181,24 +181,30 @@ jobs:
       - name: Download plain-text
         uses: actions/download-artifact@v4
         with:
-          name: draft-yn-netmod-rfc7950bis-00.txt
+          name: all-artifacts
 
-      # download the just built html artifact
-      - name: Download just-built html artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: draft-yn-netmod-rfc7950bis-00.html
-
-      # download the just built xml artifact
-      - name: Download just-built xml artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: draft-yn-netmod-rfc7950bis-00.xml
+#      # download the just-built text artifact
+#      - name: Download plain-text
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: draft-yn-netmod-rfc7950bis-00.txt
+#
+#      # download the just built html artifact
+#      - name: Download just-built html artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: draft-yn-netmod-rfc7950bis-00.html
+#
+#      # download the just built xml artifact
+#      - name: Download just-built xml artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: draft-yn-netmod-rfc7950bis-00.xml
 
       # mv both artifacts into the mysite/<branch>/ directory
       - name: Move drafts into branch dir
         run:
-          mv draft-yn-netmod-rfc7950bis-00.* mysite/${{github.head_ref}}/
+          mv draft-yn-netmod-*-00.* mysite/${{github.head_ref}}/
 
       # stash some metadata
       - name: Stash some metadata
@@ -210,7 +216,8 @@ jobs:
       # delete the artifacts
       - uses: geekyeggo/delete-artifact@v5
         with:
-          name: draft-yn-netmod-*-00.*
+          name: all-artifacts
+            #name: draft-yn-netmod-*-00.*
 
       # create index.html
       - name: Create mysite/index.html
