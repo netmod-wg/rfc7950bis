@@ -41,7 +41,7 @@ for d in $SORTED; do
   echo "    <td>$DATE</td>" >> index.html
   echo "    <td><a href=\"https://github.com/netmod-wg/rfc7950bis/pull/$NUMBER\">$TITLE (#$NUMBER)</a></td>" >> index.html
   echo "    <td><a href=\"https://github.com/netmod-wg/rfc7950bis/tree/$d\">$d</a></td>" >> index.html
-  echo "    <td><a href=\"$d/draft-yn-netmod-rfc7950bis-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.v2v3.xml\">xml</a></td>" >> index.html
+  echo "    <td><a href=\"$d/draft-yn-netmod-rfc7950bis-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.xml\">xml</a></td>" >> index.html
   if [ $d = "main" ]; then
     echo "    <td><a href=\"https://author-tools.ietf.org/diff?doc_1=rfc7950&url_2=https://netmod-wg.github.io/rfc7950bis/main/draft-yn-netmod-rfc7950bis-00.txt\">Diff with RFC7950</a><br><a href=\"https://author-tools.ietf.org/api/iddiff?doc_1=draft-yn-netmod-rfc7950bis&url_2=https://netmod-wg.github.io/rfc7950bis/main/draft-yn-netmod-rfc7950bis-00.txt\">Diff with Datatracker</a><br>Upload to Datatracker (TBD)</td>" >> index.html
   else

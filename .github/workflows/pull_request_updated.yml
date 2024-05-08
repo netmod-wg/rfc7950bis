@@ -60,7 +60,7 @@ jobs:
         id: upload-xml-artifact-step
         with:
           name: draft-yn-netmod-rfc7950bis-00.xml
-          path: draft-yn-netmod-rfc7950bis-00.v2v3.xml
+          path: draft-yn-netmod-rfc7950bis-00.xml
 
 # DISABLED because unable to get it to work (rfclint maintained?)
 #  rfclint:

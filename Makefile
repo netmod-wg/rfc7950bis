@@ -63,7 +63,6 @@ clean:
 
 clean_draft:
 	-rm -f $(draft)-[0-9][0-9].xml
-	-rm -f $(draft)-[0-9][0-9].v2v3.xml
 	-rm -f $(draft)-[0-9][0-9].txt
 	-rm -f $(draft)-[0-9][0-9].html
 
