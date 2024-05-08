@@ -15,7 +15,7 @@ default:
 	@for draft in $(DRAFTS); do \
 		export draft _; \
 	  make make_draft; \
-		if [ "$?" 1= "0" ]; then \
+		if [ "$?" != "0" ]; then \
 	    exit 1; \
   	fi; \
 	done
@@ -23,7 +23,7 @@ default:
 make_draft:
 	@echo "Making $(draft)..."
 	@current_ver=`git tag | grep '$(draft)-[0-9][0-9]' | tail -1 | sed -e"s/.*-//"`; \
-	if [[ -z "$$current_ver" ]]; then \
+	if [ -z "$$current_ver" ]; then \
 	  next_ver=00; \
 	else \
 	  next_ver_num=`expr $${current_ver} + 1`; \
