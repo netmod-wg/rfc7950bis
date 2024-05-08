@@ -24,10 +24,10 @@ jobs:
   xml2rfc:
     name: Run xml2rfc
     runs-on: ubuntu-latest
-    outputs:
-       url_plain_text_output: ${{ steps.upload-plain-text-artifact-step.outputs.artifact-url }}
-       url_html_output: ${{ steps.upload-html-artifact-step.outputs.artifact-url }}
-       url_xml_output: ${{ steps.upload-xml-artifact-step.outputs.artifact-url }}
+#    outputs:
+#       url_plain_text_output: ${{ steps.upload-plain-text-artifact-step.outputs.artifact-url }}
+#       url_html_output: ${{ steps.upload-html-artifact-step.outputs.artifact-url }}
+#       url_xml_output: ${{ steps.upload-xml-artifact-step.outputs.artifact-url }}
     steps:
       - uses: actions/checkout@v4
         with:
