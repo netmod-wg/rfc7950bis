@@ -15,11 +15,11 @@ SORTED=`sort -r -k 1 sort.txt | awk '{print $1}'`
 echo "<html>" > index.html
 echo "<head>" >> index.html
 echo "  <style>" >> index.html
-echo "    table { border-collapse: collapse; width: 100%; }" >> index.html
-echo "    tr:nth-child(odd){background-color: #f2f2f2}" >> index.html
-echo "    tr:nth-child(even){background-color: white}" >> index.html
-echo "    th    {background-color: #A0A0A0; color: white;}" >> index.html
-echo "    th,td {padding: 15px; text-align: left; vertical-align: top;}" >> index.html
+echo "    table.bg { border-collapse: collapse; width: 100%; }" >> index.html
+echo "    tr.bg:nth-child(odd){background-color: #f2f2f2}" >> index.html
+echo "    tr.bg:nth-child(even){background-color: white}" >> index.html
+echo "    th.bg    {background-color: #A0A0A0; color: white;}" >> index.html
+echo "    th.bg,td.bg {padding: 15px; text-align: left; vertical-align: top;}" >> index.html
 echo "  </style>" >> index.html
 echo "  <base target=\"_blank\">" >> index.html
 echo "</head>" >> index.html
@@ -27,7 +27,7 @@ echo "<body>" >> index.html
 echo "<h1>Build Artifacts for rfc7950bis</h1>" >> index.html
 echo "<i>Most recent first</i>" >> index.html
 echo "<br><br>" >> index.html
-echo "<table>" >> index.html
+echo "<table class="bg">" >> index.html
 echo "  <tr>" >> index.html
 echo "    <th><b>Updated</b></th>" >> index.html
 echo "    <th><b>Pull Request</b></th>" >> index.html
