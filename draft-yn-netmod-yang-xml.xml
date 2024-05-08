@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!DOCTYPE rfc
+[
+  <!ENTITY nbsp    "&#160;">
+  <!ENTITY zwsp   "&#8203;">
+  <!ENTITY nbhy   "&#8209;">
+  <!ENTITY wj     "&#8288;">
+]>
+
+<?xml-stylesheet type="text/xsl" href="rfc2629.xslt"?>
+<?rfc toc="yes"?>
+<?rfc compact="no"?>
+<?rfc subcompact="no"?>
+<?rfc iprnotified="no"?>
+<?rfc strict="yes"?>
+
+<rfc ipr="pre5378Trust200902" category="std" submissionType="IETF" consensus="true"
+    xmlns:xi="http://www.w3.org/2001/XInclude" docName="draft-yn-netmod-yang-xml-latest">
+    <front>
+        <title abbrev="XML Encoding of YANG Data">XML Encoding of Data Modeled with YANG</title>
+INSERT_TEXT_FROM_FILE(.authors.txt)
+        <date/>
+        <area>Operations</area>
+        <workgroup>NETMOD Working Group</workgroup>
+        <keyword>data modeling</keyword>
+        <abstract>
+            <t>YANG is a data modeling language used to model configuration, operational
+            state, asynchronous notifications, and remote procedure calls (RPCs) for
+            network management. This document describes the syntax and semantics of
+            version&nbsp;2.0 of the YANG language (YANG&nbsp;2.0). YANG&nbsp;2.0 is a
+            major release of the YANG language, updating version&nbsp;1.1 of the YANG
+            language in both backwards-compatible and backwards-incompatible ways.</t>
+        </abstract>
+        <note title="Production Process (to be removed by RFC Editor)">
+            <t>This document is developed on GitHub (<eref target="https://github.com/netmod-wg/rfc7950bis"/>).
+            If you wish to contribute, please consider opening a pull request (PR).  Please see the
+            <eref target="https://github.com/netmod-wg/rfc7950bis/blob/main/README.md">README</eref>
+            file for details.</t>
+        </note>
+        <note title="Special Thanks">
+            <t>The following individuals were entrusted to review all of the design proposals
+            and specification updates made by authors.
+INSERT_TEXT_FROM_FILE(.experts.txt)
+            </t>
+        </note>
+    </front>
+    <middle>
+        <section title="Introduction">
+
+            <t>YANG <xref target="RFC6020"/> <xref target="RFC7950"/> is a data modeling
+            language used to model configuration, operational state, asynchronous
+            notifications, and remote procedure calls (RPCs) for network management.
+            In this sense, YANG is a domain-specific data modeling language having,
+            e.g., first-class annotations for configuration and operational state,
+            with rules for how they relate.</t>
+
+            <section title="Key Words">
+                <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+                "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY",
+                and "OPTIONAL" in this document are to be interpreted as described
+                in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+                when, and only when, they appear in all capitals, as shown here.</t>
+            </section>
+        </section>
+        <section title="IANA Considerations" anchor="iana">
+            <t>This document registers one capability identifier URN from the "Network
+            Configuration Protocol (NETCONF) Capability URNs" registry:</t>
+        </section>
+        <section title="Security Considerations">
+            <t>This document defines a language with which to write and read descriptions of
+            management information. The language itself has no security impact on the
+            Internet.</t>
+        </section>
+    </middle>
+    <back>
+        <references title="Normative References">
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+        </references>
+        <references title="Informative References">
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7950.xml"/>
+        </references>
+        <section title="Acknowledgements" numbered="no">
+            <t>The editor wishes to thank the following individuals, who all provided helpful
+            comments on various draft versions of this document: </t>
+        </section>
+    </back>
+</rfc>
