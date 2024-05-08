@@ -25,7 +25,7 @@ echo "  </style>" >> index.html
 echo "  <base target=\"_blank\">" >> index.html
 echo "</head>" >> index.html
 echo "<body>" >> index.html
-echo "<h1>Build Artifacts for rfc7950bis</h1>" >> index.html
+echo "<h1>Build artifacts for rfc7950bis and friends</h1>" >> index.html
 echo "<i>Most recent first</i>" >> index.html
 echo "<br><br>" >> index.html
 echo "<table class=\"bg\">" >> index.html
