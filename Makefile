@@ -15,7 +15,7 @@ default:
 	@for draft in $(DRAFTS); do \
 		export draft _; \
 	  make make_draft; \
-		if [ "$?" -ne "0" ]; then \
+		if [ "$?" 1= "0" ]; then \
 	    exit 1; \
   	fi; \
 	done
