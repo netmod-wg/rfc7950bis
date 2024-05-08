@@ -47,6 +47,7 @@ $(draft)-$(next_ver).xml: $(draft).xml
 
 $(draft)-$(next_ver).txt: $(draft)-$(next_ver).xml
 	@echo "Making $@ from $<..."
+	head -n 200 $<
 	$(xml2rfc) --v3 $< -o $@ --text
 
 $(draft)-$(next_ver).html: $(draft)-$(next_ver).xml
