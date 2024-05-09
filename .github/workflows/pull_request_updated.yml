@@ -191,6 +191,9 @@ jobs:
         run: |
           cd mysite
           tar -czvf drafts.tgz */
+          mkdir test
+          cd test
+          tar -xzvf ../drafts.tgz
 
       # upload site to github.io
       - name: Upload Artifact
