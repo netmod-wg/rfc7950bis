@@ -19,7 +19,7 @@ jobs:
               - [ ] Updated "Normative/Informational References" sections, or N/A?
               - [ ] Updated "Acknowledgements" section, or N/A? (Not GitHub users)
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr comment https://github.com/netmod-wg/rfc7950bis/pull/${{github.event.number}} --body "$COMMENT"
+        run: gh pr comment https://github.com/netmod-wg/rfc7950bis-and-friends/pull/${{github.event.number}} --body "$COMMENT"
 
   xml2rfc:
     name: Run xml2rfc
@@ -149,9 +149,9 @@ jobs:
       - name: Download and extract drafts
         run: |
           cd mysite
-          #curl -O https://netmod-wg.github.io/rfc7950bis/drafts.tgz
-          #tar -xzvf drafts.tgz
-          #rm drafts.tgz
+          curl -O https://netmod-wg.github.io/rfc7950bis-and-friends/drafts.tgz
+          tar -xzvf drafts.tgz
+          rm drafts.tgz
 
       # create the "mysite/<branch>/" directory, in case it's not there already
       - name: Create the mysite/<branch>/ directory
