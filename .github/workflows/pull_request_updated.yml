@@ -149,16 +149,16 @@ jobs:
       - name: Download and extract drafts
         run: |
           cd mysite
-          curl -O https://netmod-wg.github.io/rfc7950bis/drafts.tgz
-          tar -xzvf drafts.tgz
-          rm drafts.tgz
+          #curl -O https://netmod-wg.github.io/rfc7950bis/drafts.tgz
+          #tar -xzvf drafts.tgz
+          #rm drafts.tgz
 
       # create the "mysite/<branch>/" directory, in case it's not there already
       - name: Create the mysite/<branch>/ directory
         run: mkdir -p mysite/${{github.head_ref}}
 
       # download the just-built artifacts
-      - name: Download plain-text
+      - name: Download built artifacts
         uses: actions/download-artifact@v4
         with:
           name: all-artifacts
