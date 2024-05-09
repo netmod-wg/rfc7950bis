@@ -1564,9 +1564,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     <t>Comments are C++ style. A single line comment starts with "//" and ends at
                     the end of the line. A block comment starts with "/*" and ends with the
                     nearest following "*/".</t>
-                    <t>Note that inside a quoted string (
-                    <xref target="quoting"/>), these character pairs are never interpreted as the
-                    start or end of a comment.</t>
+                    <t>Note that inside a quoted string (<xref target="quoting"/>), these
+                    character pairs are never interpreted as the start or end of a comment.</t>
                 </section>
                 <section title="Tokens" anchor="tokens">
                     <t>A token in YANG is either a keyword, a string, a semicolon (";"), or braces
@@ -1773,8 +1772,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                 <xref target="IEEE754-2008"/> double-precision floating-point values; see
                 Section&nbsp;3.5 in
                 <xref target="XPATH"/>. This means that some values of int64, uint64, and
-                decimal64 types (see Sections&nbsp;
-                <xref target="integers" format="counter"/> and
+                decimal64 types (see Sections <xref target="integers" format="counter"/> and
                 <xref target="decimal64" format="counter"/>) cannot be exactly represented in
                 XPath expressions. Therefore, due caution should be exercised when using nodes
                 with 64-bit numeric values in XPath expressions. In particular, numerical
@@ -1860,8 +1858,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         </list>
                     </t>
                     <t>In the accessible tree, all leafs and leaf-lists with default values in use
-                    exist (see Sections&nbsp;
-                    <xref target="leaf-default-value" format="counter"/> and
+                    exist (see Sections <xref target="leaf-default-value" format="counter"/> and
                     <xref target="leaf-list-default-value" format="counter"/>).</t>
                     <t>If a node that exists in the accessible tree has a non-presence container
                     as a child, then the non-presence container also exists in the accessible
@@ -3683,8 +3680,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     &lt;edit‑config&gt;, by using the "operation" attribute in the leaf-list
                     entry's XML element.</t>
                     <t>In an "ordered-by user" leaf-list, the attributes "insert" and "value" in
-                    the YANG XML namespace (
-                    <xref target="yang-namespace"/>) can be used to control where in the
+                    the YANG XML namespace (<xref target="yang-namespace"/>) can be used to control where in the
                     leaf-list the entry is inserted. These can be used during "create" operations
                     to insert a new leaf-list entry, or during "merge" or "replace" operations to
                     insert a new leaf-list entry or move an existing one.</t>
@@ -4074,8 +4070,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     list entry. If all keys are not specified for a list entry, a
                     "missing‑element" error is returned.</t>
                     <t>In an "ordered-by user" list, the attributes "insert" and "key" in the YANG
-                    XML namespace (
-                    <xref target="yang-namespace"/>) can be used to control where in the list the
+                    XML namespace (<xref target="yang-namespace"/>) can be used to control where in the list the
                     entry is inserted. These can be used during "create" operations to insert a
                     new list entry, or during "merge" or "replace" operations to insert a new list
                     entry or move an existing one.</t>
@@ -4414,9 +4409,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     a single "anydata", "anyxml", "choice", "container", "leaf", "list", or
                     "leaf‑list" statement. In this case, the case node still exists in the schema
                     tree, and its identifier is the same as the identifier of the child node.
-                    Schema node identifiers (
-                    <xref target="schema-node-id"/>) MUST always explicitly include case node
-                    identifiers. The following example:</t>
+                    Schema node identifiers ( <xref target="schema-node-id"/>) MUST always
+                    explicitly include case node identifiers. The following example:</t>
                     <figure>
                         <artwork>
 <![CDATA[
@@ -4526,8 +4520,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     leaf-lists, and default cases of nested choices). The default values and
                     nested default cases under the default case are used if none of the nodes
                     under any of the cases are present.</t>
-                    <t>There MUST NOT be any mandatory nodes (
-                    <xref target="terminology"/>) directly under the default case.</t>
+                    <t>There MUST NOT be any mandatory nodes (<xref target="terminology"/>)
+                    directly under the default case.</t>
                     <t>Default values for child nodes under a case are only used if one of the
                     nodes under that case is present or if that case is the default case. If none
                     of the nodes under a case are present and the case is not the default case,
@@ -4805,8 +4799,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                 <t>It should be noted that in YANG version 1, "anyxml" was the only statement that
                 could model an unknown hierarchy of data. In many cases, this unknown hierarchy of
                 data is actually modeled in YANG, but the specific YANG data model is not known at
-                design time. In these situations, it is RECOMMENDED to use "anydata" (
-                <xref target="anydata"/>) instead of "anyxml".</t>
+                design time. In these situations, it is RECOMMENDED to use "anydata" (<xref
+                target="anydata"/>) instead of "anyxml".</t>
                 <section title="The anyxml's Substatements">
                     <?rfc compact="yes"?>
                     <texttable>
@@ -4938,8 +4932,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                 are applied to the grouping itself.</t>
                 <t>Note that if a grouping defines an action or a notification node in its
                 hierarchy, then it cannot be used in all contexts. For example, it cannot be used
-                in an rpc definition. See Sections&nbsp;
-                <xref target="action" format="counter"/> and
+                in an rpc definition. See Sections <xref target="action" format="counter"/> and
                 <xref target="notification" format="counter"/>.</t>
                 <section title="The grouping's Substatements">
                     <?rfc compact="yes"?>
@@ -6289,9 +6282,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                 statements, including extensions defined using "extension" statements. YANG
                 statements in extensions MUST follow the syntactical rules in
                 <xref target="grammar"/>.</t>
-                <t>An extension can allow refinement (see
-                <xref target="refine"/>) and deviations (
-                <xref target="deviate"/>), but the mechanism for how this is defined is outside
+                <t>An extension can allow refinement (see <xref target="refine"/>) and deviations
+                (<xref target="deviate"/>), but the mechanism for how this is defined is outside
                 the scope of this specification.</t>
                 <section title="The extension's Substatements">
                     <?rfc compact="yes"?>
@@ -6935,10 +6927,9 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                             <t>If a leaf data value does not match the type constraints for the
                             leaf, including those defined in the type's "range", "length", and
                             "pattern" properties, the server MUST reply with an "invalid‑value"
-                            &lt;error‑tag&gt; in the &lt;rpc‑error&gt;, and with the error‑app‑tag
-                            (
-                            <xref target="error-app-tag"/>) and error‑message (
-                            <xref target="error-message"/>) associated with the constraint, if
+                            &lt;error‑tag&gt; in the &lt;rpc‑error&gt;, and with the
+                            error‑app‑tag (<xref target="error-app-tag"/>) and error‑message
+                            (<xref target="error-message"/>) associated with the constraint, if
                             any exist.</t>
                             <t>If all keys of a list entry are not present, the server MUST reply
                             with a "missing‑element" &lt;error‑tag&gt; in the
@@ -7001,11 +6992,9 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
             other derived types. Derived types may use subtyping to formally restrict the set of
             possible values.</t>
             <t>The different built-in types and their derived types allow different kinds of
-            subtyping, namely length and regular expression restrictions of strings
-            (Sections&nbsp;
-            <xref target="length" format="counter"/> and
-            <xref target="pattern" format="counter"/>) and range restrictions of numeric types (
-            <xref target="range"/>).</t>
+            subtyping, namely length and regular expression restrictions of strings (Sections
+            <xref target="length" format="counter"/> and <xref target="pattern" format="counter"/>)
+            and range restrictions of numeric types (<xref target="range"/>).</t>
             <t>The lexical representation of a value of a certain type is used in the XML encoding
             and when specifying default values and numerical ranges in YANG modules.</t>
             <section title="Canonical Representation" anchor="canonical">
@@ -7086,8 +7075,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     Leading zeros are prohibited. The value zero is represented as&nbsp;"0".</t>
                 </section>
                 <section title="Restrictions">
-                    <t>All integer types can be restricted with the "range" statement (
-                    <xref target="range"/>).</t>
+                    <t>All integer types can be restricted with the "range" statement
+                    (<xref target="range"/>).</t>
                 </section>
                 <section title="The &quot;range&quot; Statement" anchor="range">
                     <t>The "range" statement, which is an optional substatement to the "type"
@@ -7182,8 +7171,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     decimal point. The value zero is represented as "0.0".</t>
                 </section>
                 <section title="Restrictions">
-                    <t>A decimal64 type can be restricted with the "range" statement (
-                    <xref target="range"/>).</t>
+                    <t>A decimal64 type can be restricted with the "range" statement
+                    (<xref target="range"/>).</t>
                 </section>
                 <section title="The &quot;fraction-digits&quot; Statement"
                 anchor="fraction-digits">
@@ -7286,9 +7275,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     normalization of string values is performed.</t>
                 </section>
                 <section title="Restrictions">
-                    <t>A string can be restricted with the "length" (
-                    <xref target="length"/>) and "pattern" (
-                    <xref target="pattern"/>) statements.</t>
+                    <t>A string can be restricted with the "length" (<xref target="length"/>)
+                    and "pattern" (<xref target="pattern"/>) statements.</t>
                 </section>
                 <section title="The &quot;length&quot; Statement" anchor="length">
                     <t>The "length" statement, which is an optional substatement to the "type"
@@ -7514,9 +7502,9 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     <t>The canonical form is the assigned name string.</t>
                 </section>
                 <section title="Restrictions">
-                    <t>An enumeration can be restricted with one or more "enum" (
-                    <xref target="enum"/>) statements, which enumerate a subset of the values for
-                    the base type.</t>
+                    <t>An enumeration can be restricted with one or more "enum"
+                    (<xref target="enum"/>) statements, which enumerate a subset of
+                    the values for the base type.</t>
                 </section>
                 <section title="The &quot;enum&quot; Statement" anchor="enum">
                     <t>The "enum" statement, which is a substatement to the "type" statement, MUST
@@ -7687,8 +7675,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                 type MUST be a subset of the base type's set of assigned names. The bit position
                 of such an assigned name MUST NOT be changed.</t>
                 <section title="Restrictions">
-                    <t>A bits type can be restricted with the "bit" (
-                    <xref target="bit"/>) statement.</t>
+                    <t>A bits type can be restricted with the "bit" (<xref target="bit"/>) statement.</t>
                 </section>
                 <section title="Lexical Representation">
                     <t>The lexical representation of the bits type is a space-separated list of
@@ -7834,47 +7821,41 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                 <t>The binary built-in type represents any binary data, i.e., a sequence of
                 octets.</t>
                 <section title="Restrictions">
-                    <t>A binary type can be restricted with the "length" (
-                    <xref target="length"/>) statement. The length of a binary value is the
-                    number of octets it contains.</t>
+                    <t>A binary type can be restricted with the "length" (<xref target="length"/>)
+                    statement. The length of a binary value is the number of octets it contains.</t>
                 </section>
                 <section title="Lexical Representation">
                     <t>Binary values are encoded with the base64 encoding scheme (see
-                    Section&nbsp;4 in
-                    <xref target="RFC4648"/>).</t>
+                    Section&nbsp;4 in <xref target="RFC4648"/>).</t>
                 </section>
                 <section title="Canonical Form">
                     <t>The canonical form of a binary value follows the rules of "Base 64
-                    Encoding" in
-                    <xref target="RFC4648"/>.</t>
+                    Encoding" in <xref target="RFC4648"/>.</t>
                 </section>
             </section>
             <section title="The leafref Built-In Type">
                 <t>The leafref built-in type is restricted to the value space of some leaf or
                 leaf-list node in the schema tree and optionally further restricted by
-                corresponding instance nodes in the data tree. The "path" substatement (
-                <xref target="path"/>) is used to identify the referred leaf or leaf-list node in
+                corresponding instance nodes in the data tree. The "path" substatement
+                (<xref target="path"/>) is used to identify the referred leaf or leaf-list node in
                 the schema tree. The value space of the referring node is the value space of the
                 referred node.</t>
-                <t>If the "require‑instance" property (
-                <xref target="require-instance"/>) is "true", there MUST exist a node in the data
-                tree, or a node with a default value in use (see Sections&nbsp;
-                <xref target="leaf-default-value" format="counter"/> and
-                <xref target="leaf-list-default-value" format="counter"/>), of the referred
+                <t>If the "require‑instance" property (<xref target="require-instance"/>) is
+                "true", there MUST exist a node in the data tree, or a node with a default
+                value in use (see Sections <xref target="leaf-default-value" format="counter"/>
+                and <xref target="leaf-list-default-value" format="counter"/>), of the referred
                 schema tree leaf or leaf-list node with the same value as the leafref value in a
                 valid data tree.</t>
                 <t>If the referring node represents configuration data and the "require‑instance"
-                property (
-                <xref target="require-instance"/>) is "true", the referred node MUST also
+                property (<xref target="require-instance"/>) is "true", the referred node MUST also
                 represent configuration.</t>
                 <t>There MUST NOT be any circular chains of leafrefs.</t>
                 <t>If the leaf that the leafref refers to is conditional based on one or more
-                features (see
-                <xref target="if-feature"/>), then the leaf with the leafref type MUST also be
-                conditional based on at least the same set of features.</t>
+                features (see <xref target="if-feature"/>), then the leaf with the leafref type
+                MUST also be conditional based on at least the same set of features.</t>
                 <section title="Restrictions">
-                    <t>A leafref can be restricted with the "require‑instance" statement (
-                    <xref target="require-instance"/>).</t>
+                    <t>A leafref can be restricted with the "require‑instance" statement
+                    (<xref target="require-instance"/>).</t>
                 </section>
                 <section title="The &quot;path&quot; Statement" anchor="path">
                     <t>The "path" statement, which is a substatement to the "type" statement, MUST
@@ -8265,10 +8246,9 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
             <section title="The union Built-In Type">
                 <t>The union built-in type represents a value that corresponds to one of its
                 member types.</t>
-                <t>When the type is "union", the "type" statement (
-                <xref target="type"/>) MUST be present. It is repeatedly used to specify each
-                member type of the union. It takes as an argument a string that is the name of a
-                member type.</t>
+                <t>When the type is "union", the "type" statement (<xref target="type"/>) MUST
+                be present. It is repeatedly used to specify each member type of the union. It
+                takes as an argument a string that is the name of a member type.</t>
                 <t>A member type can be of any built-in or derived type.</t>
                 <t>When generating an XML encoding, a value is encoded according to the rules of
                 the member type to which the value belongs. When interpreting an XML encoding, a
@@ -8306,10 +8286,10 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         </artwork>
                     </figure>
                     <t>Care must be taken when a member type is a leafref where the
-                    "require‑instance" property (
-                    <xref target="require-instance"/>) is "true". If a leaf of such a type refers
-                    to an existing instance, the leaf's value must be revalidated if the target
-                    instance is deleted. For example, with the following definitions:</t>
+                    "require‑instance" property (<xref target="require-instance"/>) is
+                    "true". If a leaf of such a type refers to an existing instance, the
+                    leaf's value must be revalidated if the target instance is deleted.
+                    For example, with the following definitions:</t>
                     <figure>
                         <artwork>
 <![CDATA[
@@ -8367,12 +8347,11 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                 one equality test per key, and each key MUST have a corresponding predicate. If a
                 key is of type "empty", it is represented as a zero&nbhy;length string
                 ("").</t>
-                <t>If the leaf with the instance-identifier type represents configuration data and
-                the "require‑instance" property (
-                <xref target="require-instance"/>) is "true", the node it refers to MUST also
-                represent configuration. Such a leaf puts a constraint on valid data. All such
-                leaf nodes MUST reference existing nodes or leaf or leaf-list nodes with their
-                default value in use (see Sections&nbsp;
+                <t>If the leaf with the instance-identifier type represents configuration data
+                and the "require‑instance" property (<xref target="require-instance"/>) is
+                "true", the node it refers to MUST also represent configuration. Such a leaf
+                puts a constraint on valid data. All such leaf nodes MUST reference existing
+                nodes or leaf or leaf-list nodes with their default value in use (see Sections
                 <xref target="leaf-default-value" format="counter"/> and
                 <xref target="leaf-list-default-value" format="counter"/>) for the data to be
                 valid. This constraint is enforced according to the rules in
@@ -8387,8 +8366,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                 </t>
                 <section title="Restrictions">
                     <t>An instance-identifier can be restricted with the "require‑instance"
-                    statement (
-                    <xref target="require-instance"/>).</t>
+                    statement (<xref target="require-instance"/>).</t>
                 </section>
                 <section title="Lexical Representation">
                     <t>An instance-identifier value is lexically represented as a string. All node
@@ -8542,8 +8520,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     returned.</t>
                     <t>If the first argument node is of type "leafref", the function returns a
                     node set that contains the nodes that the leafref refers to. Specifically,
-                    this set contains the nodes selected by the leafref's "path" statement (
-                    <xref target="path"/>) that have the same value as the first argument
+                    this set contains the nodes selected by the leafref's "path" statement
+                    (<xref target="path"/>) that have the same value as the first argument
                     node.</t>
                     <t>If the first argument node is of any other type, an empty node set is
                     returned.</t>
@@ -8786,14 +8764,12 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
             However, changes to published modules are not allowed if they have any potential to
             cause interoperability problems between a client using an original specification and a
             server using an updated specification.</t>
-            <t>For any published change, a new "revision" statement (
-            <xref target="revision"/>) MUST be included in front of the existing "revision"
-            statements. If there are no existing "revision" statements, then one MUST be added to
-            identify the new revision. Furthermore, any necessary changes MUST be applied to any
-            metadata statements, including the "organization" and "contact" statements
-            (Sections&nbsp;
-            <xref target="organization" format="counter"/> and
-            <xref target="contact" format="counter"/>).</t>
+            <t>For any published change, a new "revision" statement (<xref target="revision"/>)
+            MUST be included in front of the existing "revision" statements. If there are no
+            existing "revision" statements, then one MUST be added to identify the new revision.
+            Furthermore, any necessary changes MUST be applied to any metadata statements,
+            including the "organization" and "contact" statements (Sections
+            <xref target="organization" format="counter"/> and <xref target="contact" format="counter"/>).</t>
             <t>Note that definitions contained in a module are available to be imported by any
             other module and are referenced in "import" statements via the module name. Thus, a
             module name MUST NOT be changed. Furthermore, the "namespace" statement MUST NOT be
@@ -8833,17 +8809,14 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     <t>New typedefs, groupings, rpcs, notifications, extensions, features, and
                     identities may be added.</t>
                     <t>New data definition statements may be added if they do not add mandatory
-                    nodes (
-                    <xref target="terminology"/>) to existing nodes or at the top level in a
+                    nodes (<xref target="terminology"/>) to existing nodes or at the top level in a
                     module or submodule, or if they are conditionally dependent on a new feature
                     (i.e., have an "if‑feature" statement that refers to a new feature).</t>
                     <t>A new "case" statement may be added.</t>
                     <t>A node that represented state data may be changed to represent
-                    configuration, provided it is not mandatory (
-                    <xref target="terminology"/>).</t>
+                    configuration, provided it is not mandatory (<xref target="terminology"/>).</t>
                     <t>An "if‑feature" statement may be removed, provided its node is not
-                    mandatory (
-                    <xref target="terminology"/>).</t>
+                    mandatory (<xref target="terminology"/>).</t>
                     <t>A "status" statement may be added, or changed from "current" to
                     "deprecated" or "obsolete", or changed from "deprecated" to "obsolete".</t>
                     <t>A "type" statement may be replaced with another "type" statement that does

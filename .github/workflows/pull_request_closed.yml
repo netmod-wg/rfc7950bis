@@ -29,7 +29,7 @@ jobs:
       - name: Download and extract drafts
         run: |
           cd mysite
-          curl -O https://netmod-wg.github.io/rfc7950bis/drafts.tgz
+          curl -O https://netmod-wg.github.io/rfc7950bis-and-friends/drafts.tgz
           tar -xzvf drafts.tgz
           rm drafts.tgz
 
