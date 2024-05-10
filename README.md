@@ -20,7 +20,6 @@ request (PR) can update them together.
 
   GitHub workflow actions are used to automatically build, test, and
   publish the three drafts, in the `html`, `txt`, and `xml` formats.
-
   This automation occur for both the `main` branch and every PR-branch.
 
   The webpage also provide links to:
