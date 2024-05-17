@@ -415,7 +415,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     description
       "Hostname for this system.";
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>XML Encoding Example:</t>
@@ -423,7 +423,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                             <artwork>
 <![CDATA[
   <host-name>my.example.com</host-name>
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The "leaf" statement is covered in
@@ -440,7 +440,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     description
       "List of domain names to search.";
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>XML Encoding Example:</t>
@@ -450,7 +450,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   <domain-search>high.example.com</domain-search>
   <domain-search>low.example.com</domain-search>
   <domain-search>everywhere.example.com</domain-search>
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The "leaf‑list" statement is covered in
@@ -474,7 +474,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>XML Encoding Example:</t>
@@ -486,7 +486,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <message>Good morning</message>
     </login>
   </system>
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The "container" statement is covered in
@@ -514,7 +514,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       type string;
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>XML Encoding Example:</t>
@@ -536,7 +536,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <full-name>Rapun Zell</full-name>
     <class>tower</class>
   </user>
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The "list" statement is covered in
@@ -597,7 +597,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -632,7 +632,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       config false;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The "config" statement is covered in
@@ -706,7 +706,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   leaf completed {
     type percent;
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>XML Encoding Example:</t>
@@ -714,7 +714,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   <completed>20</completed>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The "typedef" statement is covered in
@@ -744,7 +744,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       uses target;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>XML Encoding Example:</t>
@@ -757,7 +757,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <port>830</port>
     </destination>
   </peer>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The grouping can be refined as it is used, allowing certain statements to
@@ -787,7 +787,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The "grouping" statement is covered in
@@ -832,7 +832,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>XML Encoding Example:</t>
@@ -843,7 +843,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <pretzel/>
     <beer/>
   </food>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The "choice" statement is covered in
@@ -872,7 +872,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>This example defines a "uid" node that is valid only when the user's
@@ -891,7 +891,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <class>drop-out</class>
     <other:uid>1024</other:uid>
   </user>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The "augment" statement is covered in
@@ -919,7 +919,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>NETCONF XML Example:</t>
@@ -939,7 +939,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       The image example-fw-2.3 is being installed.
     </status>
   </rpc-reply>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>YANG Example for an operation tied to a list data node:</t>
@@ -966,7 +966,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>NETCONF XML Example:</t>
@@ -990,7 +990,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
              xmlns:sys="http://example.com/system">
     <sys:packet-loss>60</sys:packet-loss>
   </rpc-reply>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The "rpc" statement is covered in
@@ -1019,7 +1019,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       type oper-status;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>NETCONF XML Example:</t>
@@ -1035,7 +1035,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <if-oper-status>down</if-oper-status>
     </link-failure>
   </notification>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The "notification" statement is covered in
@@ -1132,7 +1132,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       uses p:a;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>When the author of "a" publishes a new revision, the changes may not be
@@ -1164,7 +1164,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     container system { ... }
     container routing { ... }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>could be encoded in NETCONF as:</t>
@@ -1188,7 +1188,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -1201,7 +1201,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     <artwork>
 <![CDATA[
   module-or-submodule-name ['@' revision-date] ( '.yang' / '.yin' )
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <t>"module‑or‑submodule‑name" is the name of the module or submodule, and the
@@ -1354,7 +1354,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 <![CDATA[
   urn:ietf:params:netconf:capability:yang-library:1.0?
     revision=<date>&module-set-id=<id>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The parameter "revision" has the same value as the revision date of the
@@ -1481,7 +1481,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       ...
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A server that implements revision "2015‑01‑01" of module "a" and supports
@@ -1521,7 +1521,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <conformance-type>import</conformance-type>
     </module>
   </modules-state>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -1606,7 +1606,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
  \t      a tab character
  \"      a double quote
  \\      a single backslash
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The backslash MUST NOT be followed by any other character.</t>
@@ -1628,7 +1628,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   'hello'
   "hel" + "lo"
   'hel' + "lo"
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The following examples show some special strings:</t>
@@ -1640,7 +1640,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   "\n"  - string containing a newline character
   '\n'  - string containing a backslash followed
           by the character n
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The following examples show some illegal strings:</t>
@@ -1649,7 +1649,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 <![CDATA[
   ''''  - a single-quoted string cannot contain single quotes
   """   - a double quote must be escaped in a double-quoted string
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The following strings are equivalent:</t>
@@ -1660,7 +1660,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
          second line"
 
   "first line\n" + "  second line"
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -1722,7 +1722,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     <artwork>
 <![CDATA[
   statement = keyword [argument] (";" / "{" *statement "}")
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <t>The argument is a string, as defined in
@@ -1787,7 +1787,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     must ". <= 10";
   }
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <t>An instance of the "lxiv" leaf having the value of 10.0000000000000001 will
@@ -1908,7 +1908,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>and given the following data tree, specified in XML:</t>
@@ -1923,7 +1923,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <id>2</id>
     </b>
   </a>
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The accessible tree for a notification "down" on /a/b[id="2"] is:</t>
@@ -1942,7 +1942,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     </b>
   </a>
   // possibly other top-level nodes here
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The accessible tree for an action invocation of "reset" on
@@ -1963,7 +1963,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     </b>
   </a>
   // possibly other top-level nodes here
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The accessible tree for the action output of this action is:</t>
@@ -1982,7 +1982,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     </b>
   </a>
   // possibly other top-level nodes here
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The accessible tree for a notification "failure" could be:</t>
@@ -2001,7 +2001,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <b-ref>2</b-ref>
   </failure>
   // possibly other top-level nodes here
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -2034,7 +2034,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   description "Some text." {
     ex:documentation-flag 5;
   }
-            ]]>
+]]>
                 </artwork>
             </figure>
             <section title="The &quot;module&quot; Statement" anchor="module">
@@ -2076,7 +2076,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     // module definitions
     <other statements>
   }
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <section title="The module's Substatements">
@@ -2449,7 +2449,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 
     // definitions follow...
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -2475,14 +2475,14 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     <artwork>
 <![CDATA[
   submodule <module-name> {
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <figure>
                     <artwork>
 <![CDATA[
     <yang-version statement>
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <figure>
@@ -2506,7 +2506,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     // module definitions
     <other statements>
   }
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <section title="The submodule's Substatements">
@@ -2702,7 +2702,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 
     // definitions follow...
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -2789,7 +2789,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     type inet:ipv4-address;
     default "0.0.0.0";
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -3104,7 +3104,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       error-message "An ATM MTU must be 64 .. 17966";
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -3180,7 +3180,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example:</t>
@@ -3192,7 +3192,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <ssh/>
     </services>
   </system>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>Since the &lt;ssh&gt; element is present, SSH is enabled.</t>
@@ -3216,7 +3216,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -3349,7 +3349,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     default blue; // illegal - enum value is conditional
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -3412,7 +3412,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     description
       "The port to which the SSH server listens.";
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example:</t>
@@ -3420,7 +3420,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   <port>2022</port>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>To set the value of a leaf with an &lt;edit‑config&gt;:</t>
@@ -3445,7 +3445,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -3719,7 +3719,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     description
       "A list of user name patterns to allow.";
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example:</t>
@@ -3728,7 +3728,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 <![CDATA[
   <allow-user>alice</allow-user>
   <allow-user>bob</allow-user>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>To create a new element in this list, using the default &lt;edit‑config&gt;
@@ -3754,7 +3754,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>Given the following ordered-by user leaf-list:</t>
@@ -3767,7 +3767,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     description
       "A list of ciphers.";
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following would be used to insert a new cipher "blowfish‑cbc" after
@@ -3796,7 +3796,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -3989,7 +3989,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       type inet:port-number;
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>the following configuration is not valid:</t>
@@ -4007,7 +4007,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <ip>192.0.2.1</ip>
     <port>25</port>
   </server>
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The following configuration is valid, since the "http" and "ftp" list
@@ -4031,7 +4031,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <name>ftp</name>
     <ip>192.0.2.1</ip>
   </server>
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -4127,7 +4127,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       type string;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example:</t>
@@ -4139,7 +4139,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <type>admin</type>
     <full-name>Fred Flintstone</full-name>
   </user>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>To create a new user "barney":</t>
@@ -4164,7 +4164,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>To change the type of "fred" to "superuser":</t>
@@ -4188,7 +4188,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>Given the following ordered-by user list:</t>
@@ -4213,7 +4213,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       type string;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following would be used to insert a new user "barney rubble" after the
@@ -4244,7 +4244,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following would be used to move the user "barney rubble" before the
@@ -4274,7 +4274,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -4402,7 +4402,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       container ethernet { ...}
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>As a shorthand, the "case" statement can be omitted if the branch contains
@@ -4417,7 +4417,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   choice interface-type {
     container ethernet { ... }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>is equivalent to:</t>
@@ -4429,7 +4429,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       container ethernet { ... }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The case identifier MUST be unique within a choice.</t>
@@ -4559,7 +4559,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -4611,7 +4611,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example:</t>
@@ -4621,7 +4621,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   <protocol>
     <tcp/>
   </protocol>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>To change the protocol from TCP to UDP:</t>
@@ -4644,7 +4644,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </config>
     </edit-config>
   </rpc>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -4755,7 +4755,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     anydata data;
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following is a valid encoding of such a list instance:</t>
@@ -4778,7 +4778,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </notification>
     </data>
   </logged-notification>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -4885,7 +4885,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   anyxml html-info;
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following are two valid encodings of the same anyxml value:</t>
@@ -4903,7 +4903,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
        This is <x:em>very</x:em> cool.
      </x:p>
    </html-info>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -5034,7 +5034,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       type inet:port-number;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -5147,7 +5147,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     uses sys:endpoint;
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example:</t>
@@ -5159,7 +5159,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <ip>192.0.2.1</ip>
     <port>80</port>
   </http-server>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>If port 80 should be the default for the HTTP server, a default can be
@@ -5177,7 +5177,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>If we want to define a list of servers and each server has "ip" and "port"
@@ -5192,7 +5192,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     uses sys:endpoint;
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following is an error:</t>
@@ -5205,7 +5205,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       type string;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -5469,7 +5469,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example of the complete rpc and
@@ -5488,7 +5488,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
              xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
     <ok/>
   </rpc-reply>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -5627,7 +5627,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
        }
      }
    }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example of the complete rpc and
@@ -5653,7 +5653,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       2014-07-29T13:42:12Z
     </reset-finished-at>
   </rpc-reply>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -5812,7 +5812,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example of the complete notification:</t>
@@ -5830,7 +5830,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <severity>major</severity>
     </event>
   </notification>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following example defines a notification in a data node:</t>
@@ -5856,7 +5856,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example of the complete notification:</t>
@@ -5875,7 +5875,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </interface>
     </interfaces>
   </notification>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -5940,7 +5940,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
        }
     }
   }
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <section title="The augment's Substatements">
@@ -6061,7 +6061,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>Then, in namespace urn:example:ds0, we have:</t>
@@ -6077,7 +6077,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       type ChannelNumber;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example:</t>
@@ -6099,7 +6099,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <ds0:ds0ChannelNumber>1</ds0:ds0ChannelNumber>
     </ifEntry>
   </interfaces>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>As another example, suppose we have the choice defined in
@@ -6115,7 +6115,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>A corresponding XML instance example:</t>
@@ -6127,7 +6127,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <ex:tcp/>
     </ex:protocol>
   </ex:system>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>or</t>
@@ -6139,7 +6139,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <other:smtp/>
     </ex:protocol>
   </ex:system>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -6259,7 +6259,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       description "Triple DES crypto algorithm.";
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -6358,7 +6358,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       argument "name";
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>To use the extension:</t>
@@ -6379,7 +6379,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       myext:c-define "MY_INTERFACES";
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -6432,7 +6432,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The "if‑feature" statement can be used in many places within the YANG
@@ -6499,7 +6499,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     if-feature "outbound-tls or outbound-ssh";
     ...
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>The following examples are equivalent:</t>
@@ -6509,7 +6509,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   if-feature "not foo or bar and baz";
 
   if-feature "(not foo) or (bar and baz)";
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -6657,7 +6657,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     ...
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>A server would advertise both modules "example‑base" and
@@ -6672,7 +6672,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       default "admin"; // new users are 'admin' by default
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>In this example, the server limits the number of name servers to 3:</t>
@@ -6684,7 +6684,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       max-elements 3;
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>If the original definition is:</t>
@@ -6695,7 +6695,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     must "daytime or time";
     ...
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>a server might remove this "must" constraint by doing:</t>
@@ -6707,7 +6707,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       must "daytime or time";
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -6760,7 +6760,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     status current;
     type my-type; // illegal, since my-type is deprecated
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -6787,7 +6787,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       "RFC 3986: Uniform Resource Identifier (URI): Generic Syntax";
     ...
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -7066,7 +7066,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 
   // illegal values
   - 1                         // illegal intermediate space
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -7147,7 +7147,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       range "11..100";
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -7254,7 +7254,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       range "1 .. 3.14 | 10 | 20..max";
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -7391,7 +7391,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       length "1..255";
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>the following refinement is legal:</t>
@@ -7402,7 +7402,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     // legal length refinement
     length "11 | 42..max"; // 11 | 42..255
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>and the following refinement is illegal:</t>
@@ -7413,7 +7413,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     // illegal length refinement
     length "1..999";
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>With the following type:</t>
@@ -7424,7 +7424,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     length "0..4";
     pattern "[0-9a-fA-F]*";
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>the following strings match:</t>
@@ -7433,7 +7433,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 <![CDATA[
   AB          // legal
   9A00        // legal
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>and the following strings do not match:</t>
@@ -7442,7 +7442,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 <![CDATA[
   00ABAB      // illegal, too long
   xx00        // illegal, bad characters
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>With the following type:</t>
@@ -7456,7 +7456,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       modifier invert-match;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>the following string matches:</t>
@@ -7464,7 +7464,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   enabled     // legal
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>and the following strings do not match:</t>
@@ -7473,7 +7473,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 <![CDATA[
   10-mbit     // illegal, starts with a number
   xml-element // illegal, starts with illegal sequence
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -7587,7 +7587,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The lexical representation of the leaf "myenum" with
@@ -7596,7 +7596,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   <myenum>seven</myenum>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>With the following typedef:</t>
@@ -7616,7 +7616,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>the following refinement is legal:</t>
@@ -7630,7 +7630,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       value 3;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>and the following refinement is illegal:</t>
@@ -7644,7 +7644,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     enum black; // illegal addition of new name
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following example shows how an "enum" can be tagged with "if‑feature",
@@ -7662,7 +7662,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       if-feature tls;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -7773,7 +7773,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     type mybits-type;
     default "auto-sense-speed";
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The lexical representation of this leaf with bit values disable-nagle and
@@ -7782,7 +7782,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   <mybits>disable-nagle ten-mb-only</mybits>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following example shows a legal refinement of this type:</t>
@@ -7798,7 +7798,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       position 1;
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>and the following refinement is illegal:</t>
@@ -7812,7 +7812,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     bit hundred-mb-only; // illegal addition of new name
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -7929,7 +7929,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>the following leafref refers to an existing interface:</t>
@@ -7941,7 +7941,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       path "../interface/name";
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>An example of a corresponding XML snippet:</t>
@@ -7956,7 +7956,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   </interface>
 
   <mgmt-interface>eth0</mgmt-interface>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following leafrefs refer to an existing address of an interface:</t>
@@ -7976,7 +7976,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>An example of a corresponding XML snippet:</t>
@@ -8005,7 +8005,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <ifname>eth0</ifname>
     <address>192.0.2.2</address>
   </default-address>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following list uses a leafref for one of its keys. This is similar to a
@@ -8025,7 +8025,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     ...
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>An example of a corresponding XML snippet:</t>
@@ -8053,7 +8053,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <filter-id>2</filter-id>
     ...
   </packet-filter>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The following notification defines two leafrefs to refer to an existing
@@ -8074,7 +8074,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>An example of a corresponding XML notification:</t>
@@ -8089,7 +8089,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <admin-status>up</admin-status>
     </link-failure>
   </notification>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -8167,7 +8167,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       ...
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>the following is an example of how the leaf "crypto" can be encoded, if the
@@ -8176,7 +8176,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   <crypto xmlns:des="urn:example:des">des:des3</crypto>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>Any prefixes used in the encoding are local to each instance encoding. This
@@ -8187,7 +8187,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   <crypto xmlns:x="urn:example:des">x:des3</crypto>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>If the "crypto" leaf's value is instead "aes", defined in the
@@ -8196,7 +8196,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   <crypto xmlns:mc="urn:example:my-crypto">mc:aes</crypto>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>or, using the default namespace:</t>
@@ -8204,7 +8204,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   <crypto>aes</crypto>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -8230,7 +8230,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
   leaf enable-qos {
     type empty;
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>the following is an example of a valid encoding if the leaf exists:</t>
@@ -8238,7 +8238,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   <enable-qos/>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -8282,7 +8282,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       enum "unbounded";
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>Care must be taken when a member type is a leafref where the
@@ -8311,7 +8311,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>assume that there exists an entry in the filter list with the name "http"
@@ -8323,7 +8323,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <name>http</name>
   </filter>
   <outbound-filter>http</outbound-filter>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>If the filter entry "http" is removed, the outbound-filter leaf's value
@@ -8410,7 +8410,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 
   /* instance-identifier for a list entry without keys */
   /ex:stats/ex:port[3]
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -8427,7 +8427,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   node-set current()
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The current() function takes no input parameters and returns a node set
@@ -8445,7 +8445,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     ...
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>the following leaf defines a "must" expression that ensures that the
@@ -8459,7 +8459,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     must '/interface[name=current()]/enabled = "true"';
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -8471,7 +8471,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   boolean re-match(string subject, string pattern)
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The re-match() function returns "true" if the "subject" string matches the
@@ -8487,7 +8487,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                             <artwork>
 <![CDATA[
   re-match("1.22.333", "\d{1,3}\.\d{1,3}\.\d{1,3}")
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>returns "true".</t>
@@ -8496,7 +8496,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                             <artwork>
 <![CDATA[
   count(/interface[re-match(name, "eth0\.\d+")])
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -8509,7 +8509,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   node-set deref(node-set nodes)
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The deref() function follows the reference defined by the first node in
@@ -8555,7 +8555,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -8568,7 +8568,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   boolean derived-from(node-set nodes, string identity)
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The derived-from() function returns "true" if any node in the argument
@@ -8621,7 +8621,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     }
     ...
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -8631,7 +8631,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   boolean derived-from-or-self(node-set nodes, string identity)
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The derived-from-or-self() function returns "true" if any node in the
@@ -8655,7 +8655,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       when 'derived-from-or-self(type, "exif:fast-ethernet");
       // Fast-Ethernet-specific definitions here
     }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -8667,7 +8667,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   number enum-value(node-set nodes)
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The enum-value() function checks to see if the first node in document order
@@ -8704,7 +8704,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>the following XPath expression selects only alarms that are of severity
@@ -8713,7 +8713,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                             <artwork>
 <![CDATA[
   /alarm[enum-value(severity) >= 5]
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -8725,7 +8725,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <artwork>
 <![CDATA[
   boolean bit-is-set(node-set nodes, string bit-name)
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>The bit-is-set() function returns "true" if the first node in document
@@ -8743,7 +8743,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       bit DISABLED;
     }
    }
-            ]]>
+]]>
                             </artwork>
                         </figure>
                         <t>the following XPath expression can be used to select all interfaces
@@ -8752,7 +8752,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                             <artwork>
 <![CDATA[
   /interface[bit-is-set(flags, "UP")]
-            ]]>
+]]>
                             </artwork>
                         </figure>
                     </section>
@@ -9139,7 +9139,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       }
     }
   }
-            ]]>
+]]>
                         </artwork>
                     </figure>
                     <t>where the extension "c‑define" is defined in
@@ -9173,7 +9173,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       </leaf>
     </list>
   </module>
-            ]]>
+]]>
                         </artwork>
                     </figure>
                 </section>
@@ -10337,7 +10337,7 @@ SP                  = %x20
 
 WSP                 = SP / HTAB
                       ; whitespace
-            ]]>
+]]>
                 </artwork>
             </figure>
             <t>&lt;CODE ENDS&gt;</t>
@@ -10361,7 +10361,7 @@ WSP                 = SP / HTAB
 
                   The <non-unique> element is in the YANG
                   namespace ("urn:ietf:params:xml:ns:yang:1").
-            ]]>
+]]>
                     </artwork>
                 </figure>
             </section>
@@ -10374,7 +10374,7 @@ WSP                 = SP / HTAB
 <![CDATA[
   error-tag:      operation-failed
   error-app-tag:  too-many-elements
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <t>This error is returned once, with the error-path identifying the list node,
@@ -10389,7 +10389,7 @@ WSP                 = SP / HTAB
 <![CDATA[
   error-tag:      operation-failed
   error-app-tag:  too-few-elements
-            ]]>
+]]>
                     </artwork>
                 </figure>
                 <t>This error is returned once, with the error-path identifying the list node,
@@ -10405,7 +10405,7 @@ WSP                 = SP / HTAB
 <![CDATA[
   error-tag:      operation-failed
   error-app-tag:  must-violation
-            ]]>
+]]>
                     </artwork>
                 </figure>
             </section>
@@ -10421,7 +10421,7 @@ WSP                 = SP / HTAB
   error-tag:      data-missing
   error-app-tag:  instance-required
   error-path:     Path to the instance-identifier or leafref leaf.
-            ]]>
+]]>
                     </artwork>
                 </figure>
             </section>
@@ -10440,7 +10440,7 @@ WSP                 = SP / HTAB
 
                   The <missing-choice> element is in the YANG
                   namespace ("urn:ietf:params:xml:ns:yang:1").
-            ]]>
+]]>
                     </artwork>
                 </figure>
             </section>
@@ -10453,7 +10453,7 @@ WSP                 = SP / HTAB
 <![CDATA[
   error-tag:      bad-attribute
   error-app-tag:  missing-instance
-            ]]>
+]]>
                     </artwork>
                 </figure>
             </section>
@@ -10467,7 +10467,7 @@ WSP                 = SP / HTAB
   Index           Capability Identifier
   -------------   ---------------------------------------------------
   :yang-library   urn:ietf:params:netconf:capability:yang-library:1.0
-            ]]>
+]]>
                 </artwork>
             </figure>
         </section>
@@ -10692,7 +10692,7 @@ WSP                 = SP / HTAB
  - David Partain (Ericsson)
  - Juergen Schoenwaelder (Jacobs University Bremen)
  - Phil Shafer (Juniper Networks)
-            ]]>
+]]>
                 </artwork>
             </figure>
         </section>

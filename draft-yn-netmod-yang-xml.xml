@@ -25,14 +25,11 @@ INSERT_TEXT_FROM_FILE(.authors.txt)
         <workgroup>NETMOD Working Group</workgroup>
         <keyword>data modeling</keyword>
         <abstract>
-            <t>YANG is a data modeling language used to model configuration, operational
-            state, asynchronous notifications, and remote procedure calls (RPCs) for
-            network management. This document describes the syntax and semantics of
-            version&nbsp;2.0 of the YANG language (YANG&nbsp;2.0). YANG&nbsp;2.0 is a
-            major release of the YANG language, updating version&nbsp;1.1 of the YANG
-            language in both backwards-compatible and backwards-incompatible ways.</t>
+            <t>This document defines encoding rules for representing YANG modeled
+            configuration data, state data, parameters of Remote Procedure Call (RPC)
+            operations or actions, and notifications defined using XML.</t>
         </abstract>
-        <note title="Production Process (to be removed by RFC Editor)">
+        <note title="GitHub Information (to be removed by RFC Editor)">
             <t>This document is developed on GitHub (<eref target="https://github.com/netmod-wg/rfc7950bis"/>).
             If you wish to contribute, please consider opening a pull request (PR).  Please see the
             <eref target="https://github.com/netmod-wg/rfc7950bis/blob/main/README.md">README</eref>
@@ -47,20 +44,253 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     </front>
     <middle>
         <section title="Introduction">
+            <t>This document defines encoding rules for representing YANG
+            <xref target="RFC7950"/> modeled configuration
+            data, state data, parameters of Remote Procedure Call (RPC)
+            operations or actions, and notifications defined using
+            the Extensible Markup Language (XML) <xref target="XML"/>.</t>
+        </section>
 
-            <t>YANG <xref target="RFC6020"/> <xref target="RFC7950"/> is a data modeling
-            language used to model configuration, operational state, asynchronous
-            notifications, and remote procedure calls (RPCs) for network management.
-            In this sense, YANG is a domain-specific data modeling language having,
-            e.g., first-class annotations for configuration and operational state,
-            with rules for how they relate.</t>
+        <section title="Terminology and Notation">
+            <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+            "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY",
+            and "OPTIONAL" in this document are to be interpreted as described
+            in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+            when, and only when, they appear in all capitals, as shown here.</t>
+          <t>The following terms are defined in <xref target="RFC7950"/>:</t>
+            <ul spacing="compact">
+                <li>action</li>
+                <li>anydata</li>
+                <li>anyxml</li>
+                <li>augment</li>
+                <li>container</li>
+                <li>data node</li>
+                <li>data tree</li>
+                <li>identity</li>
+                <li>instance identifier</li>
+                <li>leaf</li>
+                <li>leaf-list</li>
+                <li>list</li>
+                <li>module</li>
+                <li>RPC operation</li>
+                <li>submodule</li>
+            </ul>
+            <t>The following terms are defined in [RFC6241]:</t>
+            <ul spacing="compact">
+              <li>configuration data</li>
+              <li>notification</li>
+              <li>state data</li>
+            </ul>
+        </section>
+        <section title="Properties of the XML Encoding">
 
-            <section title="Key Words">
-                <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-                "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY",
-                and "OPTIONAL" in this document are to be interpreted as described
-                in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/>
-                when, and only when, they appear in all capitals, as shown here.</t>
+            <t>This document defines XML encoding for YANG data trees and their
+            subtrees.  It is always assumed that there may be one or more top-level
+            elements in XML-encoded configuration data and state data. RPC operations
+            and notifications contain a single top-level element.</t>
+
+            <t>Instances of YANG data nodes (leafs, containers, leaf-lists, lists,
+            anydata nodes, and anyxml nodes) are encoded as XML elements having
+            the name of the YANG data node.  <xref target="names"/>) defines
+            how the name is qualified with a namespace, and the following sections
+            deal with the value part.  The encoding rules are identical for all
+            types of data trees, i.e., configuration data, state data, parameters
+            of RPC operations, actions, and notifications.</t>
+
+            <t>With the exception of "anydata" encoding (<xref target="anydata"/>), all rules in
+            this document are also applicable to YANG&nbsp;1.0 <xref target="RFC6020"/>.</t>
+
+            <t>With the exception of anyxml and schema-less anydata nodes, it is
+            possible to map an XML-encoded data tree to other encodings, such as
+            the JSON encoding as defined in <xref target="RFC7951"/>, and vice
+            versa.  However, such conversions require the YANG data model to be
+            available.</t>
+        </section>
+
+        <section title="Names and Namespaces" anchor="names">
+
+            <t>An XML element name is always identical to the identifier of the
+            corresponding YANG data node.</t>
+
+            <t>All XML elements encoding YANG data are namespace qualified.  The
+            XML default namespace is never used in YANG encoded data.</t>
+
+            <t>The namespace of an XML element is either inherited from its ancestor
+            or set using the "xmlns" attribute in the element.</t>
+
+            <t>The "xmlns" attribute may either set the XML default namespace or
+            define and use a prefix for the namespace.  For instance, the following
+            two XML documents are the same.</t>
+
+            <t>Document 1:</t>
+            <figure>
+                <artwork>
+<![CDATA[
+<foo xmlns="https://example.com/foo"/>
+]]>
+                </artwork>
+            </figure>
+
+            <t>Document 2:</t>
+            <figure>
+                <artwork>
+<![CDATA[
+<my-prefix:foo xmlns:my-prefix="https://example.com/foo"/>
+]]>
+                </artwork>
+            </figure>
+
+            <t>The "namespace" statement of a module determines the namespace
+            of all data node names defined in that module.  If a data node is
+            defined in a submodule, then the namespace of the main module is used.</t>
+
+            <t>A namespace MUST be set for all top-level XML elements and then
+            also whenever the namespaces of the data node and its parent node
+            are different.</t>
+
+            <t>For example, consider the following YANG module:</t>
+
+            <figure>
+                <artwork>
+<![CDATA[
+module example-foomod {
+
+  namespace "https://example.com/foomod";
+
+  prefix "foomod";
+
+  container top {
+    leaf foo {
+      type uint8;
+    }
+  }
+}
+]]>
+                </artwork>
+            </figure>
+
+            <t>If the data model consists only of this module, then the following is
+            valid XML-encoded configuration data:</t>
+
+            <figure>
+                <artwork>
+<![CDATA[
+<top xmlns="https://example.com/foomod">
+  <foo>54</foo>
+</top>
+]]>
+                </artwork>
+            </figure>
+
+            <t>Note that the top-level element sets the default namespace which
+            "foo" leaf inherits its parent container "top".</t>
+
+            <t>Now, assume that the container "top" is augmented from another
+            module, "example-barmod":</t>
+
+            <figure>
+                <artwork>
+<![CDATA[
+module example-barmod {
+
+  namespace "https://example.com/barmod";
+
+  prefix "barmod";
+
+  import example-foomod {
+    prefix "foomod";
+  }
+
+  augment "/foomod:top" {
+    leaf bar {
+      type boolean;
+    }
+  }
+}
+]]>
+                </artwork>
+            </figure>
+
+            <t>Valid XML-encoded configuration data containing both leafs may then
+            look like this:</t>
+
+            <figure>
+                <artwork>
+<![CDATA[
+<top xmlns="https://example.com/foomod">
+  <foo>54</foo>
+  <bar xmlns="https://example.com/barmod">true</bar>
+</top>
+]]>
+                </artwork>
+            </figure>
+
+            <t>The "bar" leaf's element sets a new default namespace
+            because its parent is defined in a different module.</t>
+
+            <t>Prefixed namespace identifiers are sometimes needed when encoding
+            values of the "identityref" and "instance-identifier" types.  See
+            <xref target="identityref"/> and <xref target="instance-identifier"/>
+            for details.</t>
+
+        </section> <!-- Names and Namespaces -->
+
+        <section title="Encoding of YANG Data Node Instances">
+            <section title='The "leaf" Data Node'>
+                <t>TBD</t>
+            </section>
+            <section title='The "container" Data Node'>
+                <t>TBD</t>
+            </section>
+            <section title='The "leaf-list" Data Node'>
+                <t>TBD</t>
+            </section>
+            <section title='The "list" Data Node'>
+                <t>TBD</t>
+            </section>
+            <section title='The "anydata" Data Node' anchor="anydata">
+                <t>TBD</t>
+            </section>
+            <section title='The "anyxml" Data Node'>
+                <t>TBD</t>
+            </section>
+            <section title="Metadata Objects">
+                <t>TBD</t>
+            </section>
+        </section>
+        <section title="Representing YANG Data Types in JSON Values">
+            <section title="Numeric Types">
+                <t>TBD</t>
+            </section>
+            <section title='The "string" Type'>
+                <t>TBD</t>
+            </section>
+            <section title='The "boolean" Type'>
+                <t>TBD</t>
+            </section>
+            <section title='The "enumeration" Type'>
+                <t>TBD</t>
+            </section>
+            <section title='The "bits" Type'>
+                <t>TBD</t>
+            </section>
+            <section title='The "binary" Type'>
+                <t>TBD</t>
+            </section>
+            <section title='The "leafref" Type'>
+                <t>TBD</t>
+            </section>
+            <section title='The "identityref" Type' anchor="identityref">
+                <t>TBD</t>
+            </section>
+            <section title='The "empty" Type'>
+                <t>TBD</t>
+            </section>
+            <section title='The "union" Type'>
+                <t>TBD</t>
+            </section>
+            <section title='The "instance-identifier" Type' anchor="instance-identifier">
+                <t>TBD</t>
             </section>
         </section>
         <section title="IANA Considerations" anchor="iana">
@@ -76,15 +306,38 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <back>
         <references title="Normative References">
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7950.xml"/>
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+            <!--<xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.yn-netmod-rfc7950bis"/>-->
+            <reference anchor="I-D.yn-netmod-rfc7950bis">
+                <front>
+                    <title>The YANG 1.1 Data Modeling Language</title>
+                    <author>
+                        <organization>IETF</organization>
+                    </author>
+                    <date year="2024"/>
+                </front>
+            </reference>
+            <reference anchor="XML" target="https://www.w3.org/TR/2008/REC-xml-20081126/">
+                <front>
+                    <title>Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
+                    <author fullname="Tim Bray" surname="Bray" initials="T."/>
+                    <author fullname="Jean Paoli" surname="Paoli" initials="J."/>
+                    <author fullname="Michael Sperberg-McQueen" surname="Sperberg-McQueen"
+                         initials="C."/>
+                    <author fullname="Eve Maler" surname="Maler" initials="E."/>
+                    <author fullname="Francois Yergeau" surname="Yergeau" initials="F."/>
+                    <date year="2008" month="November" day="26"/>
+                </front><seriesInfo name="W3C Recommendation" value="REC-xml-20081126"/>
+            </reference>
         </references>
         <references title="Informative References">
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
-            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7950.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7951.xml"/>
         </references>
         <section title="Acknowledgements" numbered="no">
-            <t>The editor wishes to thank the following individuals, who all provided helpful
-            comments on various draft versions of this document: </t>
+            <t>Substantial text in this document was copied from <xref target="RFC7951"/>.  The
+            authors wish to thank Ladislav Lhotka for authoring RFC 7951.</t>
         </section>
     </back>
 </rfc>
