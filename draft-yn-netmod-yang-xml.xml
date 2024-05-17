@@ -58,7 +58,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
             in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/>
             when, and only when, they appear in all capitals, as shown here.</t>
           <t>The following terms are defined in <xref target="RFC7950"/>:</t>
-            <ul>
+            <ul spacing="compact">
                 <li>action</li>
                 <li>anydata</li>
                 <li>anyxml</li>
@@ -76,7 +76,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                 <li>submodule</li>
             </ul>
             <t>The following terms are defined in [RFC6241]:</t>
-            <ul>
+            <ul spacing="compact">
               <li>configuration data</li>
               <li>notification</li>
               <li>state data</li>
