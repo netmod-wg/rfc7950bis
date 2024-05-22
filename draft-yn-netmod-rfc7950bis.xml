@@ -86,10 +86,10 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
               <t>This document is effectively the same as RFC&nbsp;7950 with two notable
                 distinctions:</t>
               <ol>
-                  <li>The "XML Encodings" sections have been removed.  More specifically,
-                  the information has been moved to <xref target="I-D.yn-netmod-yang-xml"/>.</li>
-                  <li>The "NETCONF Operations" sections have been removed.  More specifically,
-                    the information has been moved to <xref target="I-D.yn-netmod-yang-proto"/>.</li>
+                  <li>The "XML Encodings" sections have been removed.  The information
+									has been moved to <xref target="I-D.yn-netmod-yang-xml"/>.</li>
+                  <li>(Not Done Yet!) The NETCONF-specific sections have been removed.
+									The information has been moved to <xref target="I-D.yn-netmod-yang-proto"/>.</li>
               </ol>
             </section>
 
@@ -418,11 +418,19 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                             </artwork>
                         </figure>
-                        <t>XML Encoding Example:</t>
+                        <t>XML Encoding Example (see Section 5.1 in <xref target="I-D.yn-netmod-yang-xml"/> for details):</t>
                         <figure>
                             <artwork>
 <![CDATA[
   <host-name>my.example.com</host-name>
+]]>
+                            </artwork>
+                        </figure>
+                        <t>JSON Encoding Example (see <xref section="5.1" target="RFC7951"/> for details):</t>
+                        <figure>
+                            <artwork>
+<![CDATA[
+  "host-name": "my.example.com"
 ]]>
                             </artwork>
                         </figure>
@@ -443,13 +451,25 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                             </artwork>
                         </figure>
-                        <t>XML Encoding Example:</t>
+                        <t>XML Encoding Example (see Section 5.3 in <xref target="I-D.yn-netmod-yang-xml"/> for details):</t>
                         <figure>
                             <artwork>
 <![CDATA[
   <domain-search>high.example.com</domain-search>
   <domain-search>low.example.com</domain-search>
   <domain-search>everywhere.example.com</domain-search>
+]]>
+                            </artwork>
+                        </figure>
+                        <t>JSON Encoding Example (see <xref section="5.3" target="RFC7951"/> for details):</t>
+                        <figure>
+                            <artwork>
+<![CDATA[
+  "domain-search": [
+	  "high.example.com",
+	  "low.example.com",
+	  "everywhere.example.com"
+	]
 ]]>
                             </artwork>
                         </figure>
@@ -477,7 +497,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                             </artwork>
                         </figure>
-                        <t>XML Encoding Example:</t>
+                        <t>XML Encoding Example (see Section 5.2 in
+												<xref target="I-D.yn-netmod-yang-xml"/> for details):</t>
                         <figure>
                             <artwork>
 <![CDATA[
@@ -486,6 +507,18 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <message>Good morning</message>
     </login>
   </system>
+]]>
+                            </artwork>
+                        </figure>
+                        <t>JSON Encoding Example (see <xref section="5.2" target="RFC7951"/> for details):</t>
+                        <figure>
+                            <artwork>
+<![CDATA[
+  "system": {
+    "login": {
+      "message": "Good morning"
+    }
+  }
 ]]>
                             </artwork>
                         </figure>
@@ -517,7 +550,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                             </artwork>
                         </figure>
-                        <t>XML Encoding Example:</t>
+                        <t>XML Encoding Example (see Section 5.4 in <xref target="I-D.yn-netmod-yang-xml"/> for details):</t>
                         <figure>
                             <artwork>
 <![CDATA[
@@ -536,6 +569,30 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
     <full-name>Rapun Zell</full-name>
     <class>tower</class>
   </user>
+]]>
+                            </artwork>
+                        </figure>
+                        <t>JSON Encoding Example (see <xref section="5.4" target="RFC7951"/> for details):</t>
+                        <figure>
+                            <artwork>
+<![CDATA[
+  "user": [
+	  {
+		  "name": "glocks",
+			"full-name": "Goldie Locks",
+			"class": "intruder"
+    },
+	  {
+		  "name": "snowey",
+			"full-name": "Snow White",
+			"class": "free-loade"
+    },
+	  {
+		  "name": "rzell",
+			"full-name": "Rapun Zell",
+			"class": "tower"
+    }
+  ]
 ]]>
                             </artwork>
                         </figure>
@@ -685,8 +742,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <c>union</c>
                         <c>Choice of member types</c>
                     </texttable><?rfc compact="no"?>
-                    <t>The "type" statement is covered in
-                    <xref target="type"/>.</t>
+                    <t>The "type" statement is covered in <xref target="type"/>.</t>
                 </section>
                 <section title="Derived Types (typedef)">
                     <t>YANG can define derived types from base types using the "typedef"
@@ -709,7 +765,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                         </artwork>
                     </figure>
-                    <t>XML Encoding Example:</t>
+                    <t>XML Encoding Example (see Section 5.1 in <xref target="I-D.yn-netmod-yang-xml"/> for details):</t>
                     <figure>
                         <artwork>
 <![CDATA[
@@ -717,8 +773,15 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                         </artwork>
                     </figure>
-                    <t>The "typedef" statement is covered in
-                    <xref target="typedef"/>.</t>
+                    <t>JSON Encoding Example (see <xref section="5.1" target="RFC7951"/> for details):</t>
+                    <figure>
+                        <artwork>
+<![CDATA[
+  "completed": 20
+]]>
+                        </artwork>
+                    </figure>
+                    <t>The "typedef" statement is covered in <xref target="typedef"/>.</t>
                 </section>
                 <section title="Reusable Node Groups (grouping)">
                     <t>Groups of nodes can be assembled into reusable collections using the
@@ -747,7 +810,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                         </artwork>
                     </figure>
-                    <t>XML Encoding Example:</t>
+                    <t>XML Encoding Example (see Section 5.1 in <xref target="I-D.yn-netmod-yang-xml"/>
+										and Section 5.2 in <xref target="I-D.yn-netmod-yang-xml"/>):</t>
                     <figure>
                         <artwork>
 <![CDATA[
@@ -757,6 +821,19 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
       <port>830</port>
     </destination>
   </peer>
+]]>
+                        </artwork>
+                    </figure>
+                    <t>JSON Encoding Example (see <xref section="5.1" target="RFC7951"/> for details):</t>
+                    <figure>
+                        <artwork>
+<![CDATA[
+  "peer": {
+	  "destination": {
+		  "address": "2001:db8::2",
+			"port": 830
+		}
+	}
 ]]>
                         </artwork>
                     </figure>
@@ -790,8 +867,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                         </artwork>
                     </figure>
-                    <t>The "grouping" statement is covered in
-                    <xref target="grouping"/>.</t>
+                    <t>The "grouping" statement is covered in <xref target="grouping"/>.</t>
                 </section>
                 <section title="Choices">
                     <t>YANG allows the data model to segregate incompatible nodes into distinct
@@ -846,8 +922,18 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                         </artwork>
                     </figure>
-                    <t>The "choice" statement is covered in
-                    <xref target="choice"/>.</t>
+                    <t>JSON Encoding Example:</t>
+                    <figure>
+                        <artwork>
+<![CDATA[
+  "food": {
+	  "pretzel": [null],
+		"beer": [null]
+	}
+]]>
+                        </artwork>
+                    </figure>
+                    <t>The "choice" statement is covered in <xref target="choice"/>.</t>
                 </section>
                 <section title="Extending Data Models (augment)">
                     <t>YANG allows a module to insert additional nodes into data models, including
@@ -879,8 +965,7 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     "class" is not "wheel".</t>
                     <t>If a module augments another module, the XML elements that are added to the
                     encoding are in the namespace of the augmenting module. For example, if the
-                    above augmentation were in a module with prefix "other", the XML would look
-                    like:</t>
+                    above augmentation were in a module called "my-example" with prefix "other":</t>
                     <t>XML Encoding Example:</t>
                     <figure>
                         <artwork>
@@ -894,8 +979,20 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                         </artwork>
                     </figure>
-                    <t>The "augment" statement is covered in
-                    <xref target="augment"/>.</t>
+                    <t>JSON Encoding Example:</t>
+                    <figure>
+                        <artwork>
+<![CDATA[
+  "user": {
+	  "name": "alicew",
+		"full-name": "Alice N. Wonderland",
+		"class": "drop-out",
+		"my-example:uid": 1024
+	}
+]]>
+                        </artwork>
+                    </figure>
+                    <t>The "augment" statement is covered in <xref target="augment"/>.</t>
                 </section>
                 <section title="Operation Definitions">
                     <t>YANG allows the definition of operations. The operations' names, input
@@ -1146,12 +1243,10 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     more than one top-level node. Each top-level data node in a module defines a
                     separate hierarchy. Models that have multiple top&nbhy;level nodes are
                     sometimes convenient and are supported by YANG.</t>
-                    <section title="NETCONF XML Encoding">
-                        <t>NETCONF is capable of carrying any XML content as the payload in the
-                        &lt;config&gt; and &lt;data&gt; elements. The top-level nodes of YANG
-                        modules are encoded as child elements, in any order, within these
-                        elements. This encapsulation guarantees that the corresponding NETCONF
-                        messages are always well-formed XML documents.</t>
+                    <section title="Encoding Examples">
+                        <t>The top-level nodes of YANG modules are encoded as top-level
+												namespace-qualified elements, in any order.  This encapsulation
+												guarantees that the corresponding encodings are always well-formed.</t>
                         <t>For example, an instance of:</t>
                         <figure>
                             <artwork>
@@ -1167,27 +1262,25 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
 ]]>
                             </artwork>
                         </figure>
-                        <t>could be encoded in NETCONF as:</t>
+                        <t>could be encoded in XML as:</t>
                         <figure>
                             <artwork>
 <![CDATA[
-  <rpc message-id="101"
-       xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
-       xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
-    <edit-config>
-      <target>
-        <running/>
-      </target>
-      <config>
-        <system xmlns="urn:example:config">
-          <!-- system data here -->
-        </system>
-        <routing xmlns="urn:example:config">
-          <!-- routing data here -->
-        </routing>
-      </config>
-    </edit-config>
-  </rpc>
+  <system xmlns="urn:example:config">
+    ...  <!-- system data here -->
+  </system>
+  <routing xmlns="urn:example:config">
+    ...  <!-- routing data here -->
+  </routing>
+]]>
+                            </artwork>
+                        </figure>
+                        <t>or be encoded in JSON as:</t>
+                        <figure>
+                            <artwork>
+<![CDATA[
+  "example-config:system": ...
+	"example-config:routing": ...
 ]]>
                             </artwork>
                         </figure>
@@ -3124,22 +3217,6 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     "choice", "anydata", and "anyxml" statements can be used to define child nodes
                     to the container.</t>
                 </section>
-                <section title="XML Encoding Rules">
-                    <t>A container node is encoded as an XML element. The element's local name is
-                    the container's identifier, and its namespace is the module's XML namespace
-                    (see
-                    <xref target="namespace"/>).</t>
-                    <t>The container's child nodes are encoded as subelements to the container
-                    element. If the container defines RPC or action input or output parameters,
-                    these subelements are encoded in the same order as they are defined within the
-                    "container" statement. Otherwise, the subelements are encoded in any
-                    order.</t>
-                    <t>Any whitespace between the subelements to the container is insignificant,
-                    i.e., an implementation MAY insert whitespace characters between
-                    subelements.</t>
-                    <t>If a non-presence container does not have any child nodes, the container
-                    may or may not be present in the XML encoding.</t>
-                </section>
                 <section title="NETCONF &lt;edit-config&gt; Operations">
                     <t>Containers can be created, deleted, replaced, and modified through
                     &lt;edit‑config&gt; by using the "operation" attribute (see Section&nbsp;7.2
@@ -3373,15 +3450,6 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     </t>
                     <t>This constraint is enforced according to the rules in
                     <xref target="constraints"/>.</t>
-                </section>
-                <section title="XML Encoding Rules">
-                    <t>A leaf node is encoded as an XML element. The element's local name is the
-                    leaf's identifier, and its namespace is the module's XML namespace (see
-                    <xref target="namespace"/>).</t>
-                    <t>The value of the leaf node is encoded to XML according to the type and is
-                    sent as character data in the element.</t>
-                    <t>See
-                    <xref target="leaf-xml-encoding-example"/> for an example.</t>
                 </section>
                 <section title="NETCONF &lt;edit-config&gt; Operations" anchor="leaf-edit">
                     <t>When a NETCONF server processes an &lt;edit‑config&gt; request, the
@@ -3659,21 +3727,6 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         attributes in the &lt;edit‑config&gt; request. See
                         <xref target="leaf-list-edit"/> for details.</t>
                     </section>
-                </section>
-                <section title="XML Encoding Rules">
-                    <t>A leaf-list node is encoded as a series of XML elements. Each element's
-                    local name is the leaf-list's identifier, and its namespace is the module's
-                    XML namespace (see
-                    <xref target="namespace"/>).</t>
-                    <t>The value of each leaf-list entry is encoded to XML according to the type
-                    and is sent as character data in the element.</t>
-                    <t>The XML elements representing leaf-list entries MUST appear in the order
-                    specified by the user if the leaf-list is "ordered-by user"; otherwise, the
-                    order is implementation dependent. The XML elements representing leaf-list
-                    entries MAY be interleaved with elements for siblings of the leaf-list, unless
-                    the leaf-list defines RPC or action input or output parameters.</t>
-                    <t>See
-                    <xref target="leaf-list-xml-encoding-example"/> for an example.</t>
                 </section>
                 <section title="NETCONF &lt;edit-config&gt; Operations" anchor="leaf-list-edit">
                     <t>Leaf-list entries can be created and deleted, but not modified, through
@@ -4040,28 +4093,6 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     <t>Within a list, the "container", "leaf", "list", "leaf‑list", "uses",
                     "choice", "anydata", and "anyxml" statements can be used to define child nodes
                     to the list.</t>
-                </section>
-                <section title="XML Encoding Rules">
-                    <t>A list is encoded as a series of XML elements, one for each entry in the
-                    list. Each element's local name is the list's identifier, and its namespace is
-                    the module's XML namespace (see
-                    <xref target="namespace"/>). There is no XML element surrounding the list as
-                    a whole.</t>
-                    <t>The list's key nodes are encoded as subelements to the list's identifier
-                    element, in the same order as they are defined within the "key" statement.</t>
-                    <t>The rest of the list's child nodes are encoded as subelements to the list
-                    element, after the keys. If the list defines RPC or action input or output
-                    parameters, the subelements are encoded in the same order as they are defined
-                    within the "list" statement. Otherwise, the subelements are encoded in any
-                    order.</t>
-                    <t>Any whitespace between the subelements to the list entry is insignificant,
-                    i.e., an implementation MAY insert whitespace characters between
-                    subelements.</t>
-                    <t>The XML elements representing list entries MUST appear in the order
-                    specified by the user if the list is "ordered-by user"; otherwise, the order
-                    is implementation dependent. The XML elements representing list entries MAY be
-                    interleaved with elements for siblings of the list, unless the list defines
-                    RPC or action input or output parameters.</t>
                 </section>
                 <section title="NETCONF &lt;edit-config&gt; Operations">
                     <t>List entries can be created, deleted, replaced, and modified through
@@ -4585,8 +4616,8 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                     <t>The constraint is further enforced according to the rules in
                     <xref target="constraints"/>.</t>
                 </section>
-                <section title="XML Encoding Rules">
-                    <t>The choice and case nodes are not visible in XML.</t>
+                <section title="Encoding Rules">
+                    <t>The choice and case nodes are not visible in encodings.</t>
                     <t>The child nodes of the selected "case" statement MUST be encoded in the
                     same order as they are defined in the "case" statement if they are part of an
                     RPC or action input or output parameter definition. Otherwise, the subelements
@@ -4715,13 +4746,6 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <c>0..1</c>
                     </texttable><?rfc compact="no"?>
                 </section>
-                <section title="XML Encoding Rules">
-                    <t>An anydata node is encoded as an XML element. The element's local name is
-                    the anydata's identifier, and its namespace is the module's XML namespace (see
-
-                    <xref target="namespace"/>). The value of the anydata node is a set of nodes,
-                    which are encoded as XML subelements to the anydata element.</t>
-                </section>
                 <section title="NETCONF &lt;edit-config&gt; Operations">
                     <t>An anydata node is treated as an opaque chunk of data. This data can be
                     modified in its entirety only.</t>
@@ -4848,15 +4872,6 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         </c>
                         <c>0..1</c>
                     </texttable><?rfc compact="no"?>
-                </section>
-                <section title="XML Encoding Rules">
-                    <t>An anyxml node is encoded as an XML element. The element's local name is
-                    the anyxml's identifier, and its namespace is the module's XML namespace (see
-                    <xref target="namespace"/>). The value of the anyxml node is encoded as XML
-                    content of this element.</t>
-                    <t>Note that any XML prefixes used in the encoding are local to each instance
-                    encoding. This means that the same XML may be encoded differently by different
-                    implementations.</t>
                 </section>
                 <section title="NETCONF &lt;edit-config&gt; Operations">
                     <t>An anyxml node is treated as an opaque chunk of data. This data can be
@@ -5126,9 +5141,9 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         </list>
                     </t>
                 </section>
-                <section title="XML Encoding Rules">
+                <section title="Encoding Rules">
                     <t>Each node in the grouping is encoded as if it was defined inline, even if
-                    it is imported from another module with another XML namespace.</t>
+                    it is imported from another module with another namespace.</t>
                 </section>
                 <section title="Usage Example">
                     <t>To use the "endpoint" grouping defined in
@@ -6031,9 +6046,9 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
                         <c>0..1</c>
                     </texttable><?rfc compact="no"?>
                 </section>
-                <section title="XML Encoding Rules">
-                    <t>All data nodes defined in the "augment" statement are defined as XML
-                    elements in the XML namespace of the module where the "augment" is
+                <section title="Encoding Rules">
+                    <t>All data nodes defined in the "augment" statement are defined as
+                    elements in the namespace of the module where the "augment" is
                     specified.</t>
                     <t>When a node is augmented, the augmenting child nodes are encoded as
                     subelements to the augmented node, in any order.</t>

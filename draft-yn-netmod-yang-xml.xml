@@ -119,8 +119,9 @@ INSERT_TEXT_FROM_FILE(.experts.txt)
             or set using the "xmlns" attribute in the element.</t>
 
             <t>The "xmlns" attribute may either set the XML default namespace or
-            define and use a prefix for the namespace.  For instance, the following
-            two XML documents are the same.</t>
+            define and use a prefix for the namespace.  Note that the same XML
+            may be encoded differently by different implementations.  For instance,
+            the following two XML documents are the same.</t>
 
             <t>Document 1:</t>
             <figure>
@@ -213,7 +214,6 @@ module example-barmod {
 
             <t>Valid XML-encoded configuration data containing both leafs may then
             look like this:</t>
-
             <figure>
                 <artwork>
 <![CDATA[
@@ -236,72 +236,602 @@ module example-barmod {
         </section> <!-- Names and Namespaces -->
 
         <section title="Encoding of YANG Data Node Instances">
-            <section title='The "leaf" Data Node'>
-                <t>TBD</t>
-            </section>
+
+            <section title='The "leaf" Data Node' anchor="leaf">
+                <t>A leaf node is encoded as an XML element.  The element's local name
+                is the leaf's identifier, and its namespace is the module's XML
+                namespace (see <xref target="names"/>).</t>
+                <t>The value of the leaf node is encoded to XML according to the
+                type (see <xref target="types"/> for type encoding rules) and is
+                sent as character data in the element.</t>
+                <t>Example: For the leaf node definition</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf foo {
+  type uint8;
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>123</foo>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- leaf -->
+
             <section title='The "container" Data Node'>
-                <t>TBD</t>
-            </section>
+                <t>A container node is encoded as an XML element. The element's local name is
+                the container's identifier, and its namespace is the module's XML namespace
+                (see <xref target="names"/>).</t>
+                <t>The container's child nodes are encoded as subelements to the container
+                element. If the container defines RPC or action input or output parameters,
+                these subelements are encoded in the same order as they are defined within the
+                "container" statement. Otherwise, the subelements are encoded in any
+                order.</t>
+                <t>Any whitespace between the subelements to the container is insignificant,
+                i.e., an implementation MAY insert whitespace characters between
+                subelements.</t>
+                <t>If a non-presence container does not have any child nodes, the container
+                may or may not be present in the XML encoding.</t>
+                <t>Example: For the container definition</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+container bar {
+  leaf foo {
+    type uint8;
+  }
+}
+
+container baz {
+  presence "Indicates baz is configured";
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is valid XML-encoded instance data:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<bar>
+    <foo>123</foo>
+</bar>
+
+<baz/>
+]]>
+                    </artwork>
+                </figure>
+                <t>Note that, the example above sets presence container "baz",
+                which is encoded as an empty XML element, since it has no descendants.</t>
+            </section> <!-- container -->
+
             <section title='The "leaf-list" Data Node'>
-                <t>TBD</t>
-            </section>
+                <t>A leaf-list node is encoded as a series of XML elements. Each element's
+                local name is the leaf-list's identifier, and its namespace is the module's
+                XML namespace (see <xref target="names"/>).  There is no XML element
+                surrounding the leaf-list as a whole.</t>
+                <t>The value of each leaf-list entry is encoded to XML according to the type
+                and is sent as character data in the element (see <xref target="types"/> for
+                type encoding rules).</t>
+                <t>The XML elements representing leaf-list entries MUST appear in the order
+                specified by the user if the leaf-list is "ordered-by user"; otherwise, the
+                order is implementation dependent. The XML elements representing leaf-list
+                entries MAY be interleaved with elements for siblings of the leaf-list, unless
+                the leaf-list defines RPC or action input or output parameters.</t>
+                <t>Example: For the leaf-list definition</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list foo {
+  type uint8;
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>123</foo>
+<foo>0</foo>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- leaf-list -->
+
             <section title='The "list" Data Node'>
-                <t>TBD</t>
-            </section>
+                <t>A list is encoded as a series of XML elements, one for each entry in the
+                list. Each element's local name is the list's identifier, and its namespace is
+                the module's XML namespace (see <xref target="names"/>).  There is no XML
+                element surrounding the list as a whole.</t>
+                <t>The list's key nodes are encoded as subelements to the list's identifier
+                element, in the same order as they are defined within the "key" statement.</t>
+                <t>The rest of the list's child nodes are encoded as subelements to the list
+                element, after the keys. If the list defines RPC or action input or output
+                parameters, the subelements are encoded in the same order as they are defined
+                within the "list" statement. Otherwise, the subelements are encoded in any
+                order.</t>
+                <t>Any whitespace between the subelements to the list entry is insignificant,
+                i.e., an implementation MAY insert whitespace characters between
+                subelements.</t>
+                <t>The XML elements representing list entries MUST appear in the order
+                specified by the user if the list is "ordered-by user"; otherwise, the order
+                is implementation dependent. The XML elements representing list entries MAY be
+                interleaved with elements for siblings of the list, unless the list defines
+                RPC or action input or output parameters.</t>
+                <t>Example: For the list definition</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+list bar {
+  key "foo baz";
+  leaf foo {
+    type uint8;
+  }
+  leaf baz {
+    type string;
+  }
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<bar>
+    <foo>123</foo>
+    <baz>zig</baz>
+</bar>
+<bar>
+    <foo>456</foo>
+    <baz>zag</baz>
+</bar>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- list -->
+
             <section title='The "anydata" Data Node' anchor="anydata">
-                <t>TBD</t>
-            </section>
+                <t>An anydata node is encoded as an XML element. The element's local name is
+                the anydata's identifier, and its namespace is the module's XML namespace (see
+                <xref target="names"/>). The value of the anydata node is a set of nodes,
+                which are encoded as XML subelements to the anydata element.</t>
+                <t>The anydata data node serves as a container for an arbitrary set of
+                nodes that otherwise appear as normal YANG-modeled data.  A data
+                model for anydata content may or may not be known at runtime.  In the
+                latter case, converting XML-encoded instances to other encodings, such
+                as JSON <xref target="RFC7951"/> may be impossible.</t>
+                <t>Example: For the anydata definition</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+anydata data;
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<data>
+    <notification xmlns="urn:ietf:params:xml:ns:netmod:notification">
+        <eventTime>2014-07-29T13:43:01Z</eventTime>
+        <event xmlns="https://example.com/example-event">
+            <event-class>fault</event-class>
+            <reporting-entity>
+                <card>Ethernet0</card>
+            </reporting-entity>
+            <severity>major</severity>
+        </event>
+    </notification>
+</data>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- anydata -->
+
             <section title='The "anyxml" Data Node'>
-                <t>TBD</t>
-            </section>
+                <t>An anyxml node is encoded the same as an anydata node.  Please see
+                <xref target="anydata"/> for how the anydata node is encoded.</t>
+            </section> <!-- anyxml -->
+
             <section title="Metadata Objects">
-                <t>TBD</t>
-            </section>
-        </section>
-        <section title="Representing YANG Data Types in JSON Values">
+                <t>Apart from instances of YANG data nodes, XML elements MAY contain
+                XML attributes for special purposes, such as encoding metadata
+                <xref target="RFC7952"/>. The exact syntax and semantics of such
+                members are outside the scope of this document.</t>
+            </section> <!-- metadata -->
+
+        </section> <!-- Encoding of YANG Data Node Instances -->
+
+        <section title="Representing YANG Data Types in XML Values" anchor="types">
+
+            <t>The type <!-- FIXME: type? --> of the XML value in an instance of the leaf or leaf-list
+            data node depends on the type of that data node, as specified in the
+            following subsections.</t>
+
             <section title="Numeric Types">
-                <t>TBD</t>
-            </section>
+                <t>All numeric types (int8, int16, int32, uint8, uint16, uint32,
+                int64, uint64, and decimal64) are represented as a text value
+                conforming the to lexical representation for the type described
+                in <xref section="9.2.1" target="RFC7950"/> and
+                <xref section="9.3.1" target="RFC7950"/> .</t>
+                <t>Example: For the "int16" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list foo {
+  type int16;
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>4711</foo>    <!-- positive decimal value -->
+<foo>-123</foo>    <!-- negative decimal value -->
+<foo>0xf00f</foo>  <!-- positive hexadecimal value -->
+<foo>-0xf</foo>    <!-- negative hexadecimal value -->
+<foo>052</foo>     <!-- positive octal value -->
+<foo>-052</foo>    <!-- negative octal value -->
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- numeric types -->
+
             <section title='The "string" Type'>
-                <t>TBD</t>
-            </section>
+                <t>A "string" value is represented as character data conforming
+                the to lexical representation for the type described in
+                <xref section="9.4.1" target="RFC7950"/>.</t>
+                <t>Example: For the "string" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list foo {
+  type string;
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>This string is all on one line.</foo>
+<foo>This string is:
+	- on more than one line.
+	- contains tab characters.
+</foo>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- string -->
+
             <section title='The "boolean" Type'>
-                <t>TBD</t>
-            </section>
+                <t>A "boolean" value is represented as the corresponding
+                literal name "true" or "false".</t>
+                <t>Example: For the "boolean" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list foo {
+  type boolean;
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>true</foo>
+<foo>false</foo>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- boolean -->
+
             <section title='The "enumeration" Type'>
-                <t>TBD</t>
-            </section>
+                <t>An "enumeration" value is represented as character data conforming
+                the to lexical representation for the type described in
+                <xref section="9.6.1" target="RFC7950"/>.</t>
+                <t>Example: For the "enumeration" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list foo {
+  type enumeration {
+    enum one;
+    enum two;
+    enum three;
+  }
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>one</foo>
+<foo>two</foo>
+<foo>three</foo>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- enumeration -->
+
             <section title='The "bits" Type'>
-                <t>TBD</t>
-            </section>
+                <t>A "bits" value is represented as character data conforming
+                the to lexical representation for the type described in
+                <xref section="9.7.2" target="RFC7950"/>.</t>
+                <t>Example: For the "bits" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list foo {
+  type bits {
+     bit zero;
+     bit one;
+     bit two;
+  }
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>zero</foo>
+<foo>zero one</foo>
+<foo>zero one two</foo>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- bits -->
+
             <section title='The "binary" Type'>
-                <t>TBD</t>
-            </section>
+                <t>A "binary" value is represented as character data conforming
+                the to lexical representation for the type described in
+                <xref section="9.8.2" target="RFC7950"/>.</t>
+                <t>Example: For the "binary" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list foo {
+  type binary;
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>SGVsbG8gQm9iCg==</foo>  <!-- Hello Bob -->
+<foo>SGVsbG8gQWxpY2UK</foo>  <!-- Hello Alice -->
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- binary -->
+
             <section title='The "leafref" Type'>
-                <t>TBD</t>
-            </section>
+                <t>A "leafref" value is represented as character data conforming
+                the to lexical representation for the type described in
+                <xref section="9.9.4" target="RFC7950"/>.</t>
+                <t>Example: For the "leafref" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list status {
+  type leafref {
+    path "/my-leaf";      // assume current value is "up"
+  }
+}
+
+leaf-list ifname {
+  type leafref {
+    path "/my-list/key";  // assume current key values are
+  }                       // "eth0", "eth1", and "eth2"
+}
+
+leaf-list color {
+  type leafref {
+    path "/my-leaf-list";  // assume current list values are
+  }                        // "red", "green", and "blue"
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is valid XML-encoded instance data:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<status>up</status>
+
+<ifname>eth0</ifname>
+<ifname>eth1</ifname>
+<ifname>eth2</ifname>
+
+<color>red</color>
+<color>green</color>
+<color>blue</color>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- leafref -->
+
             <section title='The "identityref" Type' anchor="identityref">
-                <t>TBD</t>
-            </section>
+                <t>A "identityref" value is represented as character data conforming
+                the to lexical representation for the type described in
+                <xref section="9.10.3" target="RFC7950"/>.</t>
+                <t>Example: For the "identityref" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+identity symmetric-key-algs {
+  description
+    "Base identity used to identify symmetric-key crypto
+     algorithms.";
+  }
+
+identity blowfish {
+  base symmetric-key;
+  description
+    "Identity used to identify the 'blowfish' algorithm.";
+  }
+}
+
+identity aes {
+  base symmetric-key;
+  description
+    "Identity used to identify the 'aes' algorithm.";
+  }
+}
+
+leaf-list foo {
+  type identityref {
+    base symmetric-key-algs;
+  }
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>aes</foo>
+<foo>blowfish</foo>
+]]>
+                    </artwork>
+                </figure>
+                <t>Note that, the example above uses the default namespace,
+                and hence the identities are not prefixed.</t>
+            </section> <!-- identityref -->
+
             <section title='The "empty" Type'>
-                <t>TBD</t>
-            </section>
+                <t>An "empty" value is represented as an empty XML element.</t>
+                <t>Example: For the "empty" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf foo {
+  type empty;
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo/>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- empty -->
+
             <section title='The "union" Type'>
-                <t>TBD</t>
-            </section>
+                <t>A "union" value is represented as character data conforming
+                the to lexical representation for the type described in
+                <xref section="9.12.2" target="RFC7950"/>.</t>
+                <t>Example: For the "union" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list foo {
+  type union {
+    type int32;
+    type enumeration {
+      enum "unbounded";
+    }
+  }
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>16</foo>
+<foo>32</foo>
+<foo>64</foo>
+<foo>unbounded</foo>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- union -->
+
             <section title='The "instance-identifier" Type' anchor="instance-identifier">
-                <t>TBD</t>
-            </section>
-        </section>
+                <t>A "instance-identifier" value is represented as character data conforming
+                the to lexical representation for the type described in
+                <xref section="9.13.2" target="RFC7950"/>.</t>
+                <t>Example: For the "instance-identifier" type</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+leaf-list foo {
+  type instance-identifier;
+}
+]]>
+                    </artwork>
+                </figure>
+                <t>the following is a valid XML-encoded instance:</t>
+                <figure>
+                    <artwork>
+<![CDATA[
+<foo>/ex:system/ex:services/ex:ssh</foo>
+<foo>/ex:system/ex:services/ex:ssh/ex:port</foo>
+<foo>/ex:system/ex:user[ex:name='fred']</foo>
+<foo>/ex:system/ex:user[ex:name='fred']/ex:type</foo>
+<foo>/ex:system/ex:server[ex:ip='192.0.2.1'][ex:port='80']</foo>
+<foo>/ex:system/ex:service[ex:name='foo'][ex:enabled='']</foo>
+<foo>/ex:system/ex:services/ex:ssh/ex:cipher[.='blowfish-cbc']</foo>
+<foo>/ex:stats/ex:port[3]</foo>
+]]>
+                    </artwork>
+                </figure>
+            </section> <!-- instance-identifier -->
+
+        </section> <!-- Representing YANG Data Types in XML Values -->
+
         <section title="IANA Considerations" anchor="iana">
-            <t>This document registers one capability identifier URN from the "Network
-            Configuration Protocol (NETCONF) Capability URNs" registry:</t>
+            <t>None.</t>
         </section>
+
         <section title="Security Considerations">
-            <t>This document defines a language with which to write and read descriptions of
-            management information. The language itself has no security impact on the
-            Internet.</t>
+            <t>This document defines an encoding for data modeled in the
+            YANG data modeling language.  As such, it doesn't contribute any new
+            security issues beyond those discussed in <xref section="17" target="RFC7950"/>.</t>
+
+            <t>This document defines no mechanisms for signing and encrypting data
+            modeled with YANG.  Under normal circumstances, data security and
+            integrity are guaranteed by the management protocol in use, such as
+            NETCONF <xref target="RFC6241"/> or RESTCONF <xref target="RFC8040"/>.
+            If this is not the case, external mechanisms, such as Public-Key
+            Cryptography Standards (PKCS)&nbsp;#7 <xref target="RFC2315"/>,
+            need to be considered.</t>
+
+            <t>XML processing is rather different from JSON, and XML parsers may
+            thus suffer from different types of vulnerabilities than their JSON
+            counterparts.  To minimize these new security risks, software on the
+            receiving side SHOULD reject all messages that do not comply with the
+            rules of this document and reply with an appropriate error message to
+            the sender.</t>
+
         </section>
+
     </middle>
     <back>
         <references title="Normative References">
@@ -309,7 +839,7 @@ module example-barmod {
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7950.xml"/>
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
             <!--<xi:include href="https://datatracker.ietf.org/doc/bibxml3/reference.I-D.yn-netmod-rfc7950bis"/>-->
-            <reference anchor="I-D.yn-netmod-rfc7950bis">
+            <!--<reference anchor="I-D.yn-netmod-rfc7950bis">
                 <front>
                     <title>The YANG 1.1 Data Modeling Language</title>
                     <author>
@@ -318,6 +848,7 @@ module example-barmod {
                     <date year="2024"/>
                 </front>
             </reference>
+            -->
             <reference anchor="XML" target="https://www.w3.org/TR/2008/REC-xml-20081126/">
                 <front>
                     <title>Extensible Markup Language (XML) 1.0 (Fifth Edition)</title>
@@ -333,11 +864,16 @@ module example-barmod {
         </references>
         <references title="Informative References">
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6020.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6241.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2315.xml"/>
             <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7951.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7952.xml"/>
+            <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8040.xml"/>
         </references>
         <section title="Acknowledgements" numbered="no">
-            <t>Substantial text in this document was copied from <xref target="RFC7951"/>.  The
-            authors wish to thank Ladislav Lhotka for authoring RFC 7951.</t>
+            <t>Substantial amounts of text in this document was copied from <xref target="RFC7950"/>
+            and <xref target="RFC7951"/>.  The authors wish to thank Martin Björklund and
+            Ladislav Lhotka for authoring RFC 7950 and RFC 7951, respectively.</t>
         </section>
     </back>
 </rfc>
