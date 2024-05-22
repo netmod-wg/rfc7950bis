@@ -20,7 +20,7 @@ echo "    tr.bg:nth-child(odd) {background-color: #f2f2f2}" >> index.html
 echo "    tr.bg:nth-child(even) {background-color: white}" >> index.html
 echo "    th.bg    {background-color: #A0A0A0; color: white;}" >> index.html
 echo "    th.bg,td.bg {padding: 15px; text-align: left; vertical-align: top;}" >> index.html
-echo "    td.fg {text-align: right; vertical-align: bottom;}" >> index.html
+echo "    td.fg {text-align: right; vertical-align: bottom; white-space: nowrap;}" >> index.html
 echo "  </style>" >> index.html
 echo "  <base target=\"_blank\">" >> index.html
 echo "</head>" >> index.html
