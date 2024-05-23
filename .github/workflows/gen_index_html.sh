@@ -45,7 +45,7 @@ for branch in $SORTED; do
   grep -q BASE $branch/metadata.txt && BASE=`grep BASE $branch/metadata.txt | awk '{print $2}'`
   echo "    <td class=\"bg\" nowrap>$DATE</td>" >> index.html
   echo "    <td class=\"bg\"><a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/pull/$NUMBER\">#$NUMBER: $TITLE</a></td>" >> index.html
-  echo "    <td class=\"bg\">Branch <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/$branch\">$branch</a> merges into branch <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/$BASE\">$BASE</a></td>" >> index.html
+  echo "    <td class=\"bg\">Branch <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/$branch\">\"$branch\"</a> merges into branch <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/$BASE\">\"$BASE\"</a></td>" >> index.html
 
   echo "    <td nowrap class=\"bg\"> <table> <tr> <td class=\"fg\">rfc7950bis:</td> <td nowrap><a href=\"$branch/draft-yn-netmod-rfc7950bis-00.html\">html</a> / <a href=\"$branch/draft-yn-netmod-rfc7950bis-00.txt\">text</a> / <a href=\"$branch/draft-yn-netmod-rfc7950bis-00.xml\">xml</a></td> </tr> <tr> <td class=\"fg\">yang-xml:</td> <td nowrap><a href=\"$branch/draft-yn-netmod-yang-xml-00.html\">html</a> / <a href=\"$branch/draft-yn-netmod-yang-xml-00.txt\">text</a> / <a href=\"$branch/draft-yn-netmod-yang-xml-00.xml\">xml</a></td> </tr> <tr> <td class=\"fg\">yang-proto:</td> <td nowrap><a href=\"$branch/draft-yn-netmod-yang-proto-00.html\">html</a> / <a href=\"$branch/draft-yn-netmod-yang-proto-00.txt\">text</a> / <a href=\"$branch/draft-yn-netmod-yang-proto-00.proto\">xml</a></td> </tr> </table> </td>" >> index.html
 
