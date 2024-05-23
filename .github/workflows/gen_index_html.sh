@@ -42,7 +42,7 @@ for d in $SORTED; do
   TITLE=`grep TITLE $d/metadata.txt | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}'`
   DATE=`grep DATE $d/metadata.txt | awk '{print $2}'`
   echo "    <td class=\"bg\" nowrap>$DATE</td>" >> index.html
-  echo "    <td class=\"bg\"><a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/pull/$NUMBER\">$TITLE (#$NUMBER)</a></td>" >> index.html
+  echo "    <td class=\"bg\"><a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/pull/$NUMBER\">#$NUMBER: $TITLE</a></td>" >> index.html
   echo "    <td class=\"bg\"><a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/$d\">$d</a></td>" >> index.html
 
   echo "    <td nowrap class=\"bg\"> <table> <tr> <td class=\"fg\">rfc7950bis:</td> <td nowrap><a href=\"$d/draft-yn-netmod-rfc7950bis-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-rfc7950bis-00.xml\">xml</a></td> </tr> <tr> <td class=\"fg\">yang-xml:</td> <td nowrap><a href=\"$d/draft-yn-netmod-yang-xml-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-yang-xml-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-yang-xml-00.xml\">xml</a></td> </tr> <tr> <td class=\"fg\">yang-proto:</td> <td nowrap><a href=\"$d/draft-yn-netmod-yang-proto-00.html\">html</a> / <a href=\"$d/draft-yn-netmod-yang-proto-00.txt\">text</a> / <a href=\"$d/draft-yn-netmod-yang-proto-00.proto\">xml</a></td> </tr> </table> </td>" >> index.html
