@@ -41,7 +41,7 @@ for d in $SORTED; do
   NUMBER=`grep NUMBER $d/metadata.txt | awk '{print $2}'`
   TITLE=`grep TITLE $d/metadata.txt | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}'`
   DATE=`grep DATE $d/metadata.txt | awk '{print $2}'`
-  echo "    <td class=\"bg\">$DATE</td>" >> index.html
+  echo "    <td class=\"bg\" nowrap>$DATE</td>" >> index.html
   echo "    <td class=\"bg\"><a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/pull/$NUMBER\">$TITLE (#$NUMBER)</a></td>" >> index.html
   echo "    <td class=\"bg\"><a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/$d\">$d</a></td>" >> index.html
 
