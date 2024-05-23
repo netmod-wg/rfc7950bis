@@ -172,11 +172,10 @@ jobs:
       - name: Stash some metadata
         run: |
           echo "${{github.event.pull_request}}"
-          echo "head: ${{github.head_ref}}"
-          echo "base: ${{github.base_ref}}"
           echo "NUMBER: ${{github.event.pull_request.number}}" > mysite/${{github.head_ref}}/metadata.txt
           echo "TITLE: ${{github.event.pull_request.title}}" >> mysite/${{github.head_ref}}/metadata.txt
           echo "DATE: $(date +%Y-%m-%dT%H:%M:%SZ)" >> mysite/${{github.head_ref}}/metadata.txt
+          echo "BASE: ${{github.base_ref}}" >> mysite/${{github.head_ref}}/metadata.txt
 
       # delete the artifacts
       - uses: geekyeggo/delete-artifact@v5
