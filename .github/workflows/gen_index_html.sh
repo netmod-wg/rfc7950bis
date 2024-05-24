@@ -46,13 +46,13 @@ for branch in $SORTED; do
   echo "    <td class=\"bg\" nowrap>$DATE</td>" >> index.html
 
   if [ $branch = "main" ]; then
-    echo "    <td class=\"bg\">The \"main\" branch was last updated by <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/pull/$NUMBER\">#$NUMBER: $TITLE</a>.</td>" >> index.html
+    echo "    <td class=\"bg\">N/A, since this is the \"main\" branch (last updated by <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/pull/$NUMBER\">#$NUMBER: $TITLE</a>).</td>" >> index.html
   else
     echo "    <td class=\"bg\"><a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/pull/$NUMBER\">#$NUMBER: $TITLE</a></td>" >> index.html
   fi
 
   if [ $branch = "main" ]; then
-    echo "    <td class=\"bg\">This is the <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/main\">\"main\"</a> branch (no merge operation pending).</td>" >> index.html
+    echo "    <td class=\"bg\">N/A, since this is the <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/main\">\"main\"</a> branch.</td>" >> index.html
   else
     echo "    <td class=\"bg\">Branch <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/$branch\">\"$branch\"</a> merges into branch <a href=\"https://github.com/netmod-wg/rfc7950bis-and-friends/tree/$BASE\">\"$BASE\"</a>.</td>" >> index.html
   fi
